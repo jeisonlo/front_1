@@ -343,16 +343,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const LIBRO_ID = urlParams.get('id') || 1; // Default to 1 if no ID is provided
     
     // ------------------ URLS DE LA API ------------------
-    const RATING_API_URL = "http://api.codersfree.com/v1/calificaciones";
-    const COMMENTS_API_URL = "http://api.codersfree.com/v1/comentarios";
-    const AVERAGE_API_URL = "http://api.codersfree.com/v1/promediocalificacion";
+    const RATING_API_URL = "https://back1-production-67bf.up.railway.app/v1/calificaciones";  
+    const COMMENTS_API_URL = "https://back1-production-67bf.up.railway.app/v1/comentarios";
+    const AVERAGE_API_URL = "https://back1-production-67bf.up.railway.app/v1/promediocalificacion";
     
     // Set the libro ID in the book container for reference
     const bookContainer = document.getElementById('book-container');
     bookContainer.setAttribute('data-libro-id', LIBRO_ID);
     
     // ------------------ CARGAR DETALLES DEL LIBRO ------------------
-    const apiUrl = `http://api.codersfree.com/v1/api/libros/${LIBRO_ID}`;
+    const apiUrl = `https://back1-production-67bf.up.railway.app/v1/api/libros/${LIBRO_ID}`;
     
     fetch(apiUrl)
         .then(response => {

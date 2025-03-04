@@ -450,7 +450,7 @@ body::before {
     <script>
         // [Previous JavaScript remains the same until createTaskCard]
       // Constants and State
-const API_URL = "http://api.codersfree.com/v1/seguimiento";
+const API_URL = "https://back1-production-67bf.up.railway.app/v1/seguimiento";
 
 // Utility Functions
 function formatEstado(estado) {

@@ -266,8 +266,8 @@ body::before {
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     // ------------------ URLS DE LA API ------------------
-    const FAVORITOS_API_URL = "http://api.codersfree.com/v1/favoritos";
-    const LIBRO_API_URL = "http://api.codersfree.com/v1/api/libros";
+    const FAVORITOS_API_URL = "https://back1-production-67bf.up.railway.app/v1/favoritos";   
+    const LIBRO_API_URL = "https://back1-production-67bf.up.railway.app/v1/api/libros";
     
     // ------------------ GET LIBRO ID FROM URL PARAMETERS ------------------
     const urlParams = new URLSearchParams(window.location.search);

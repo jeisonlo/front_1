@@ -827,7 +827,7 @@
        // Funciones para interactuar con la API de Laravel
        
        // URL base de la API
-       const API_URL = 'http://api.codersfree.com/v1';
+       const API_URL = 'https://back1-production-67bf.up.railway.app/v1';
        
        // Función para guardar el lienzo en la API
 function saveCanvasToAPI() {

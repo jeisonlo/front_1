@@ -1,7 +1,7 @@
 // Script para manejar los favoritos (librosarte.js)
 document.addEventListener("DOMContentLoaded", function () {
     // ------------------ URLS DE LA API ------------------
-    const FAVORITOS_API_URL = "http://api.codersfree.com/v1/favoritos";
+    const FAVORITOS_API_URL = "https://back1-production-67bf.up.railway.app/v1/favoritos";
     
     // ------------------ GET SESSION ID FROM LOCAL STORAGE ------------------
     let sessionId = localStorage.getItem('favoritos_session_id');
