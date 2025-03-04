@@ -1,0 +1,123 @@
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6rem;
+    padding: 20px;
+    margin-top: 60px;
+    margin-bottom: 90px;
+  
+}
+body {
+    background-image: url('/image/Mapadesueños/inicio.webp'); /* Ruta corregida */
+    background-size: cover; /* La imagen cubre todo el fondo */
+    background-position: center; /* Centrar la imagen */
+    background-attachment: fixed; /* El fondo se queda fijo al hacer scroll */
+    position: relative;
+    margin: 0;
+  }
+  main {
+    
+    padding: 20px;
+}
+  
+  body::before {
+  content: '';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.377); /* Capa superpuesta con transparencia (ajusta la opacidad según sea necesario) */  z-index: -1; /* Asegura que esta capa quede detrás del contenido */
+  z-index: -1; /* Asegura que esta capa quede detrás del contenido */
+  pointer-events: none; /* Permite que se puedan hacer clics en los elementos del fondo */
+  }
+  
+
+/* Estilo para las tarjetas */
+.card {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.599); /* Fondo ligeramente transparente */
+    border-radius: 15px;
+    box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
+
+/* Efecto de borde de luz */
+.card::before {
+    content: "";
+   
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0));
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Efecto de hover */
+.card:hover {
+    transform: scale(1.05);
+    background: linear-gradient(145deg, #e0e0e0, #ffffff);
+   
+}
+
+/* Imagen dentro de la tarjeta */
+.card img {
+    width: 365px;
+    height: 200px;
+    max-height: 400px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenido de la tarjeta */
+.card-content {
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #59009A, #e74c3c);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.card-description {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Botón en la tarjeta */
+.card-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(145deg, #59009A, #8a2be2);
+    color: #fff;
+    text-align: center;
+    border-radius: 30px;
+    text-decoration: none;
+ 
+}
+
+.card-button:hover {
+    background: linear-gradient(145deg, #8a2be2, #59009A);
+    transform: translateY(-3px);
+}
