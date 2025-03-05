@@ -264,33 +264,62 @@ body::before {
 
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // ------------------ URLS DE LA API ------------------
-    const FAVORITOS_API_URL = "https://back1-production-67bf.up.railway.app/v1/favoritos";   
-    const LIBRO_API_URL = "https://back1-production-67bf.up.railway.app/v1/api/libros";
-    
-    // ------------------ GET LIBRO ID FROM URL PARAMETERS ------------------
-    const urlParams = new URLSearchParams(window.location.search);
-    const LIBRO_ID = urlParams.get('id');
-    
-    // ------------------ GET SESSION ID FROM LOCAL STORAGE ------------------
-    let sessionId = localStorage.getItem('favoritos_session_id');
-    
-    // ------------------ CARGAR FAVORITOS ------------------
-    function cargarFavoritos() {
-        fetch(`${FAVORITOS_API_URL}${sessionId ? `?session_id=${sessionId}` : ''}`)
+    document.addEventListener("DOMContentLoaded", function() {
+        // ------------------ URLS DE LA API ------------------
+        const BASE_API_URL = "https://back1-production-67bf.up.railway.app/v1";
+        const FAVORITOS_API_URL = `${BASE_API_URL}/favoritos`;   
+        const LIBRO_API_URL = `${BASE_API_URL}/api/libros`;
+        
+        // ------------------ GET LIBRO ID FROM URL PARAMETERS ------------------
+        const urlParams = new URLSearchParams(window.location.search);
+        const LIBRO_ID = urlParams.get('id');
+        
+        // ------------------ GET SESSION ID FROM LOCAL STORAGE ------------------
+        let sessionId = localStorage.getItem('favoritos_session_id') || '';
+        
+        // ------------------ GENERAR SESSION ID SI NO EXISTE ------------------
+        function generarSessionId() {
+            return fetch(`${FAVORITOS_API_URL}/session`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('No se pudieron obtener los favoritos');
+                    throw new Error('No se pudo generar session ID');
                 }
                 return response.json();
             })
             .then(data => {
-                // Guardar el session_id para futuras peticiones
                 if (data.session_id) {
                     sessionId = data.session_id;
                     localStorage.setItem('favoritos_session_id', sessionId);
+                    return sessionId;
                 }
+                throw new Error('No se recibió session ID');
+            })
+            .catch(error => {
+                console.error('Error generando session ID:', error);
+                return '';
+            });
+        }
+        
+        // ------------------ CARGAR FAVORITOS ------------------
+        async function cargarFavoritos() {
+            // Asegurar que tengamos un session ID
+            if (!sessionId) {
+                await generarSessionId();
+            }
+    
+            try {
+                const response = await fetch(`${FAVORITOS_API_URL}?session_id=${sessionId}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
                 
                 const favoritesList = document.getElementById('favorites-list');
                 const emptyState = document.getElementById('empty-favorites');
@@ -318,7 +347,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         select.appendChild(defaultOption);
                         
                         // Añadir los libros favoritos como opciones
-                        data.data.forEach(favorito => {
+                        for (const favorito of data.data) {
                             const option = document.createElement('option');
                             option.value = favorito.libro_id;
                             
@@ -327,19 +356,17 @@ document.addEventListener("DOMContentLoaded", function() {
                                 option.selected = true;
                             }
                             
-                            // Cargar los detalles del libro para mostrar el título
-                            fetch(`${LIBRO_API_URL}/${favorito.libro_id}`)
-                                .then(response => response.json())
-                                .then(libro => {
-                                    option.textContent = libro.titulo;
-                                })
-                                .catch(error => {
-                                    console.error('Error al cargar libro:', error);
-                                    option.textContent = `Libro #${favorito.libro_id}`;
-                                });
-                                
+                            try {
+                                const libroResponse = await fetch(`${LIBRO_API_URL}/${favorito.libro_id}`);
+                                const libro = await libroResponse.json();
+                                option.textContent = libro.titulo;
+                            } catch (error) {
+                                console.error('Error al cargar libro:', error);
+                                option.textContent = `Libro #${favorito.libro_id}`;
+                            }
+                            
                             select.appendChild(option);
-                        });
+                        }
                         
                         // Event listener para cambios en el select
                         select.addEventListener('change', function() {
@@ -363,139 +390,150 @@ document.addEventListener("DOMContentLoaded", function() {
                         : data.data;
                     
                     // Mostrar los libros favoritos
-                    favoritosToShow.forEach(favorito => {
+                    for (const favorito of favoritosToShow) {
                         const libroId = favorito.libro_id;
                         
-                        // Cargar detalles del libro
-                        fetch(`${LIBRO_API_URL}/${libroId}`)
-                            .then(response => response.json())
-                            .then(libro => {
-                                const bookCard = document.createElement('div');
-                                bookCard.className = 'book-card';
-                                bookCard.dataset.id = libroId;
-                                
-                                bookCard.innerHTML = `
-                                    <div class="book">
-                                        <img src="${libro.portada_url || 'https://via.placeholder.com/360x360?text=Sin+Portada'}" 
-                                             alt="${libro.titulo}" class="book-cover">
-                                        <div class="book-info">
-                                            <h2>${libro.titulo}</h2>
-                                         
-                                          
-                                            <div class="book-actions">
-                                                
-                                                <button class="remove-favorite" data-id="${libroId}">
-                                                    <span>💜</span> 
-                                                </button>
-                                            </div>
+                        try {
+                            const libroResponse = await fetch(`${LIBRO_API_URL}/${libroId}`);
+                            const libro = await libroResponse.json();
+                            
+                            const bookCard = document.createElement('div');
+                            bookCard.className = 'book-card';
+                            bookCard.dataset.id = libroId;
+                            
+                            bookCard.innerHTML = `
+                                <div class="book">
+                                    <img src="${libro.portada_url || 'https://via.placeholder.com/360x360?text=Sin+Portada'}" 
+                                         alt="${libro.titulo}" class="book-cover">
+                                    <div class="book-info">
+                                        <h2>${libro.titulo}</h2>
+                                        <div class="book-actions">
+                                            <button class="remove-favorite" data-id="${libroId}">
+                                                <span>💜</span> 
+                                            </button>
                                         </div>
                                     </div>
-                                `;
-                                
-                                // Event listener para eliminar de favoritos
-                                bookCard.querySelector('.remove-favorite').addEventListener('click', function() {
-                                    const id = this.dataset.id;
-                                    quitarDeFavoritos(id);
-                                });
-                                
-                                favoritesList.appendChild(bookCard);
-                            })
-                            .catch(error => {
-                                console.error('Error al cargar libro:', error);
+                                </div>
+                            `;
+                            
+                            // Event listener para eliminar de favoritos
+                            bookCard.querySelector('.remove-favorite').addEventListener('click', function() {
+                                const id = this.dataset.id;
+                                quitarDeFavoritos(id);
                             });
-                    });
+                            
+                            favoritesList.appendChild(bookCard);
+                        } catch (error) {
+                            console.error('Error al cargar libro:', error);
+                        }
+                    }
                     
                 } else {
                     // No hay favoritos
                     emptyState.style.display = 'block';
                     favoritesList.style.display = 'none';
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error al cargar favoritos:', error);
                 document.getElementById('favorites-list').innerHTML = 
                     '<div class="error">Error al cargar favoritos. Intente nuevamente.</div>';
-            });
-    }
-    
-    // ------------------ AÑADIR A FAVORITOS ------------------
-    function agregarAFavoritos(libroId) {
-        fetch(FAVORITOS_API_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                libro_id: libroId,
-                session_id: sessionId
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                // Actualizar session_id si es necesario
-                if (data.session_id) {
-                    sessionId = data.session_id;
-                    localStorage.setItem('favoritos_session_id', sessionId);
-                }
-                
-                // Recargar favoritos
-                cargarFavoritos();
-            } else {
-                console.error('Error:', data.message);
             }
-        })
-        .catch(error => {
-            console.error('Error al agregar a favoritos:', error);
-        });
-    }
-    
-    // ------------------ QUITAR DE FAVORITOS ------------------
-    function quitarDeFavoritos(libroId) {
-        fetch(`${FAVORITOS_API_URL}/${libroId}?session_id=${sessionId}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+        }
+        
+        // ------------------ AÑADIR A FAVORITOS ------------------
+        async function agregarAFavoritos(libroId) {
+            // Asegurar que tengamos un session ID
+            if (!sessionId) {
+                await generarSessionId();
             }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                // Recargar favoritos
-                cargarFavoritos();
-            } else {
-                console.error('Error:', data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error al quitar de favoritos:', error);
-        });
-    }
     
-    // ------------------ PROCESAR LIBRO_ID DE LA URL ------------------
-    if (LIBRO_ID) {
-        // Si recibimos un ID en la URL, verificar si ya está en favoritos
-        fetch(`${FAVORITOS_API_URL}/check/${LIBRO_ID}?session_id=${sessionId}`)
-            .then(response => response.json())
-            .then(data => {
-                if (!data.isFavorite) {
-                    // Si no está en favoritos, añadirlo
-                    agregarAFavoritos(LIBRO_ID);
+            try {
+                const response = await fetch(FAVORITOS_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        libro_id: libroId,
+                        session_id: sessionId
+                    })
+                });
+    
+                const data = await response.json();
+    
+                if (data.status === 'success') {
+                    // Actualizar session_id si es necesario
+                    if (data.session_id) {
+                        sessionId = data.session_id;
+                        localStorage.setItem('favoritos_session_id', sessionId);
+                    }
+                    
+                    // Recargar favoritos
+                    await cargarFavoritos();
                 } else {
-                    // Ya está en favoritos, solo cargar la lista
-                    cargarFavoritos();
+                    console.error('Error:', data.message);
                 }
-            })
-            .catch(error => {
-                console.error('Error al verificar favorito:', error);
-                // Cargar favoritos de todos modos
-                cargarFavoritos();
-            });
-    } else {
-        // Si no hay ID en la URL, simplemente cargar todos los favoritos
-        cargarFavoritos();
-    }
-});
-</script>
+            } catch (error) {
+                console.error('Error al agregar a favoritos:', error);
+            }
+        }
+        
+        // ------------------ QUITAR DE FAVORITOS ------------------
+        async function quitarDeFavoritos(libroId) {
+            try {
+                const response = await fetch(`${FAVORITOS_API_URL}/${libroId}?session_id=${sessionId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
+    
+                const data = await response.json();
+    
+                if (data.status === 'success') {
+                    // Recargar favoritos
+                    await cargarFavoritos();
+                } else {
+                    console.error('Error:', data.message);
+                }
+            } catch (error) {
+                console.error('Error al quitar de favoritos:', error);
+            }
+        }
+        
+        // ------------------ PROCESAR LIBRO_ID DE LA URL ------------------
+        async function iniciarProceso() {
+            // Asegurar que tengamos un session ID
+            if (!sessionId) {
+                await generarSessionId();
+            }
+    
+            if (LIBRO_ID) {
+                try {
+                    const response = await fetch(`${FAVORITOS_API_URL}/check/${LIBRO_ID}?session_id=${sessionId}`);
+                    const data = await response.json();
+    
+                    if (!data.isFavorite) {
+                        // Si no está en favoritos, añadirlo
+                        await agregarAFavoritos(LIBRO_ID);
+                    } else {
+                        // Ya está en favoritos, solo cargar la lista
+                        await cargarFavoritos();
+                    }
+                } catch (error) {
+                    console.error('Error al verificar favorito:', error);
+                    // Cargar favoritos de todos modos
+                    await cargarFavoritos();
+                }
+            } else {
+                // Si no hay ID en la URL, simplemente cargar todos los favoritos
+                await cargarFavoritos();
+            }
+        }
+    
+        // Iniciar el proceso
+        iniciarProceso();
+    });
+    </script>
