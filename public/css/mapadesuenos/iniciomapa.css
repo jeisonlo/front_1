@@ -10,7 +10,7 @@
   
 }
 body {
-    background-image: url('/image/Mapadesueños/inicio.webp'); /* Ruta corregida */
+    background-image: url('/image/Mapadesueños/Inicio.webp'); /* Ruta corregida */
     background-size: cover; /* La imagen cubre todo el fondo */
     background-position: center; /* Centrar la imagen */
     background-attachment: fixed; /* El fondo se queda fijo al hacer scroll */
