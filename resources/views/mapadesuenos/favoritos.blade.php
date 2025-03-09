@@ -262,16 +262,26 @@ body::before {
 </main>
 @include('mapadesuenos.plantillas.footer')
 
+
 <script>
-// Script para la vista de favoritos
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     // ------------------ URLS DE LA API ------------------
     const FAVORITOS_API_URL = "https://back1-production-67bf.up.railway.app/v1/favoritos";
-    const LIBRO_API_URL = "https://api.codersfree.com/v1/api/libros"; // Cambiado a HTTPS
+    const LIBRO_API_URL = "https://api.codersfree.com/v1/api/libros";
     
     // ------------------ FUNCIONES PARA SESSION ID ------------------
     function getSessionId() {
-        let sessionId = localStorage.getItem('favoritos_session_id');
+        let sessionId = null;
+        
+        // Primero intentar obtener de localStorage
+        try {
+            sessionId = localStorage.getItem('favoritos_session_id');
+        } catch (e) {
+            console.warn('No se pudo acceder a localStorage:', e);
+        }
         
         // Si no existe en localStorage, intentar obtenerlo de cookies
         if (!sessionId) {
@@ -295,6 +305,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function saveSessionId(sessionId) {
+        if (!sessionId) return;
+        
         try {
             localStorage.setItem('favoritos_session_id', sessionId);
         } catch (e) {
@@ -304,7 +316,17 @@ document.addEventListener("DOMContentLoaded", function() {
         // También guardar en una cookie que pueda ser compartida
         const expirationDate = new Date();
         expirationDate.setMonth(expirationDate.getMonth() + 1); // Expira en 1 mes
-        document.cookie = `favoritos_session_id=${sessionId}; expires=${expirationDate.toUTCString()}; path=/; SameSite=Lax`;
+        
+        // Asegurarse que funcione en diferentes subdominios
+        const domain = extractDomain(window.location.hostname);
+        document.cookie = `favoritos_session_id=${sessionId}; expires=${expirationDate.toUTCString()}; path=/; SameSite=Lax; ${domain ? 'domain=.' + domain : ''}`;
+    }
+    
+    // Función para extraer el dominio principal (example.com de subdomain.example.com)
+    function extractDomain(hostname) {
+        const parts = hostname.split('.');
+        if (parts.length <= 2) return hostname; // ya es un dominio simple
+        return parts.slice(parts.length - 2).join('.');
     }
     
     // ------------------ FUNCIÓN PARA MOSTRAR MENSAJES ------------------
@@ -312,16 +334,33 @@ document.addEventListener("DOMContentLoaded", function() {
         const confirmationMsg = document.createElement('div');
         confirmationMsg.className = `confirmation-msg ${tipo}`;
         confirmationMsg.textContent = mensaje;
-        elemento.parentNode.appendChild(confirmationMsg);
+        
+        // Asegurarse de que el elemento padre tenga posición relativa
+        if (elemento.parentNode) {
+            const style = window.getComputedStyle(elemento.parentNode);
+            if (style.position === 'static') {
+                elemento.parentNode.style.position = 'relative';
+            }
+            elemento.parentNode.appendChild(confirmationMsg);
+        } else {
+            // Si no hay padre, añadir al propio elemento
+            elemento.appendChild(confirmationMsg);
+        }
         
         // Remover mensaje después de 2 segundos
         setTimeout(() => {
             confirmationMsg.remove();
         }, 2000);
     }
-
+    
+    // ------------------ FUNCIÓN PARA DEBUG ------------------
+    function debugInfo(message) {
+        console.log(`[DEBUG] ${message}`);
+    }
+    
     // ------------------ GET SESSION ID ------------------
     let sessionId = getSessionId();
+    debugInfo(`Session ID inicial: ${sessionId}`);
     
     // ------------------ CARGAR FAVORITOS ------------------
     function cargarFavoritos() {
@@ -336,18 +375,25 @@ document.addEventListener("DOMContentLoaded", function() {
         // Mostrar estado de carga
         favoritesList.innerHTML = '<div class="loading">Cargando favoritos...</div>';
         
+        // Reobtenemos el sessionId por si ha cambiado
+        sessionId = getSessionId();
+        debugInfo(`Cargando favoritos con session_id: ${sessionId}`);
+        
         fetch(`${FAVORITOS_API_URL}${sessionId ? `?session_id=${sessionId}` : ''}`)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('No se pudieron obtener los favoritos');
+                    throw new Error(`No se pudieron obtener los favoritos: ${response.status}`);
                 }
                 return response.json();
             })
             .then(data => {
+                debugInfo(`Datos de favoritos recibidos: ${JSON.stringify(data)}`);
+                
                 // Guardar el session_id para futuras peticiones
                 if (data.session_id) {
                     saveSessionId(data.session_id);
                     sessionId = data.session_id;
+                    debugInfo(`Nuevo session_id guardado: ${sessionId}`);
                 }
                 
                 // Limpiar la lista
@@ -357,6 +403,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Tenemos favoritos
                     emptyState.style.display = 'none';
                     favoritesList.style.display = 'grid';
+                    
+                    // Resto del código de cargarFavoritos...
+                    // [Código original para mostrar favoritos]
                     
                     // Obtener parámetros de URL
                     const urlParams = new URLSearchParams(window.location.search);
@@ -489,7 +538,6 @@ document.addEventListener("DOMContentLoaded", function() {
                                 favoritesList.appendChild(errorCard);
                             });
                     });
-                    
                 } else {
                     // No hay favoritos
                     emptyState.style.display = 'block';
@@ -505,6 +553,10 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // ------------------ AÑADIR A FAVORITOS ------------------
     function agregarAFavoritos(libroId, element) {
+        // Reobtenemos el sessionId por si ha cambiado
+        sessionId = getSessionId();
+        debugInfo(`Agregando a favoritos libro ${libroId} con session_id: ${sessionId}`);
+        
         fetch(FAVORITOS_API_URL, {
             method: 'POST',
             headers: {
@@ -517,15 +569,21 @@ document.addEventListener("DOMContentLoaded", function() {
             })
         })
         .then(response => {
-            if (!response.ok) throw new Error('Error en la respuesta del servidor');
+            if (!response.ok) {
+                debugInfo(`Error en respuesta: ${response.status}`);
+                throw new Error('Error en la respuesta del servidor');
+            }
             return response.json();
         })
         .then(data => {
+            debugInfo(`Respuesta de agregar favorito: ${JSON.stringify(data)}`);
+            
             if (data.status === 'success') {
                 // Actualizar session_id si es necesario
                 if (data.session_id) {
                     saveSessionId(data.session_id);
                     sessionId = data.session_id;
+                    debugInfo(`Nuevo session_id guardado: ${sessionId}`);
                 }
                 
                 // Si tenemos un elemento DOM, actualizar su UI
@@ -550,11 +608,46 @@ document.addEventListener("DOMContentLoaded", function() {
             if (element) {
                 mostrarMensaje(element, 'Error al añadir a favoritos', 'error');
             }
+            
+            // Alternativa directa en caso de error
+            ofrecerAlternativaDirecta(libroId, element);
         });
+    }
+    
+    function ofrecerAlternativaDirecta(libroId, element) {
+        if (!element) return;
+        
+        // Añadir un enlace directo a la página de favoritos
+        const directLink = document.createElement('a');
+        directLink.href = `${window.location.origin}/mapadesuenos/favoritos?id=${libroId}`;
+        directLink.className = 'direct-link';
+        directLink.textContent = 'Ir directamente a favoritos';
+        directLink.style.display = 'block';
+        directLink.style.marginTop = '5px';
+        directLink.style.color = '#7e57c2';
+        directLink.style.textDecoration = 'underline';
+        
+        // Si el mensaje aún existe, añadir debajo, sino al padre del elemento
+        const msgElement = element.parentNode.querySelector('.confirmation-msg');
+        if (msgElement) {
+            msgElement.parentNode.insertBefore(directLink, msgElement.nextSibling);
+        } else {
+            element.parentNode.appendChild(directLink);
+        }
+        
+        // Eliminar después de 8 segundos
+        setTimeout(() => {
+            if (directLink.parentNode) {
+                directLink.remove();
+            }
+        }, 8000);
     }
     
     // ------------------ QUITAR DE FAVORITOS ------------------
     function quitarDeFavoritos(libroId, element) {
+        // Reobtenemos el sessionId por si ha cambiado
+        sessionId = getSessionId();
+        
         if (!sessionId) {
             console.error('No hay session_id disponible');
             if (element) {
@@ -562,6 +655,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             return;
         }
+        
+        debugInfo(`Quitando de favoritos libro ${libroId} con session_id: ${sessionId}`);
         
         fetch(`${FAVORITOS_API_URL}/${libroId}?session_id=${sessionId}`, {
             method: 'DELETE',
@@ -575,6 +670,8 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.json();
         })
         .then(data => {
+            debugInfo(`Respuesta de quitar favorito: ${JSON.stringify(data)}`);
+            
             if (data.status === 'success') {
                 // Si tenemos un elemento DOM, actualizar su UI
                 if (element) {
@@ -606,40 +703,92 @@ document.addEventListener("DOMContentLoaded", function() {
     const LIBRO_ID = urlParams.get('id');
     
     if (LIBRO_ID) {
+        debugInfo(`ID del libro en URL: ${LIBRO_ID}`);
+        
         // Si recibimos un ID en la URL, verificar si ya está en favoritos
-        fetch(`${FAVORITOS_API_URL}/check/${LIBRO_ID}?session_id=${sessionId}`)
+        fetch(`${FAVORITOS_API_URL}/check/${LIBRO_ID}${sessionId ? `?session_id=${sessionId}` : ''}`)
             .then(response => {
-                if (!response.ok) throw new Error('Error en la respuesta del servidor');
+                if (!response.ok) {
+                    debugInfo(`Error al verificar favorito: ${response.status}`);
+                    throw new Error('Error en la respuesta del servidor');
+                }
                 return response.json();
             })
             .then(data => {
+                debugInfo(`Estado del favorito: ${JSON.stringify(data)}`);
+                
                 if (!data.isFavorite) {
                     // Si no está en favoritos, añadirlo
+                    debugInfo('No está en favoritos, añadiendo...');
                     agregarAFavoritos(LIBRO_ID);
                 } else {
                     // Ya está en favoritos, solo cargar la lista
+                    debugInfo('Ya está en favoritos, cargando lista...');
                     cargarFavoritos();
                 }
             })
             .catch(error => {
                 console.error('Error al verificar favorito:', error);
                 // Intentar añadirlo de todos modos
+                debugInfo('Error al verificar, intentando añadir directamente...');
                 agregarAFavoritos(LIBRO_ID);
             });
     } else {
         // Si no hay ID en la URL, simplemente cargar todos los favoritos
+        debugInfo('No hay ID en la URL, cargando todos los favoritos...');
         cargarFavoritos();
     }
     
-    // ------------------ FUNCIÓN DE DEPURACIÓN ------------------
+    // ------------------ MOSTRAR ESTADO DEBUG ------------------
     function mostrarEstadoDebug() {
+        console.group('Estado de Favoritos');
         console.log('Session ID:', getSessionId());
         console.log('Cookies:', document.cookie);
         console.log('LocalStorage:', localStorage.getItem('favoritos_session_id'));
+        console.groupEnd();
     }
     
-    // Ejecutar depuración para ver el estado actual (comentar en producción)
-    // mostrarEstadoDebug();
+    // Activar depuración en consola
+    mostrarEstadoDebug();
+    
+    // ------------------ CSS PARA MENSAJES ------------------
+    // Añadir CSS para los mensajes de confirmación dinámicamente
+    const style = document.createElement('style');
+    style.textContent = `
+        .confirmation-msg {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(126, 87, 194, 0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            animation: fadeInOut 2s ease-in-out;
+            z-index: 100;
+        }
+        
+        .confirmation-msg.error {
+            background-color: rgba(231, 76, 60, 0.9);
+        }
+        
+        .direct-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #7e57c2;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
     
     // ------------------ FUNCIÓN PARA REINICIAR DATOS ------------------
     window.resetFavoritosData = function() {
@@ -649,15 +798,11 @@ document.addEventListener("DOMContentLoaded", function() {
         location.reload();
     };
     
-    // Agregar un pequeño botón flotante para depuración (eliminar en producción)
-    // const debugButton = document.createElement('button');
-    // debugButton.textContent = 'Reset Favoritos';
-    // debugButton.style.position = 'fixed';
-    // debugButton.style.bottom = '10px';
-    // debugButton.style.right = '10px';
-    // debugButton.style.zIndex = '9999';
-    // debugButton.addEventListener('click', resetFavoritosData);
-    // document.body.appendChild(debugButton);
+    // Hacer accesible externamente para depuración
+    window.debugFavoritos = {
+        mostrarEstado: mostrarEstadoDebug,
+        reset: resetFavoritosData,
+        agregarFavorito: agregarAFavoritos
+    };
 });
-
 </script>
