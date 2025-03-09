@@ -134,7 +134,19 @@ if (!localStorage.getItem('favoritos_session_id')) {
             log("Respuesta al quitar favorito:", data);
             
             if (data.status === 'success') {
-                alert('Libro eliminado de favoritos');
+                // Si estamos en la página de favoritos, recargarlos
+                if (window.location.pathname.includes('/favoritos')) {
+                    cargarFavoritos();
+                } else {
+                    // Si estamos en otra página, mostrar mensaje de éxito
+                    alert('Libro eliminado de favoritos');
+                    
+                    // Actualizar el corazón a vacío
+                    const heartButton = document.querySelector(`.heart[data-id="${libroId}"]`);
+                    if (heartButton) {
+                        heartButton.textContent = '🤍';
+                    }
+                }
             } else {
                 console.error('Error:', data.message);
                 alert('Error al quitar de favoritos: ' + data.message);
@@ -146,8 +158,34 @@ if (!localStorage.getItem('favoritos_session_id')) {
         });
     }
     
-    // ------------------ INICIALIZAR BOTONES DE CORAZÓN ------------------
-    function inicializarBotonesCorazon() {
+    // ------------------ VERIFICAR ESTADO DE FAVORITO ------------------
+    function verificarFavorito(libroId) {
+        if (!sessionId) {
+            log("No hay session_id para verificar favorito");
+            return Promise.resolve(false);
+        }
+        
+        log("Verificando estado de favorito para libro ID:", libroId);
+        
+        return fetch(`${FAVORITOS_API_URL}/check/${libroId}?session_id=${sessionId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                log("Estado de favorito:", data);
+                return data.isFavorite;
+            })
+            .catch(error => {
+                console.error('Error al verificar favorito:', error);
+                return false;
+            });
+    }
+    
+    // ------------------ INICIALIZAR BOTONES DE FAVORITOS ------------------
+    function inicializarBotonesFavoritos() {
         // Buscar todos los corazones en la página
         document.querySelectorAll('.heart').forEach(heart => {
             // Obtener el ID del libro del atributo data-id o del elemento padre
@@ -185,6 +223,47 @@ if (!localStorage.getItem('favoritos_session_id')) {
         });
     }
     
-    // Iniciar la configuración de los botones de corazón
-    inicializarBotonesCorazon();
+    // ------------------ PROCESAR LIBRO_ID DE LA URL ------------------
+    if (window.location.pathname.includes('/favoritos')) {
+        log("Estamos en la página de favoritos");
+        
+        if (LIBRO_ID) {
+            log("Procesando libro_id de la URL:", LIBRO_ID);
+            
+            // Si recibimos un ID en la URL, verificar si ya está en favoritos
+            fetch(`${FAVORITOS_API_URL}/check/${LIBRO_ID}?session_id=${sessionId || ''}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    log("Estado de favorito para ID de URL:", data);
+                    
+                    if (!data.isFavorite) {
+                        // Si no está en favoritos, añadirlo
+                        log("Añadiendo libro de URL a favoritos");
+                        agregarAFavoritos(LIBRO_ID);
+                    } else {
+                        // Ya está en favoritos, solo cargar la lista
+                        log("El libro ya está en favoritos, cargando lista");
+                        cargarFavoritos();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al verificar favorito de URL:', error);
+                    // Cargar favoritos de todos modos
+                    cargarFavoritos();
+                });
+        } else {
+            // Si no hay ID en la URL, simplemente cargar todos los favoritos
+            log("No hay ID en URL, cargando todos los favoritos");
+            cargarFavoritos();
+        }
+    } else {
+        // Si no estamos en la página de favoritos, inicializar los botones de corazón
+        log("No estamos en la página de favoritos, inicializando botones");
+        inicializarBotonesFavoritos();
+    }
 });
