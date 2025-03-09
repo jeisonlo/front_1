@@ -484,62 +484,59 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
     
-    // ------------------ AÑADIR A FAVORITOS ------------------
     function agregarAFavoritos(libroId) {
-        log("Agregando a favoritos libro ID:", libroId, "con session ID:", sessionId);
-        
-        fetch(FAVORITOS_API_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                libro_id: libroId,
-                session_id: sessionId
-            })
-        })
-        .then(response => {
-            log("Response status:", response.status);
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            log("Respuesta al agregar favorito:", data);
-            
-            if (data.status === 'success') {
-                // Actualizar session_id si es necesario
-                if (data.session_id) {
-                    sessionId = data.session_id;
-                    localStorage.setItem('favoritos_session_id', sessionId);
-                    log("Nuevo session_id guardado:", sessionId);
-                }
-                
-                // Si estamos en la página de favoritos, recargarlos
-                if (window.location.pathname.includes('/favoritos')) {
-                    cargarFavoritos();
-                } else {
-                    // Si estamos en otra página, mostrar mensaje de éxito
-                    alert('Libro añadido a favoritos');
-                    
-                    // Actualizar el corazón a lleno
-                    const heartButton = document.querySelector(`.heart[data-id="${libroId}"]`);
-                    if (heartButton) {
-                        heartButton.textContent = '💜';
-                    }
-                }
-            } else {
-                console.error('Error:', data.message);
-                alert('Error al añadir a favoritos: ' + data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error al agregar a favoritos:', error);
-            alert('Error al añadir a favoritos: ' + error.message);
-        });
+    // Asegurémonos de que libroId sea un número entero
+    libroId = parseInt(libroId);
+    
+    const payload = {
+        libro_id: libroId
+    };
+    
+    // Solo agregar session_id al payload si existe
+    if (sessionId) {
+        payload.session_id = sessionId;
     }
+    
+    fetch(FAVORITOS_API_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload),
+        // Importante: incluir credentials para que las cookies funcionen
+        credentials: 'include'
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(errorData => {
+                throw new Error(`Error del servidor: ${errorData.message || response.status}`);
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.status === 'success') {
+            if (data.session_id) {
+                sessionId = data.session_id;
+                localStorage.setItem('favoritos_session_id', sessionId);
+            }
+            
+            // Actualizar UI
+            const heartButton = document.querySelector(`.heart[data-id="${libroId}"]`);
+            if (heartButton) {
+                heartButton.textContent = '💜';
+            }
+        } else {
+            console.error('Error:', data.message);
+            alert('Error al añadir a favoritos: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error al agregar a favoritos:', error);
+        alert(error.message);
+    });
+}
     
     // ------------------ QUITAR DE FAVORITOS ------------------
     function quitarDeFavoritos(libroId) {
