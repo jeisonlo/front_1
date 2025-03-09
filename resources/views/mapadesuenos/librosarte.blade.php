@@ -11,12 +11,12 @@
 <body>
     @include('mapadesuenos.plantillas.header')
 <main>
-    <section class="dream-map" data-id="1">
+    <section class="dream-map">
         <a href="/mapadesuenos/libro1?id=1" class="book-link">
-            <img src="https://res.cloudinary.com/detivdncz/image/upload/v1740438702/40fa6a6657f79a3752fbf7a8501ccebd_et0ecw.webp" alt="El arte de la guerra">
+            <img src="https://res.cloudinary.com/detivdncz/image/upload/v1740438702/40fa6a6657f79a3752fbf7a8501ccebd_et0ecw.webp" alt="The Psychology of Money">
         </a>
         <h2>El arte de la guerra</h2>
-        <h2 class="heart" data-id="1" style="cursor: pointer;">🤍</h2>
+        <h2 class="heart" style="cursor: pointer;">🤍</h2>
     </section>
     <section class="dream-map">
         <a href="/mapadesuenos/libro1?id=2">
