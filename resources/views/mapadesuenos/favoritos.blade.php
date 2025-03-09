@@ -485,16 +485,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     function agregarAFavoritos(libroId) {
-    // Asegurémonos de que libroId sea un número entero
-    libroId = parseInt(libroId);
+    log("Agregando a favoritos libro ID:", libroId, "con session ID:", sessionId);
     
-    const payload = {
-        libro_id: libroId
+    // Crear el objeto de datos con solo lo esencial
+    const datos = {
+        libro_id: parseInt(libroId)
     };
     
-    // Solo agregar session_id al payload si existe
+    // Solo agregar session_id si existe
     if (sessionId) {
-        payload.session_id = sessionId;
+        datos.session_id = sessionId;
     }
     
     fetch(FAVORITOS_API_URL, {
@@ -503,23 +503,30 @@ document.addEventListener("DOMContentLoaded", function() {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify(payload),
-        // Importante: incluir credentials para que las cookies funcionen
-        credentials: 'include'
+        body: JSON.stringify(datos),
+        credentials: 'include' // Para que envíe cookies si existen
     })
     .then(response => {
+        log("Response status:", response.status);
         if (!response.ok) {
             return response.json().then(errorData => {
-                throw new Error(`Error del servidor: ${errorData.message || response.status}`);
+                throw new Error(`HTTP error! Status: ${response.status}, Mensaje: ${errorData.message || 'No hay mensaje de error'}`);
+            }).catch(() => {
+                // Si no podemos obtener JSON del error, lanzamos el error genérico
+                throw new Error(`HTTP error! Status: ${response.status}`);
             });
         }
         return response.json();
     })
     .then(data => {
+        log("Respuesta al agregar favorito:", data);
+        
         if (data.status === 'success') {
+            // Actualizar session_id si es necesario
             if (data.session_id) {
                 sessionId = data.session_id;
                 localStorage.setItem('favoritos_session_id', sessionId);
+                log("Nuevo session_id guardado:", sessionId);
             }
             
             // Actualizar UI
