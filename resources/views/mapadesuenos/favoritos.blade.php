@@ -265,6 +265,22 @@ body::before {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+
+    // Crear session_id si no existe
+if (!localStorage.getItem('favoritos_session_id')) {
+    // Generar un UUID simple
+    const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0;
+        const v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+    localStorage.setItem('favoritos_session_id', uuid);
+    console.log("Nueva session_id creada:", uuid);
+}
+
+// Asegurar que tenemos la session_id
+let sessionId = localStorage.getItem('favoritos_session_id');
+console.log("Session ID en uso:", sessionId);
     // ------------------ URLS DE LA API ------------------
     const FAVORITOS_API_URL = "https://back1-production-67bf.up.railway.app/v1/favoritos";
     const LIBRO_API_URL = "https://back1-production-67bf.up.railway.app/v1/api/libros"; // Changed to HTTPS
