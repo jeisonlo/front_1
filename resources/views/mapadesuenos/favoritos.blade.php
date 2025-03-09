@@ -262,22 +262,80 @@ body::before {
 </main>
 @include('mapadesuenos.plantillas.footer')
 
-
 <script>
+// Script para la vista de favoritos
 document.addEventListener("DOMContentLoaded", function() {
     // ------------------ URLS DE LA API ------------------
     const FAVORITOS_API_URL = "https://back1-production-67bf.up.railway.app/v1/favoritos";
-    const LIBRO_API_URL = "https://back1-production-67bf.up.railway.app/v1/api/libros";
+    const LIBRO_API_URL = "https://api.codersfree.com/v1/api/libros"; // Cambiado a HTTPS
     
-    // ------------------ GET LIBRO ID FROM URL PARAMETERS ------------------
-    const urlParams = new URLSearchParams(window.location.search);
-    const LIBRO_ID = urlParams.get('id');
+    // ------------------ FUNCIONES PARA SESSION ID ------------------
+    function getSessionId() {
+        let sessionId = localStorage.getItem('favoritos_session_id');
+        
+        // Si no existe en localStorage, intentar obtenerlo de cookies
+        if (!sessionId) {
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                const [name, value] = cookie.trim().split('=');
+                if (name === 'favoritos_session_id') {
+                    sessionId = value;
+                    // Guardar en localStorage para futuros usos
+                    try {
+                        localStorage.setItem('favoritos_session_id', sessionId);
+                    } catch (e) {
+                        console.warn('No se pudo guardar en localStorage:', e);
+                    }
+                    break;
+                }
+            }
+        }
+        
+        return sessionId;
+    }
+
+    function saveSessionId(sessionId) {
+        try {
+            localStorage.setItem('favoritos_session_id', sessionId);
+        } catch (e) {
+            console.warn('No se pudo guardar en localStorage:', e);
+        }
+        
+        // También guardar en una cookie que pueda ser compartida
+        const expirationDate = new Date();
+        expirationDate.setMonth(expirationDate.getMonth() + 1); // Expira en 1 mes
+        document.cookie = `favoritos_session_id=${sessionId}; expires=${expirationDate.toUTCString()}; path=/; SameSite=Lax`;
+    }
     
-    // ------------------ GET SESSION ID FROM LOCAL STORAGE ------------------
-    let sessionId = localStorage.getItem('favoritos_session_id');
+    // ------------------ FUNCIÓN PARA MOSTRAR MENSAJES ------------------
+    function mostrarMensaje(elemento, mensaje, tipo = 'success') {
+        const confirmationMsg = document.createElement('div');
+        confirmationMsg.className = `confirmation-msg ${tipo}`;
+        confirmationMsg.textContent = mensaje;
+        elemento.parentNode.appendChild(confirmationMsg);
+        
+        // Remover mensaje después de 2 segundos
+        setTimeout(() => {
+            confirmationMsg.remove();
+        }, 2000);
+    }
+
+    // ------------------ GET SESSION ID ------------------
+    let sessionId = getSessionId();
     
     // ------------------ CARGAR FAVORITOS ------------------
     function cargarFavoritos() {
+        const favoritesList = document.getElementById('favorites-list');
+        const emptyState = document.getElementById('empty-favorites');
+        
+        if (!favoritesList) {
+            console.error('No se encontró el contenedor de favoritos');
+            return;
+        }
+        
+        // Mostrar estado de carga
+        favoritesList.innerHTML = '<div class="loading">Cargando favoritos...</div>';
+        
         fetch(`${FAVORITOS_API_URL}${sessionId ? `?session_id=${sessionId}` : ''}`)
             .then(response => {
                 if (!response.ok) {
@@ -288,12 +346,9 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 // Guardar el session_id para futuras peticiones
                 if (data.session_id) {
+                    saveSessionId(data.session_id);
                     sessionId = data.session_id;
-                    localStorage.setItem('favoritos_session_id', sessionId);
                 }
-                
-                const favoritesList = document.getElementById('favorites-list');
-                const emptyState = document.getElementById('empty-favorites');
                 
                 // Limpiar la lista
                 favoritesList.innerHTML = '';
@@ -303,8 +358,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     emptyState.style.display = 'none';
                     favoritesList.style.display = 'grid';
                     
-                    // Crear un select si recibimos un ID en la URL
-                    if (LIBRO_ID) {
+                    // Obtener parámetros de URL
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const LIBRO_ID = urlParams.get('id');
+                    
+                    // Crear un select si hay más de un favorito
+                    if (data.data.length > 1 || LIBRO_ID) {
                         const selectContainer = document.createElement('div');
                         selectContainer.className = 'select-container';
                         const select = document.createElement('select');
@@ -329,7 +388,10 @@ document.addEventListener("DOMContentLoaded", function() {
                             
                             // Cargar los detalles del libro para mostrar el título
                             fetch(`${LIBRO_API_URL}/${favorito.libro_id}`)
-                                .then(response => response.json())
+                                .then(response => {
+                                    if (!response.ok) throw new Error('Error al cargar libro');
+                                    return response.json();
+                                })
                                 .then(libro => {
                                     option.textContent = libro.titulo;
                                 })
@@ -346,10 +408,10 @@ document.addEventListener("DOMContentLoaded", function() {
                             const selectedId = this.value;
                             if (selectedId) {
                                 // Redireccionar a la misma página con el nuevo ID
-                                window.location.href = `/mapadesuenos/favoritos?id=${selectedId}`;
+                                window.location.href = `${window.location.origin}/mapadesuenos/favoritos?id=${selectedId}`;
                             } else {
                                 // Ver todos
-                                window.location.href = '/mapadesuenos/favoritos';
+                                window.location.href = `${window.location.origin}/mapadesuenos/favoritos`;
                             }
                         });
                         
@@ -368,7 +430,10 @@ document.addEventListener("DOMContentLoaded", function() {
                         
                         // Cargar detalles del libro
                         fetch(`${LIBRO_API_URL}/${libroId}`)
-                            .then(response => response.json())
+                            .then(response => {
+                                if (!response.ok) throw new Error('Error al cargar libro');
+                                return response.json();
+                            })
                             .then(libro => {
                                 const bookCard = document.createElement('div');
                                 bookCard.className = 'book-card';
@@ -380,10 +445,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                              alt="${libro.titulo}" class="book-cover">
                                         <div class="book-info">
                                             <h2>${libro.titulo}</h2>
-                                         
-                                          
                                             <div class="book-actions">
-                                                
                                                 <button class="remove-favorite" data-id="${libroId}">
                                                     <span>💜</span> 
                                                 </button>
@@ -395,13 +457,36 @@ document.addEventListener("DOMContentLoaded", function() {
                                 // Event listener para eliminar de favoritos
                                 bookCard.querySelector('.remove-favorite').addEventListener('click', function() {
                                     const id = this.dataset.id;
-                                    quitarDeFavoritos(id);
+                                    quitarDeFavoritos(id, this);
                                 });
                                 
                                 favoritesList.appendChild(bookCard);
                             })
                             .catch(error => {
                                 console.error('Error al cargar libro:', error);
+                                // Crear una tarjeta de error para mostrar algo
+                                const errorCard = document.createElement('div');
+                                errorCard.className = 'book-card error-card';
+                                errorCard.innerHTML = `
+                                    <div class="book">
+                                        <div class="book-info">
+                                            <h2>Error al cargar libro #${libroId}</h2>
+                                            <div class="book-actions">
+                                                <button class="remove-favorite" data-id="${libroId}">
+                                                    <span>💜</span> 
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                                
+                                // Event listener para eliminar de favoritos
+                                errorCard.querySelector('.remove-favorite').addEventListener('click', function() {
+                                    const id = this.dataset.id;
+                                    quitarDeFavoritos(id, this);
+                                });
+                                
+                                favoritesList.appendChild(errorCard);
                             });
                     });
                     
@@ -413,13 +498,13 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => {
                 console.error('Error al cargar favoritos:', error);
-                document.getElementById('favorites-list').innerHTML = 
+                favoritesList.innerHTML = 
                     '<div class="error">Error al cargar favoritos. Intente nuevamente.</div>';
             });
     }
     
     // ------------------ AÑADIR A FAVORITOS ------------------
-    function agregarAFavoritos(libroId) {
+    function agregarAFavoritos(libroId, element) {
         fetch(FAVORITOS_API_URL, {
             method: 'POST',
             headers: {
@@ -431,28 +516,53 @@ document.addEventListener("DOMContentLoaded", function() {
                 session_id: sessionId
             })
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error('Error en la respuesta del servidor');
+            return response.json();
+        })
         .then(data => {
             if (data.status === 'success') {
                 // Actualizar session_id si es necesario
                 if (data.session_id) {
+                    saveSessionId(data.session_id);
                     sessionId = data.session_id;
-                    localStorage.setItem('favoritos_session_id', sessionId);
+                }
+                
+                // Si tenemos un elemento DOM, actualizar su UI
+                if (element) {
+                    // Actualizar UI
+                    if (element.tagName === 'BUTTON') {
+                        element.innerHTML = "<span>💜</span>";
+                    } else {
+                        element.innerHTML = "💜";
+                    }
+                    mostrarMensaje(element, '¡Añadido a favoritos!');
                 }
                 
                 // Recargar favoritos
-                cargarFavoritos();
+                setTimeout(() => cargarFavoritos(), 500);
             } else {
-                console.error('Error:', data.message);
+                throw new Error(data.message || 'Error desconocido');
             }
         })
         .catch(error => {
             console.error('Error al agregar a favoritos:', error);
+            if (element) {
+                mostrarMensaje(element, 'Error al añadir a favoritos', 'error');
+            }
         });
     }
     
     // ------------------ QUITAR DE FAVORITOS ------------------
-    function quitarDeFavoritos(libroId) {
+    function quitarDeFavoritos(libroId, element) {
+        if (!sessionId) {
+            console.error('No hay session_id disponible');
+            if (element) {
+                mostrarMensaje(element, 'Error: Sesión no disponible', 'error');
+            }
+            return;
+        }
+        
         fetch(`${FAVORITOS_API_URL}/${libroId}?session_id=${sessionId}`, {
             method: 'DELETE',
             headers: {
@@ -460,25 +570,48 @@ document.addEventListener("DOMContentLoaded", function() {
                 'Accept': 'application/json'
             }
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error('Error en la respuesta del servidor');
+            return response.json();
+        })
         .then(data => {
             if (data.status === 'success') {
+                // Si tenemos un elemento DOM, actualizar su UI
+                if (element) {
+                    // Actualizar UI
+                    if (element.tagName === 'BUTTON') {
+                        element.innerHTML = "<span>🤍</span>";
+                    } else {
+                        element.innerHTML = "🤍";
+                    }
+                    mostrarMensaje(element, 'Eliminado de favoritos');
+                }
+                
                 // Recargar favoritos
-                cargarFavoritos();
+                setTimeout(() => cargarFavoritos(), 500);
             } else {
-                console.error('Error:', data.message);
+                throw new Error(data.message || 'Error desconocido');
             }
         })
         .catch(error => {
             console.error('Error al quitar de favoritos:', error);
+            if (element) {
+                mostrarMensaje(element, 'Error al eliminar de favoritos', 'error');
+            }
         });
     }
     
     // ------------------ PROCESAR LIBRO_ID DE LA URL ------------------
+    const urlParams = new URLSearchParams(window.location.search);
+    const LIBRO_ID = urlParams.get('id');
+    
     if (LIBRO_ID) {
         // Si recibimos un ID en la URL, verificar si ya está en favoritos
         fetch(`${FAVORITOS_API_URL}/check/${LIBRO_ID}?session_id=${sessionId}`)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) throw new Error('Error en la respuesta del servidor');
+                return response.json();
+            })
             .then(data => {
                 if (!data.isFavorite) {
                     // Si no está en favoritos, añadirlo
@@ -490,12 +623,41 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => {
                 console.error('Error al verificar favorito:', error);
-                // Cargar favoritos de todos modos
-                cargarFavoritos();
+                // Intentar añadirlo de todos modos
+                agregarAFavoritos(LIBRO_ID);
             });
     } else {
         // Si no hay ID en la URL, simplemente cargar todos los favoritos
         cargarFavoritos();
     }
+    
+    // ------------------ FUNCIÓN DE DEPURACIÓN ------------------
+    function mostrarEstadoDebug() {
+        console.log('Session ID:', getSessionId());
+        console.log('Cookies:', document.cookie);
+        console.log('LocalStorage:', localStorage.getItem('favoritos_session_id'));
+    }
+    
+    // Ejecutar depuración para ver el estado actual (comentar en producción)
+    // mostrarEstadoDebug();
+    
+    // ------------------ FUNCIÓN PARA REINICIAR DATOS ------------------
+    window.resetFavoritosData = function() {
+        localStorage.removeItem('favoritos_session_id');
+        document.cookie = 'favoritos_session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        alert('Datos de favoritos reiniciados. Por favor, recarga la página.');
+        location.reload();
+    };
+    
+    // Agregar un pequeño botón flotante para depuración (eliminar en producción)
+    // const debugButton = document.createElement('button');
+    // debugButton.textContent = 'Reset Favoritos';
+    // debugButton.style.position = 'fixed';
+    // debugButton.style.bottom = '10px';
+    // debugButton.style.right = '10px';
+    // debugButton.style.zIndex = '9999';
+    // debugButton.addEventListener('click', resetFavoritosData);
+    // document.body.appendChild(debugButton);
 });
+
 </script>
