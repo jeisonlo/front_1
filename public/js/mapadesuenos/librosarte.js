@@ -1,4 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
+        // Crear session_id si no existe
+if (!localStorage.getItem('favoritos_session_id')) {
+    // Generar un UUID simple
+    const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0;
+        const v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+    localStorage.setItem('favoritos_session_id', uuid);
+    console.log("Nueva session_id creada:", uuid);
+}
     // ------------------ URLS DE LA API ------------------
     const FAVORITOS_API_URL = "https://back1-production-67bf.up.railway.app/v1/favoritos";
     
@@ -36,9 +47,18 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
     
-    // ------------------ AÑADIR A FAVORITOS ------------------
     function agregarAFavoritos(libroId) {
         log("Agregando a favoritos libro ID:", libroId, "con session ID:", sessionId);
+        
+        // Crear el objeto de datos con solo lo esencial
+        const datos = {
+            libro_id: parseInt(libroId)
+        };
+        
+        // Solo agregar session_id si existe
+        if (sessionId) {
+            datos.session_id = sessionId;
+        }
         
         fetch(FAVORITOS_API_URL, {
             method: 'POST',
@@ -46,15 +66,18 @@ document.addEventListener("DOMContentLoaded", function() {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({
-                libro_id: libroId,
-                session_id: sessionId
-            })
+            body: JSON.stringify(datos),
+            credentials: 'include' // Para que envíe cookies si existen
         })
         .then(response => {
             log("Response status:", response.status);
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                return response.json().then(errorData => {
+                    throw new Error(`HTTP error! Status: ${response.status}, Mensaje: ${errorData.message || 'No hay mensaje de error'}`);
+                }).catch(() => {
+                    // Si no podemos obtener JSON del error, lanzamos el error genérico
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                });
             }
             return response.json();
         })
@@ -69,7 +92,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     log("Nuevo session_id guardado:", sessionId);
                 }
                 
-                alert('Libro añadido a favoritos');
+                // Actualizar UI
+                const heartButton = document.querySelector(`.heart[data-id="${libroId}"]`);
+                if (heartButton) {
+                    heartButton.textContent = '💜';
+                }
             } else {
                 console.error('Error:', data.message);
                 alert('Error al añadir a favoritos: ' + data.message);
@@ -77,10 +104,9 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(error => {
             console.error('Error al agregar a favoritos:', error);
-            alert('Error al añadir a favoritos: ' + error.message);
+            alert(error.message);
         });
     }
-    
     // ------------------ QUITAR DE FAVORITOS ------------------
     function quitarDeFavoritos(libroId) {
         log("Quitando de favoritos libro ID:", libroId, "con session ID:", sessionId);
