@@ -81,123 +81,130 @@ document.addEventListener("DOMContentLoaded", function () {
                 heartElement.innerHTML = "🤍"; // Estado por defecto
             });
     }
+//////////////////////
 
-    function agregarAFavoritos(libroId, heartElement) {
-        if (!sessionId) {
-            console.warn("No hay session_id disponible para agregar a favoritos");
-            return;
-        }
+function agregarAFavoritos(libroId, heartElement) {
+    if (!sessionId) {
+        console.warn("No hay session_id disponible para agregar a favoritos");
+        return;
+    }
+    
+    console.log(`Agregando libro ${libroId} a favoritos con session_id ${sessionId}`);
+    
+    // Mostrar indicador de carga
+    heartElement.innerHTML = "⏳";
+    
+    const requestData = {
+        libro_id: parseInt(libroId), // Asegurar que sea número
+        session_id: sessionId
+    };
+    
+    console.log("Enviando datos:", requestData);
+    
+    fetch(FAVORITOS_API_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    })
+    .then(response => {
+        console.log("Respuesta status:", response.status);
+        console.log("Respuesta headers:", [...response.headers.entries()]);
         
-        console.log(`Agregando libro ${libroId} a favoritos con session_id ${sessionId}`);
-        
-        // Mostrar indicador de carga
-        heartElement.innerHTML = "⏳";
-        
-        const requestData = {
-            libro_id: parseInt(libroId), // Asegurar que sea número
-            session_id: sessionId
-        };
-        
-        console.log("Enviando datos:", requestData);
-        
-        fetch(FAVORITOS_API_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(requestData)
-        })
-        .then(response => {
-            console.log("Respuesta status:", response.status);
-            console.log("Respuesta headers:", [...response.headers.entries()]);
-            
-            // Intenta procesar la respuesta como JSON incluso si el status no es 200
-            return response.json().then(data => {
-                if (!response.ok) {
-                    throw {
-                        status: response.status,
-                        statusText: response.statusText,
-                        data: data
-                    };
-                }
-                return data;
-            });
-        })
-        .then(data => {
-            console.log("Respuesta completa:", data);
-            
-            if (data.status === 'success') {
-                // Actualizar session_id si es necesario
-                if (data.session_id) {
-                    sessionId = data.session_id;
-                    localStorage.setItem('favoritos_session_id', sessionId);
-                    console.log("Session_id actualizada:", sessionId);
-                }
-                
-                // Actualizar UI
-                heartElement.innerHTML = "💜";
-                
-                // Opcional: Mostrar un mensaje de confirmación
-                const confirmationMsg = document.createElement('div');
-                confirmationMsg.className = 'confirmation-msg';
-                confirmationMsg.textContent = '¡Añadido a favoritos!';
-                confirmationMsg.style.position = 'absolute';
-                confirmationMsg.style.backgroundColor = 'rgba(0,0,0,0.7)';
-                confirmationMsg.style.color = 'white';
-                confirmationMsg.style.padding = '5px 10px';
-                confirmationMsg.style.borderRadius = '5px';
-                confirmationMsg.style.zIndex = '1000';
-                confirmationMsg.style.fontSize = '12px';
-                
-                heartElement.parentNode.style.position = 'relative';
-                heartElement.parentNode.appendChild(confirmationMsg);
-                
-                // Remover mensaje después de 2 segundos
-                setTimeout(() => {
-                    confirmationMsg.remove();
-                }, 2000);
-            } else {
-                console.warn("Respuesta inesperada:", data);
-                heartElement.innerHTML = "🤍";
+        // Always try to get JSON response, even on error
+        return response.json().then(data => {
+            if (!response.ok) {
+                // Add complete error information
+                throw {
+                    status: response.status,
+                    statusText: response.statusText,
+                    data: data,
+                    message: data.message || 'Error desconocido'
+                };
             }
-        })
-        .catch(error => {
-            console.error('Error al agregar a favoritos:', error);
-            
-            // Log detailed error information
-            if (error.data) {
-                console.error('Error details:', error.data);
+            return data;
+        });
+    })
+    .then(data => {
+        console.log("Respuesta completa:", data);
+        
+        if (data.status === 'success') {
+            // Actualizar session_id si es necesario
+            if (data.session_id) {
+                sessionId = data.session_id;
+                localStorage.setItem('favoritos_session_id', sessionId);
+                console.log("Session_id actualizada:", sessionId);
             }
             
-            heartElement.innerHTML = "🤍"; // Restaurar estado
+            // Actualizar UI
+            heartElement.innerHTML = "💜";
             
-            // Mostrar mensaje de error con información específica
-            const errorMsg = document.createElement('div');
-            errorMsg.className = 'error-msg';
-            
-            // Display more specific error message if available
-            const errorText = error.data && error.data.message 
-                ? error.data.message 
-                : 'Error al añadir a favoritos';
-            
-            errorMsg.textContent = errorText;
-            errorMsg.style.position = 'absolute';
-            errorMsg.style.backgroundColor = 'rgba(255,0,0,0.7)';
-            errorMsg.style.color = 'white';
-            errorMsg.style.padding = '5px 10px';
-            errorMsg.style.borderRadius = '5px';
-            errorMsg.style.zIndex = '1000';
-            errorMsg.style.fontSize = '12px';
+            // Opcional: Mostrar un mensaje de confirmación
+            const confirmationMsg = document.createElement('div');
+            confirmationMsg.className = 'confirmation-msg';
+            confirmationMsg.textContent = '¡Añadido a favoritos!';
+            confirmationMsg.style.position = 'absolute';
+            confirmationMsg.style.backgroundColor = 'rgba(0,0,0,0.7)';
+            confirmationMsg.style.color = 'white';
+            confirmationMsg.style.padding = '5px 10px';
+            confirmationMsg.style.borderRadius = '5px';
+            confirmationMsg.style.zIndex = '1000';
+            confirmationMsg.style.fontSize = '12px';
             
             heartElement.parentNode.style.position = 'relative';
-            heartElement.parentNode.appendChild(errorMsg);
+            heartElement.parentNode.appendChild(confirmationMsg);
             
+            // Remover mensaje después de 2 segundos
             setTimeout(() => {
-                errorMsg.remove();
-            }, 3000);
-        });
-    }
+                confirmationMsg.remove();
+            }, 2000);
+        } else {
+            console.warn("Respuesta inesperada:", data);
+            heartElement.innerHTML = "🤍";
+        }
+    })
+    .catch(error => {
+        console.error('Error al agregar a favoritos:', error);
+        
+        // Log detailed error information
+        console.error('Detalles del error:', error.data || 'No hay detalles disponibles');
+        console.error('Mensaje:', error.message || 'No hay mensaje específico');
+        console.error('Estado HTTP:', error.status || 'Desconocido');
+        
+        // Update heart icon back to default
+        heartElement.innerHTML = "🤍";
+        
+        // Display more detailed error message
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'error-msg';
+        
+        // Display more specific error message if available
+        const errorText = error.data && error.data.message 
+            ? error.data.message 
+            : (error.message || 'Error al añadir a favoritos');
+        
+        errorMsg.textContent = errorText;
+        errorMsg.style.position = 'absolute';
+        errorMsg.style.backgroundColor = 'rgba(255,0,0,0.7)';
+        errorMsg.style.color = 'white';
+        errorMsg.style.padding = '5px 10px';
+        errorMsg.style.borderRadius = '5px';
+        errorMsg.style.zIndex = '1000';
+        errorMsg.style.fontSize = '12px';
+        
+        heartElement.parentNode.style.position = 'relative';
+        heartElement.parentNode.appendChild(errorMsg);
+        
+        setTimeout(() => {
+            errorMsg.remove();
+        }, 3000);
+    });
+}
+
+
+    ////////////////////////////
     function quitarDeFavoritos(libroId, heartElement) {
         if (!sessionId) {
             console.warn("No hay session_id disponible para quitar de favoritos");
