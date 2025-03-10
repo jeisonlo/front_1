@@ -110,12 +110,19 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(response => {
             console.log("Respuesta status:", response.status);
-            if (!response.ok) {
-                return response.json().then(errorData => {
-                    throw new Error(`Error del servidor: ${errorData.message || response.statusText}`);
-                });
-            }
-            return response.json();
+            console.log("Respuesta headers:", [...response.headers.entries()]);
+            
+            // Intenta procesar la respuesta como JSON incluso si el status no es 200
+            return response.json().then(data => {
+                if (!response.ok) {
+                    throw {
+                        status: response.status,
+                        statusText: response.statusText,
+                        data: data
+                    };
+                }
+                return data;
+            });
         })
         .then(data => {
             console.log("Respuesta completa:", data);
@@ -143,7 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 confirmationMsg.style.zIndex = '1000';
                 confirmationMsg.style.fontSize = '12px';
                 
-                // Posicionar el mensaje cerca del corazón
                 heartElement.parentNode.style.position = 'relative';
                 heartElement.parentNode.appendChild(confirmationMsg);
                 
@@ -158,12 +164,24 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => {
             console.error('Error al agregar a favoritos:', error);
+            
+            // Log detailed error information
+            if (error.data) {
+                console.error('Error details:', error.data);
+            }
+            
             heartElement.innerHTML = "🤍"; // Restaurar estado
             
-            // Mostrar mensaje de error
+            // Mostrar mensaje de error con información específica
             const errorMsg = document.createElement('div');
             errorMsg.className = 'error-msg';
-            errorMsg.textContent = 'Error al añadir a favoritos';
+            
+            // Display more specific error message if available
+            const errorText = error.data && error.data.message 
+                ? error.data.message 
+                : 'Error al añadir a favoritos';
+            
+            errorMsg.textContent = errorText;
             errorMsg.style.position = 'absolute';
             errorMsg.style.backgroundColor = 'rgba(255,0,0,0.7)';
             errorMsg.style.color = 'white';
@@ -177,10 +195,9 @@ document.addEventListener("DOMContentLoaded", function () {
             
             setTimeout(() => {
                 errorMsg.remove();
-            }, 2000);
+            }, 3000);
         });
     }
-
     function quitarDeFavoritos(libroId, heartElement) {
         if (!sessionId) {
             console.warn("No hay session_id disponible para quitar de favoritos");
