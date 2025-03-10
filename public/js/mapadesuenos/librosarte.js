@@ -72,9 +72,11 @@ fetch(FAVORITOS_API_URL, {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     },
+    credentials: 'include',
     body: JSON.stringify({
         libro_id: libroId,
         session_id: sessionId
+        
     })
 })
 .then(response => response.json())
