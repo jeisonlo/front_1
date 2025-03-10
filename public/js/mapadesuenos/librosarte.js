@@ -214,7 +214,6 @@ function agregarAFavoritos(libroId, heartElement) {
         }, 3000);
     });
 }
-
     ////////////////////////////
     function quitarDeFavoritos(libroId, heartElement) {
         if (!sessionId) {
