@@ -94,8 +94,18 @@ function agregarAFavoritos(libroId, heartElement) {
     // Mostrar indicador de carga
     heartElement.innerHTML = "⏳";
     
+    // Asegurar que libroId sea tratado como número
+    const libro_id = parseInt(libroId, 10);
+    
+    // Verificar que tenemos un número válido
+    if (isNaN(libro_id)) {
+        console.error("ID de libro inválido:", libroId);
+        heartElement.innerHTML = "🤍";
+        return;
+    }
+    
     const requestData = {
-        libro_id: parseInt(libroId), // Asegurar que sea número
+        libro_id: libro_id,
         session_id: sessionId
     };
     
@@ -111,20 +121,27 @@ function agregarAFavoritos(libroId, heartElement) {
     })
     .then(response => {
         console.log("Respuesta status:", response.status);
-        console.log("Respuesta headers:", [...response.headers.entries()]);
         
-        // Always try to get JSON response, even on error
+        // Intentar obtener el cuerpo de la respuesta como JSON
         return response.json().then(data => {
             if (!response.ok) {
-                // Add complete error information
                 throw {
                     status: response.status,
                     statusText: response.statusText,
-                    data: data,
-                    message: data.message || 'Error desconocido'
+                    data: data
                 };
             }
             return data;
+        }).catch(jsonError => {
+            // Si no podemos obtener JSON, creamos un objeto de error con la información disponible
+            if (!response.ok) {
+                throw {
+                    status: response.status,
+                    statusText: response.statusText,
+                    message: 'Error al procesar la respuesta del servidor'
+                };
+            }
+            return { status: 'error', message: 'Respuesta no válida del servidor' };
         });
     })
     .then(data => {
@@ -141,7 +158,7 @@ function agregarAFavoritos(libroId, heartElement) {
             // Actualizar UI
             heartElement.innerHTML = "💜";
             
-            // Opcional: Mostrar un mensaje de confirmación
+            // Mostrar mensaje de confirmación
             const confirmationMsg = document.createElement('div');
             confirmationMsg.className = 'confirmation-msg';
             confirmationMsg.textContent = '¡Añadido a favoritos!';
@@ -156,7 +173,6 @@ function agregarAFavoritos(libroId, heartElement) {
             heartElement.parentNode.style.position = 'relative';
             heartElement.parentNode.appendChild(confirmationMsg);
             
-            // Remover mensaje después de 2 segundos
             setTimeout(() => {
                 confirmationMsg.remove();
             }, 2000);
@@ -168,24 +184,20 @@ function agregarAFavoritos(libroId, heartElement) {
     .catch(error => {
         console.error('Error al agregar a favoritos:', error);
         
-        // Log detailed error information
-        console.error('Detalles del error:', error.data || 'No hay detalles disponibles');
-        console.error('Mensaje:', error.message || 'No hay mensaje específico');
-        console.error('Estado HTTP:', error.status || 'Desconocido');
+        // Mostrar detalles del error en consola
+        if (error.data) {
+            console.error('Detalles del error:', error.data);
+        }
         
-        // Update heart icon back to default
+        // Restaurar estado del corazón
         heartElement.innerHTML = "🤍";
         
-        // Display more detailed error message
+        // Mostrar mensaje de error
         const errorMsg = document.createElement('div');
         errorMsg.className = 'error-msg';
-        
-        // Display more specific error message if available
-        const errorText = error.data && error.data.message 
+        errorMsg.textContent = error.data && error.data.message 
             ? error.data.message 
-            : (error.message || 'Error al añadir a favoritos');
-        
-        errorMsg.textContent = errorText;
+            : 'Error al añadir a favoritos';
         errorMsg.style.position = 'absolute';
         errorMsg.style.backgroundColor = 'rgba(255,0,0,0.7)';
         errorMsg.style.color = 'white';
@@ -202,7 +214,6 @@ function agregarAFavoritos(libroId, heartElement) {
         }, 3000);
     });
 }
-
 
     ////////////////////////////
     function quitarDeFavoritos(libroId, heartElement) {
