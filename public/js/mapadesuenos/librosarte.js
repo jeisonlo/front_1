@@ -68,11 +68,12 @@ fetch(`${FAVORITOS_API_URL}/check/${libroId}${sessionId ? `?session_id=${session
 function agregarAFavoritos(libroId, heartElement) {
 fetch(FAVORITOS_API_URL, {
     method: 'POST',
+    credentials: 'include',
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     },
-    credentials: 'include',
+   
     body: JSON.stringify({
         libro_id: libroId,
         session_id: sessionId
