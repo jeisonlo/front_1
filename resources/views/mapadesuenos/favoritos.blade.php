@@ -422,6 +422,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function agregarAFavoritos(libroId) {
         fetch(FAVORITOS_API_URL, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
