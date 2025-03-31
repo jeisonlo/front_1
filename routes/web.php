@@ -80,3 +80,4 @@ Route::get('mapadesuenos/arte', function () {
 Route::get('mapadesuenos/favoritos', function () {
     return view('mapadesuenos/favoritos');  // Solo una vista para todos los libros
 })->name('favoritos');
+////////
