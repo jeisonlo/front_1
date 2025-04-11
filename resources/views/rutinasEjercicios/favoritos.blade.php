@@ -73,7 +73,7 @@
       });
 
       function cargarEjerciciosFavoritos() {
-          axios.get("https://back1-production-67bf.up.railway.app/v1/liked-exercises")
+          axios.get("http://localhost:8000/api/liked-exercises")
               .then(response => {
                   let ejerciciosIds = response.data;
 
@@ -82,7 +82,7 @@
                       return;
                   }
 
-                  axios.get(`https://back1-production-67bf.up.railway.app/v1/exercisesByIds?ids=${ejerciciosIds.join(",")}`)
+                  axios.get(`http://localhost:8000/api/exercisesByIds?ids=${ejerciciosIds.join(",")}`)
                       .then(response => {
                           let ejercicios = response.data;
                           let contenedor = document.getElementById("favoritos-container");
@@ -92,7 +92,9 @@
                               let ejercicioHTML = `
                                   <div class="task">
                                       <div class="date">${new Date().toISOString().split("T")[0]}</div>
+                                       <a href="{{ url('/detalles') }}/${ejercicio.id}">
                                       <img src="${ejercicio.image_url}" alt="${ejercicio.name}" class="favorite-img">
+                                      </a>
                                       <button class="material-symbols-outlined" onclick="quitarLike(${ejercicio.id})">💜</button>
                                   </div>
                               `;
@@ -105,7 +107,7 @@
       }
 
       function quitarLike(ejercicioId) {
-          axios.delete(`https://back1-production-67bf.up.railway.app/v1/unlike/${ejercicioId}`)
+          axios.delete(`http://localhost:8000/api/unlike/${ejercicioId}`)
               .then(response => {
                   cargarEjerciciosFavoritos();
               })

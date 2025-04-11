@@ -28,7 +28,15 @@
     background-position: center;
     opacity: 0.5; /* Ajusta la transparencia de la marca de agua */
     z-index: 1;
-}</style>
+}
+.part1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 70px;
+  }
+   
+</style>
 </head>
 <body>
     
