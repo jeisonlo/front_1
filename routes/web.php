@@ -96,17 +96,17 @@ Route::get('/detalles/{id}', function () {
 Route::get('/reproductor', function () {
     return view('rutinasEjercicios.reproRutina');
 })->name('reproRutina');
+
 Route::get('/favoritos', function () {
     return view('rutinasEjercicios.favoritos');
 })->name('favoritos');
+
 Route::get('/calendario', function () {
     return view('rutinasEjercicios.calendario');
 });
 Route::get('/notificaciones', function () {
     return view('rutinasEjercicios.notificaciones');
 });
-
-
 
 
 

@@ -107,7 +107,7 @@
       }
 
       function quitarLike(ejercicioId) {
-          axios.delete(`http://localhost:8000/api/unlike/${ejercicioId}`)
+          axios.delete(`https://back1-production-67bf.up.railway.app/v1/api/unlike/${ejercicioId}`)
               .then(response => {
                   cargarEjerciciosFavoritos();
               })

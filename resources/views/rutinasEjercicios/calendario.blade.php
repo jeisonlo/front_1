@@ -100,7 +100,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const apiUrl = "http://localhost:8000/api/tasks";
+            const apiUrl = "https://back1-production-67bf.up.railway.app/v1/api/tasks";
             
             // Elementos del DOM
             const calendarGrid = document.getElementById("calendar-grid");

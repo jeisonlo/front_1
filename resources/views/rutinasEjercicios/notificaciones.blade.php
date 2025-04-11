@@ -73,7 +73,7 @@
             const notificationsContainer = document.getElementById('notifications-container');
 
             // Obtener notificaciones desde la API
-            axios.get('http://localhost:8000/api/notifications')
+            axios.get('https://back1-production-67bf.up.railway.app/v1/api/notifications')
                 .then(response => {
                     notificationsContainer.innerHTML = ''; // Limpiar mensaje de carga
                     const notifications = response.data;

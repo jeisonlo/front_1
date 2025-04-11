@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    axios.get(`http://localhost:8000/api/exercises?categoria_id=${categoriaId}`)
+    axios.get(`https://back1-production-67bf.up.railway.app/v1/api/exercises?categoria_id=${categoriaId}`)
         .then(response => {
             let ejercicios = response.data;
             let rutinasHTML = "";
