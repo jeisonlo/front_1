@@ -9,7 +9,7 @@
 <!-- Google Material Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('css/rutinasEjercicios/inicio.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/rutinasEjercicios/einicio.css') }}">
 
     
     <title>rutinas Ejercicios </title>

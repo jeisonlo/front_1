@@ -94,8 +94,8 @@ Route::get('mapadesuenos/favoritos', function () {
 
 //////////////////////////////////////////////////////////////////////
 
-Route::get('/inicio', function () {
-    return view('rutinasEjercicios.inicio'); // Usa el punto para indicar la carpeta
+Route::get('/einicio', function () {
+    return view('rutinasEjercicios.einicio'); // Usa el punto para indicar la carpeta
 });
 Route::get('/ejercicios', function () {
     return view('rutinasEjercicios.ejercicios'); // Asegúrate de que esta vista exista en resources/views/ejercicios/index.blade.php

@@ -30,7 +30,7 @@
 
         <aside class="sidebar">
             <div class="menu-item">
-              <a href="{{ url('/inicio') }}">
+              <a href="{{ url('/einicio') }}">
                   <img src="{{ asset('css/rutinasEjercicios/img/home.svg') }}"alt="Icon" />
                   <span>Inicio</span>
               </a>
