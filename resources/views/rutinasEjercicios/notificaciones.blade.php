@@ -36,7 +36,7 @@
                   </a>
               </div>
                 <div class="menu-item">
-                  <a href="/rutinas-de-ejercicios/calendario/index.html">
+                  <a href="{{ url('/calendario') }}">
                     <img src="{{ asset('css/rutinasEjercicios/img/calendario.svg') }}"alt="Icon" />
                     <span>Calendario</span>
                   </a>
