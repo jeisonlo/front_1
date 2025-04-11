@@ -73,7 +73,7 @@
       });
 
       function cargarEjerciciosFavoritos() {
-          axios.get("http://localhost:8000/api/liked-exercises")
+          axios.get("https://back1-production-67bf.up.railway.app/v1/liked-exercises")
               .then(response => {
                   let ejerciciosIds = response.data;
 
@@ -82,7 +82,7 @@
                       return;
                   }
 
-                  axios.get(`http://localhost:8000/api/exercisesByIds?ids=${ejerciciosIds.join(",")}`)
+                  axios.get(`https://back1-production-67bf.up.railway.app/v1/exercisesByIds?ids=${ejerciciosIds.join(",")}`)
                       .then(response => {
                           let ejercicios = response.data;
                           let contenedor = document.getElementById("favoritos-container");
@@ -107,7 +107,7 @@
       }
 
       function quitarLike(ejercicioId) {
-          axios.delete(`https://back1-production-67bf.up.railway.app/v1/api/unlike/${ejercicioId}`)
+          axios.delete(`https://back1-production-67bf.up.railway.app/v1/unlike/${ejercicioId}`)
               .then(response => {
                   cargarEjerciciosFavoritos();
               })

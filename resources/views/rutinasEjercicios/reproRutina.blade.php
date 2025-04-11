@@ -135,7 +135,7 @@
 </div>
 @include('rutinasEjercicios.layouts.footer')
 <script>
-    const API_URL = "https://back1-production-67bf.up.railway.app/v1/api"; 
+    const API_URL = "https://back1-production-67bf.up.railway.app/v1"; 
     let videos = [];
     let currentVideoIndex = 0;
     let videoElement = document.getElementById("video");
