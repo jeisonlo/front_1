@@ -158,7 +158,7 @@ h1 {
         <div class="card-content">
           <h3 class="card-title">Favoritos</h3>
           <p class="card-description">Aquí encontrarás los libros que elegiste y guardaste. Un espacio único para tus lecturas favoritas, esas historias que te inspiran.</p>
-          <a href="{{ route('favoritos') }}" class="card-button">Explorar</a>
+          <a href="{{ route('favoritosli') }}" class="card-button">Explorar</a>
         </div>
       </div>
     <!-- Card 1 -->
