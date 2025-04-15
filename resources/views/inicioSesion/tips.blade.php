@@ -153,7 +153,7 @@
         document.addEventListener('DOMContentLoaded', async () => {
             const tipId = '{{ $tipId }}';
             try {
-                const response = await fetch(`https://back1-production-67bf.up.railway.app/api/tips/${tipId}`);
+                const response = await fetch(`https://back1-production-67bf.up.railway.app/v1/tips/${tipId}`);
                 if (!response.ok) {
                     throw new Error(`Error HTTP: ${response.status}`);
                 }

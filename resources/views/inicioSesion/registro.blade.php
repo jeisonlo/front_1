@@ -556,7 +556,7 @@
             };
             
             // Enviar datos al backend
-            axios.post('https://back1-production-67bf.up.railway.app/api/registrar-usuario', formData)
+            axios.post('https://back1-production-67bf.up.railway.app/v1/registrar-usuario', formData)
                 .then(response => {
                     // Mostrar modal de éxito
                     const modal = document.getElementById('modalExito');

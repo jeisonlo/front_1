@@ -246,7 +246,7 @@
 
     <script>
         // URL de tu API backend
-        const API_URL = 'https://back1-production-67bf.up.railway.app/api/tips'; // Ajusta según tu configuración
+        const API_URL = 'https://back1-production-67bf.up.railway.app/v1/tips'; // Ajusta según tu configuración
         
         // Variables de control
         let currentPage = 1;

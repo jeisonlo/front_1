@@ -526,7 +526,7 @@
     };
     
     // Enviar datos al endpoint correcto de tu API
-    axios.post('https://back1-production-67bf.up.railway.app/api/registrar-profesional', formData)
+    axios.post('https://back1-production-67bf.up.railway.app/v1/registrar-profesional', formData)
         .then(response => {
             console.log('Respuesta completa:', response); // Para depuración
             

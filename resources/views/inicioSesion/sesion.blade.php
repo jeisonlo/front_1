@@ -348,7 +348,7 @@
             password: this.password.value
         };
         
-        const response = await axios.post('https://back1-production-67bf.up.railway.app/api/login', formData);
+        const response = await axios.post('https://back1-production-67bf.up.railway.app/v1/login', formData);
         
         console.log('Respuesta completa:', response.data);
         

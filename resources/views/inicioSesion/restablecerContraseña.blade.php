@@ -339,7 +339,7 @@
         const mensajeSistema = document.getElementById('mensaje-sistema');
         
         // Configurar API base (ajusta según tu entorno)
-        const API_BASE_URL = 'https://back1-production-67bf.up.railway.app/api';
+        const API_BASE_URL = 'https://back1-production-67bf.up.railway.app/v1';
         
         // Manejar solicitud de recuperación
         forms.solicitud.addEventListener('submit', async function(e) {
