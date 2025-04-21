@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             // Enviar los datos a la API
-            fetch("https://back1-production-67bf.up.railway.app/api/appointments", {
+            fetch("https://back1-production-67bf.up.railway.app/v1/appointments", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
