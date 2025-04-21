@@ -1,0 +1,246 @@
+
+
+
+/* Body */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Asegura que el fondo cubra toda la altura */
+  background-image: url('/atencion-profesional/PROFESIONAL/Imagenes/proff.png'); /* Cambia por la ruta de tu imagen */
+  background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center top; /* Centra la imagen y la desplaza hacia arriba */
+  background-attachment: fixed; /* Hace que la imagen sea fija al hacer scroll */
+  background-color: rgba(255, 255, 255, 0.7); /* Color de fondo blanco con transparencia */
+  background-blend-mode: overlay; /* Mezcla el color con la imagen */
+}
+
+main {
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 100px;
+  flex-grow: 1;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%; /* Ajuste para centrar la barra de búsqueda */
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para la barra de búsqueda */
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.search-bar {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #59009A;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.search-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #59009A;
+  color: #fff;
+  border: 2px solid #59009A;
+  border-left: none; /* Eliminar el borde izquierdo del botón */
+  border-radius: 0 5px 5px 0; /* Bordes redondeados, solo para la derecha */
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #7a3ec8;
+}
+
+.profile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Mejor sombra */
+  padding: 20px; /* Más espacio interno */
+  transition: transform 0.2s ease; /* Transición para el hover */
+}
+
+.profile:hover {
+  transform: translateY(-5px); /* Efecto de elevación en hover */
+}
+
+.profile img {
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.profile-info {
+  flex-grow: 1;
+}
+
+.profile-info h3 {
+  margin: 0 0 10px 0;
+  font-size: 20px; /* Tamaño de fuente mayor */
+  color:  #59009A;
+}
+
+.profile-info p {
+  margin: 0;
+  font-size: 16px; /* Tamaño de fuente mayor */
+  color: #333;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center; /* Alinea el icono verticalmente con la descripción */
+}
+
+.visitar-perfil {
+  width: 1px; /* Ancho reducido */
+  height: 1px; /* Alto reducido */
+  cursor: pointer;
+  margin-left: 20px; /* Espacio entre la descripción y el icono */
+  transition: transform 0.3s ease; /* Transición para el hover */
+}
+
+.visitar-perfil:hover {
+  transform: scale(1.1);
+}
+
+button {
+  display: block;
+  padding: 10px 30px 10px 30px;
+  background-color: #59009A;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #440173;
+}
+
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  width: 350px;
+  margin: 15% auto;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.close {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.imagen-modal {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.estrellas {
+  display: flex;
+  gap: 5px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.estrella {
+  color: gray; /* Color predeterminado */
+  transition: color 0.3s ease-in-out;
+}
+
+.estrella:hover,
+.estrella:hover ~ .estrella {
+  color: purple; /* Cuando el usuario pasa el mouse */
+}
+
+.estrellas span {
+  color: gray;
+}
+
+.boton-container {
+  display: flex;
+  justify-content: flex-end; /* Alinea los botones a la derecha */
+  gap: 10px; /* Espacio entre botones */
+  margin-top: 10px;
+}
+
+.boton-comentar, .boton-aceptar {
+  background-color: purple;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+.boton-comentar {
+  background: #440173;
+  color: white;
+}
+
+.boton-aceptar {
+  background: #440173;
+  color: white;
+}
+
+#comentario {
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+}
+
+.modal-body {
+  text-align: center;
+  position: relative;
+}

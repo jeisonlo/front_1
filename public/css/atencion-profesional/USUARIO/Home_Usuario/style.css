@@ -1,0 +1,333 @@
+
+
+
+/* Estilos base del body */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Asegura que el fondo cubra toda la altura */
+  background-image: url('/atencion-profesional/PROFESIONAL/Imagenes/Attencion.png'); /* Cambia por la ruta de tu imagen */
+  background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center top; /* Centra la imagen y la desplaza hacia arriba */
+  background-attachment: fixed; /* Hace que la imagen sea fija al hacer scroll */
+  background-color: rgba(255, 255, 255, 0.7); /* Color de fondo blanco con transparencia */
+  background-blend-mode: overlay; /* Mezcla el color con la imagen */
+  margin-bottom: 200px;
+  padding-top: 10rem;
+}
+
+.body {
+  padding: 2rem 1.25rem;
+  flex: 1;
+  margin-bottom: 200px;
+  
+}
+
+
+.stories-wrapper {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.story-container {
+  position: relative;
+  width: 220px;
+  height: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: black;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.story img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ahora cubre TODO el contenedor sin distorsión */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.story-description {
+  position: absolute;
+  bottom: 20%; /* Ajusté la posición del texto */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 12px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+
+
+
+
+.btn-comprar {
+  background-color: #59009A; /* Morado */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-comprar:hover {
+  background-color: #410072; /* Morado más oscuro */
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+/* Estilos de las frases */
+.frases {
+  text-align: center;
+  padding: 1rem;
+}
+
+.frases p {
+  font-size: clamp(16px, 2.5vw, 20px);
+  margin: 1rem auto;
+  padding: 1rem;
+  color: #59009A;
+  max-width: 90%;
+}
+
+.arrow {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Estilos de las cards */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.cuadro {
+  width: 100%;
+  max-width: 400px;
+  background: linear-gradient(145deg, #e0e0e0, #ffffff);
+  border-radius: 15px;
+  box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.cuadro::before{
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0));
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.cuadro:hover::before {
+  opacity: 1;
+}
+.cuadro img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.cuadro h3 {
+  margin-top: 5px;
+  color: #59009A;
+}
+
+.cuadro:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2), -5px -5px 20px rgba(255, 255, 255, 0.6);
+}
+
+/* Estilos de la flecha flotante */
+.flecha {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background-color: #59009A;
+  padding: 5px;
+  border-radius: 50%;
+  opacity: 0.4;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flecha img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Estilos de las secciones */
+.section, .section2 {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.purple-section, .purple-section2 {
+  flex: 1 1 300px;
+  min-height: 300px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.purple-section {
+  background-image: url(../Imagenes/ImportanteConsultar.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.purple-section2 {
+  background-image: url(../Imagenes/BienestarEmo.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.purple-section h2,
+.purple-section2 h2 {
+  color: #59009A;
+  font-size: clamp(24px, 3vw, 28px);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.white-section,
+.white-section2 {
+  flex: 1 1 300px;
+  min-height: 300px;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(201, 201, 201);
+  background-color: #fff;
+}
+
+.white-section p,
+.white-section2 p {
+  font-size: clamp(16px, 2.5vw, 20px);
+  text-align: center;
+  line-height: 1.8;
+  margin: 0;
+  padding: 1rem;
+  max-width: 800px;
+}
+
+.img-abajo {
+  width: 80%;
+  height: 80%;
+}
+
+
+
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .body {
+    padding: 1rem;
+  }
+
+  .cards {
+    padding: 1rem;
+  }
+
+  .cuadro {
+    width: 200px;
+    height: 200px;
+    margin: 0.5rem;
+  }
+
+  .cuadro img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .cuadro h3 {
+    font-size: 18px; /* Tamaño reducido para tablets */
+  }
+
+  .section, .section2 {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
+  .purple-section,
+  .purple-section2,
+  .white-section,
+  .white-section2 {
+    width: 100%;
+    min-height: 200px;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cuadro {
+    width: 150px;
+    height: 150px;
+  }
+
+  .cuadro img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .cuadro h3 {
+    font-size: 16px; /* Tamaño más pequeño para móviles */
+  }
+
+  .frases p {
+    font-size: 16px;
+    padding: 0.5rem;
+  }
+
+  .white-section p,
+  .white-section2 p {
+    font-size: 16px;
+    padding: 0.5rem;
+  }
+
+  .purple-section h2,
+  .purple-section2 h2 {
+    font-size: 20px;
+  }
+}
+
