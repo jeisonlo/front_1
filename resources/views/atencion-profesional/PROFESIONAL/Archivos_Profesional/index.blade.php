@@ -22,9 +22,10 @@
     
    <!-- Contenedor del botón -->
 <div class="upload-container">
-    <button id="uploadButton" class="upload-btn">
-        Subir Archivo
-    </button>
+  <a href="https://front1-production.up.railway.app/profesional/subir-archivos" class="upload-btn" id="uploadButton">
+    Subir Archivo
+</a>
+
 </div>
 
  <!-- Lugar donde se cargará el footer -->
