@@ -28,6 +28,14 @@
   opacity: 0.5; /* Ajusta la transparencia de la marca de agua */
   z-index: -3;
 }
+.imagen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  margin-left: 50px;
+}
     </style>
    
 </head>
