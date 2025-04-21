@@ -1,0 +1,181 @@
+
+
+/* Contenido del body*/
+body {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Asegura que el fondo cubra toda la altura */
+  background-image: url('/atencion-profesional/USUARIO/PagosWeb_Usuario/Imagenes/pagos-web.jpg'); /* Cambia por la ruta de tu imagen */
+  background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center top; /* Centra la imagen y la desplaza hacia arriba */
+  background-attachment: fixed; /* Hace que la imagen sea fija al hacer scroll */
+  background-color: rgba(255, 255, 255, 0.5); /* Color de fondo blanco con transparencia */
+  background-blend-mode: overlay; /* Mezcla el color con la imagen */
+}
+
+.body {
+ justify-content: center;
+ align-items: center;
+ display: flex;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #59009A;
+}
+
+/* Estilos para el formulario */
+.formulario {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.599); /* Fondo ligeramente transparente */
+    border-radius: 15px;
+    box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    position: relative;
+    margin-bottom: 3rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.formulario:hover{
+    transform: scale(1.05);
+    background: linear-gradient(145deg, #e0e0e0, #ffffff);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Estilos para cada grupo de inputs */
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.input-group1 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.casilla {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.casilla1 {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.casilla1:first-child {
+    width: 100%; /* El campo 'Número de Tarjeta' ocupará todo el espacio */
+}
+
+.input-group input {
+    width: 48%; /* Para que los demás inputs se acomoden uno al lado del otro */
+}
+
+/* Estilo para recordar tarjeta */
+.recordar-tarjeta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.recordar-tarjeta label {
+    margin-left: 10px;
+}
+
+.payment-icons {
+    display: flex;
+    gap: 10px;
+    margin-left: auto; /* Alinea las imágenes a la derecha */
+}
+
+.payment-icons img {
+    width: 40px; /* Ajusta el tamaño de las imágenes */
+    height: 30px;
+    border-radius: 5px; /* Bordes redondeados para las imágenes */
+    padding: 5px; /* Espacio alrededor de las imágenes */
+    border: 2px solid #ccc; /* Borde alrededor de cada imagen */
+    background-color: #f9f9f9; /* Fondo claro para que se destaquen */
+}
+/* Estilo para el botón de pago */
+.pagar-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(145deg, #59009A, #8a2be2);
+  color: #fff;
+  text-align: center;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+.pagar-button:hover {
+  background: linear-gradient(145deg, #8a2be2, #59009A);
+  transform: translateY(-3px);
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;  /* Inicialmente oculto */
+    position: fixed;
+    z-index: 1; /* Asegura que esté encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Añade scroll si es necesario */
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente */
+}
+
+/* Estilo del contenido del modal */
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px; /* Tamaño del recuadro */
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo del botón dentro del modal */
+.modal-content button {
+    background-color: #59009A; /* Color verde */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.modal-content button:hover {
+    background-color: #8a2be2;
+}
+
+/* Estilo para el botón de cerrar */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close:hover,
+.close:focus {
+    color: #59009A;
+    text-decoration: none;
+    cursor: pointer;
+}

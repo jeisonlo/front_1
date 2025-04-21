@@ -1,0 +1,137 @@
+
+
+/* Body */
+.body {
+  padding: 20px;
+} /* Barra de navegación y otros estilos */
+html, body {
+  margin: 0; /* Elimina márgenes por defecto */
+  padding: 0; /* Elimina relleno por defecto */
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box; /* Evita problemas de tamaño con márgenes y bordes */
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Asegura que el fondo cubra toda la altura */
+  background-image: url('/atencion-profesional/PROFESIONAL/Imagenes/Attencion.png'); /* Cambia por la ruta de tu imagen */
+  background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center top; /* Centra la imagen y la desplaza hacia arriba */
+  background-attachment: fixed; /* Hace que la imagen sea fija al hacer scroll */
+  background-color: rgba(255, 255, 255, 0.7); /* Color de fondo blanco con transparencia */
+  background-blend-mode: overlay; /* Mezcla el color con la imagen */
+}
+main, .cards, .cuadro, h2 {
+  position: relative; /* Asegura que todo el contenido esté delante */
+  z-index: 1; /* Coloca el contenido en una capa superior */
+  background: transparent; /* Mantén el fondo de los elementos transparente */
+}
+
+ /* Contenido Body*/
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  margin-top: 100px;
+  flex: 1;
+  margin-bottom: 100px;
+
+  position: relative; /* Asegura que el contenido principal esté delante */
+  z-index: 1; /* Establece el contenido en una capa superior */
+  background-color: transparent; /* Mantiene el fondo del main transparente */
+}
+
+/* Estilos de las cards */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.cuadro {
+  width: 100%;
+  max-width: 400px;
+  background: linear-gradient(145deg, #e0e0e0, #ffffff);
+  border-radius: 15px;
+  box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.cuadro::before{
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0));
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.cuadro:hover::before {
+  opacity: 1;
+}
+
+.cuadro img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.cuadro h3 {
+  margin-top: 5px;
+  color: #59009A;
+}
+
+.cuadro:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2), -5px -5px 20px rgba(255, 255, 255, 0.6);
+}
+
+
+
+
+
+/* Responsividad */
+@media (max-width: 768px) {
+  
+  .options {
+      flex-direction: row;
+      width: 40%;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .option {
+      flex-basis: 100%;
+      margin-bottom: 20px;
+  }
+
+  .option img {
+      width: 100px;
+      height: 100px;
+  }
+
+ .carrusel{
+  font-size: 12px;
+ }
+
+  
+}
+

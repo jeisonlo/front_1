@@ -1,0 +1,173 @@
+
+
+
+
+/* Estilos adicionales para el historial de códigos */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Asegura que el fondo cubra toda la altura */
+  background-image: url('/atencion-profesional/USUARIO/Imagenes/dinero.png'); /* Cambia por la ruta de tu imagen */
+  background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center top; /* Centra la imagen y la desplaza hacia arriba */
+  background-attachment: fixed; /* Hace que la imagen sea fija al hacer scroll */
+  background-color: rgba(255, 255, 255, 0.8); /* Color de fondo blanco con transparencia */
+  background-blend-mode: overlay; /* Mezcla el color con la imagen */
+  padding-top: 110px;
+}
+
+.historial-codigos {
+  margin: 6.25rem auto 1.25rem auto; /* 100px auto 20px auto */
+  max-width: 75rem; /* 1200px */
+  padding: 1.25rem; /* 20px */
+  border-radius: 0.625rem; /* 10px */
+  background-color: #fff;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); /* 0 2px 4px */
+  margin-bottom: 120px;
+}
+
+.historial-codigos h2 {
+  margin-bottom: 1.25rem; /* 20px */
+  color: #59009A;
+  text-align: center;
+}
+
+/* Estilos base de la tabla */
+.table-container {
+  overflow-x: auto;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#tabla-pagos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+#tabla-pagos th {
+  background-color: #59009A;
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+#tabla-pagos td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+#tabla-pagos tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+#tabla-pagos tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Estilos para mensajes */
+.no-data, .error {
+  text-align: center;
+  padding: 20px;
+}
+
+.error {
+  color: #d32f2f;
+}
+
+/* Estilos del botón de detalles */
+.boton-detalles {
+  background-color: transparent;
+  border: 1px solid #59009A;
+  color: #59009A;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.boton-detalles:hover {
+  background-color: #59009A;
+  color: white;
+}
+
+.boton-detalles i {
+  font-size: 14px;
+}
+
+/* Estilos del modal (fondo oscuro es intencional) */
+.modal-detalles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.contenido-modal {
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  animation: modalEntrada 0.3s ease-out;
+}
+
+@keyframes modalEntrada {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.detalles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.detalle-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.detalle-label {
+  font-weight: bold;
+  color: #59009A;
+}
+
+.detalle-valor {
+  text-align: right;
+}
+
+.boton-cerrar {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 25px;
+  background-color: #59009A;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s;
+}
+
+.boton-cerrar:hover {
+  background-color: #7d3cb8;
+}
