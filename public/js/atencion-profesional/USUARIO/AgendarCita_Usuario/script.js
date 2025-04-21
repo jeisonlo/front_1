@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (btnAceptar) {
         btnAceptar.addEventListener("click", function () {
             // Redirigir a la página de citas
-            window.location.href = "https://back1-production-67bf.up.railway.app/usuario/citas-programadas";
+            window.location.href = "https://front1-production.up.railway.app/usuario/citas-programadas";
         });
     }
 });
