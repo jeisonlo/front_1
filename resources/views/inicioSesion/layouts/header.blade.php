@@ -308,7 +308,7 @@
                 <!-- aqui debe estar el nombre del usuario -->
                 <a id="profile-name" href="#nombre" class="nav-item special-item profile-name">Invitado</a>
 
-                <img src="/mapa-de-suenos/imagenes/459571723_4109978595954978_2480821301631162862_n.jpg" alt="Foto de perfil" class="profile-pic" onclick="toggleProfileMenu()">
+                <img src="https://res.cloudinary.com/dlmbupndo/image/upload/v1745249136/kq9tw0o9pyc58l9ngaiv.jpg" alt="Foto de perfil" class="profile-pic" onclick="toggleProfileMenu()">
                 <div id="profile-menu" class="profile-menu">
                     <a href="{{ url('/usuario') }}">Perfil</a>
                     <a href="{{ url('/confi') }}">Configuracion</a> 
