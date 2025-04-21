@@ -130,9 +130,20 @@
     }
 
     /* Estilos para la imagen del perfil */
-    .profile-pic {
+    .container-picture{
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
         width: 45px; /* Ajusta según el tamaño deseado */
         height: 45px; /* Ajusta según el tamaño deseado */
+        border-radius: 50%; /* Hacer la imagen redonda */
+        cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+        align-items: center;
+    }
+
+    .profile-pic {
+        width: 75px; /* Ajusta según el tamaño deseado */
+        height: 75px; /* Ajusta según el tamaño deseado */
         border-radius: 50%; /* Hacer la imagen redonda */
         cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
     }
@@ -307,8 +318,9 @@
             <div class="profile-box">
                 <!-- aqui debe estar el nombre del usuario -->
                 <a id="profile-name" href="#nombre" class="nav-item special-item profile-name">Invitado</a>
-
+                <div class="container-picture">
                 <img src="https://res.cloudinary.com/dlmbupndo/image/upload/v1745249136/kq9tw0o9pyc58l9ngaiv.jpg" alt="Foto de perfil" class="profile-pic" onclick="toggleProfileMenu()">
+               </div>
                 <div id="profile-menu" class="profile-menu">
                     <a href="{{ url('/usuario') }}">Perfil</a>
                     <a href="{{ url('/confi') }}">Configuracion</a> 
