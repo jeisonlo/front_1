@@ -323,7 +323,7 @@
     <a href="#"><div class="hamburger-item" onclick="toggleModulues()">Módulos</div></a>
     <!-- Contenedor de módulos (oculto por defecto) -->
     <div id="modules-content" class="modules-content" style="display: none;">
-        <a href="{{ url('/mapasuenos/iniciomapa') }}"><div class="modulo">Mapa de sueños</div></a>
+        <a href="{{ url('/mapadesuenos/iniciomapa') }}"><div class="modulo">Mapa de sueños</div></a>
         <a href="/alimentacion/Inicio/index.html"><div class="modulo">Alimentación</div></a>
         <a href="/musicoterapia/Vistas1.1/PRINCIPAL_GENEROS/principal_generos.html"><div class="modulo">Musicoterapia</div></a>
         <a href="{{ url('/rutinasEjercicios/einicio') }}"><div class="modulo">Ejercicios</div></a>
@@ -334,7 +334,7 @@
         <!-- Pestaña de módulos -->
         <div id="modules-overlay" class="modules-overlay">
             <div class="module-grid">
-               <a href="{{ url('/mapasuenos/iniciomapa') }}"> <div class="module">Mapa de sueños</div></a>
+               <a href="{{ url('/mapadesuenos/iniciomapa') }}"> <div class="module">Mapa de sueños</div></a>
                <a href="/alimentacion/Inicio/index.html"><div class="module">Alimentación</div></a>
                 <a href="/musicoterapia/Vistas1.1/PRINCIPAL_GENEROS/principal_generos.html"><div class="module">Musicoterapia</div></a>
                 <a href="/rutinas-de-ejercicios/inicio/index.html"><div class="module">Ejercicios</div></a>
