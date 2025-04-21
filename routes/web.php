@@ -349,7 +349,7 @@ Route::prefix('profesional')->group(function () {
     })->name('programar.cita.profesional');
 
      // Home
-     Route::get('/home', function () {
+     Route::get('/home1', function () {
         return view('atencion-profesional.PROFESIONAL.Menu_Profesional.index');
     })->name('home.profesional');
     
