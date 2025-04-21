@@ -13,6 +13,22 @@
 
     
     <title>rutinas Ejercicios </title>
+    <style>
+      .marca-agua::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("{{ asset('css/rutinasEjercicios/img/woman-digital-disconnecting-home-by-doing-yoga.jpg') }}");
+  background-size: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5; /* Ajusta la transparencia de la marca de agua */
+  z-index: -3;
+}
+    </style>
    
 </head>
 <body>
