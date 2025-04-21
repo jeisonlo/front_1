@@ -36,6 +36,9 @@
   margin-top: 70px;
   margin-left: 50px;
 }
+.sidebar{
+  margin-right: 40px;
+}
     </style>
    
 </head>
