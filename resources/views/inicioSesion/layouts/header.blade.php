@@ -334,7 +334,7 @@
         <!-- Pestaña de módulos -->
         <div id="modules-overlay" class="modules-overlay">
             <div class="module-grid">
-               <a href="/mapa-de-suenos/Inicio/Inicio.html"> <div class="module">Mapa de sueños</div></a>
+               <a href="{{ url('/mapasuenos/iniciomapa') }}"> <div class="module">Mapa de sueños</div></a>
                <a href="/alimentacion/Inicio/index.html"><div class="module">Alimentación</div></a>
                 <a href="/musicoterapia/Vistas1.1/PRINCIPAL_GENEROS/principal_generos.html"><div class="module">Musicoterapia</div></a>
                 <a href="/rutinas-de-ejercicios/inicio/index.html"><div class="module">Ejercicios</div></a>
