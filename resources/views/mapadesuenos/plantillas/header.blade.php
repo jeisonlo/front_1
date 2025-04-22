@@ -119,32 +119,38 @@ a {
     text-decoration: none;
 }
 
-.profile-pic {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    background-color: #f9e0f5f7;
-    object-fit: cover;
-    box-shadow: none; /* Remove any potential box shadow */
-    padding: 0; /* Remove any padding */
-    margin: 0; /* Ensure no margin is causing the issue */
-}
+.container-picture{
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        width: 45px; /* Ajusta según el tamaño deseado */
+        height: 45px; /* Ajusta según el tamaño deseado */
+        border-radius: 50%; /* Hacer la imagen redonda */
+        cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+        align-items: center;
+    }
 
-/* Menú del perfil */
-.profile-menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 70px;
-    width: 150px;
-    background-color: #f9e0f5f7;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
+    .profile-pic {
+        width: 75px; /* Ajusta según el tamaño deseado */
+        height: 75px; /* Ajusta según el tamaño deseado */
+        border-radius: 50%; /* Hacer la imagen redonda */
+        cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+    }
+
+    /* Menú de perfil */
+    .profile-menu {
+        display: none; /* Inicialmente oculto */
+        position: absolute; /* Para que se posicione sobre la cajita */
+        right: 0; /* Alinea a la derecha */
+        top: 70px; /* Ajusta la posición */
+        width: 150px; /* Ancho del menú */
+        background-color: #f9e0f5f7;
+        border: 1px solid #ddd; /* Borde del menú */
+        border-radius: 8px; /* Bordes redondeados del menú */
+        padding: 10px; /* Espaciado interno */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para el menú */
+        z-index: 1000; /* Para que se muestre encima de otros elementos */
+    }
 
 .profile-menu a {
     display: block;
