@@ -482,3 +482,9 @@ Route::get('/seguimiento', function () {
     return view('alimentacion.Seguimiento');
 })->name('seguimiento');
 
+
+//////////////////
+
+Route::get('/quienessomos', function () {
+    return view('quienessomos');
+});
