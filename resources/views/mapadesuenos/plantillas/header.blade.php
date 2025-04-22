@@ -124,8 +124,11 @@ a {
     height: 45px;
     border-radius: 50%;
     cursor: pointer;
-    background-color: #f9e0f5f7;
+    background-color: #f9e0f5f7; /* Igual al fondo */
+    border: 2px solid #f9e0f5f7; /* Bordes del mismo color para que se mezcle */
+    object-fit: cover; /* Asegura que la imagen se recorte bien dentro del círculo */
 }
+
 
 /* Menú del perfil */
 .profile-menu {
