@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\PatientController;
@@ -8,6 +9,10 @@ use App\Models\Bill;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\TestController;
+
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -446,4 +451,34 @@ Route::prefix('footer')->group(function () {
         return view('atencion-profesional.PROFESIONAL.Footer.inicio.link.avisolegal');
     })->name('aviso.legal');
 });
+
+
+
+
+Route::get('/test-bienestar', [TestController::class, 'showForm'])->name('test.show');
+Route::post('/test-bienestar', [TestController::class, 'store'])->name('test.store');
+
+Route::get('/inicio-alimentacion', function () {
+    return view('alimentacion.inicioAlimentacion');
+});
+
+Route::get('/Establecer', function () {
+    return view('alimentacion.Establecer');
+})->name('establecer');
+
+Route::get('/inicioAlimentacion', function () {
+    return view('alimentacion.inicioAlimentacion');
+})->name('inicio');
+
+Route::get('/foro', function () {
+    return view('alimentacion.foro');
+})->name('foro');
+
+Route::get('/frutas', function () {
+    return view('alimentacion.frutas');
+})->name('frutas');
+
+Route::get('/seguimiento', function () {
+    return view('alimentacion.Seguimiento');
+})->name('seguimiento');
 

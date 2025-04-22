@@ -1,0 +1,207 @@
+/* ✅ Capa de superposición para reducir la intensidad del fondo */
+.background-overlay {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 245, 220, 0.8);    
+    z-index: -1;
+}
+main {
+    max-width: 700px;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 80px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    margin: 0 auto 40px;
+}
+
+
+
+.frutas-page {
+    background-image: url('https://i.pinimg.com/736x/be/4f/a8/be4fa8bbd658c22ea6b5db1fbf952504.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    background-color: rgba(255, 245, 220, 0.8);
+    color: #333;
+
+    /* Centrado general sin que se pegue al header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 120px; /* ⬅️ Ajusta esto según el alto del header */
+}
+
+
+.container {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 50px;
+}
+
+/* ✅ Sección de Títulos */
+h2 {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #59009A, #e74c3c);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #555;
+    padding: 5px 10px;
+}
+
+.image-container img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+/* ✅ Formularios */
+fieldset {
+    border: 2px solid #b15fec;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* ✅ Botón */
+.boton-container {
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #be5cb6, #59009A);
+    color: white;
+    cursor: pointer;
+    width: 100px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    display: block;
+    margin: auto;
+}
+
+.boton-container:hover {
+    background: linear-gradient(45deg, #59009A, #be5cb6);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ✅ Botón continuar */
+.continue-button {
+    padding: 12px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #be5cb6, #59009A);
+    color: white;
+    cursor: pointer;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.continue-button:hover {
+    background: linear-gradient(45deg, #59009A, #be5cb6);
+    transform: scale(1.05);
+}
+
+.continue-button:active {
+    transform: scale(0.95);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ Estilos de la Meta Box */
+.meta-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    max-width: 400px;
+    width: 90%;
+    z-index: 100;
+}
+
+/* ✅ Efecto de fondo borroso */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 99;
+    display: none;
+}
+
+/* ✅ Título y contenido dentro de meta-box */
+.meta-box h2 {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #59009A;
+    margin-bottom: 10px;
+}
+
+.meta-box p {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* ✅ Botón dentro de meta-box */
+.meta-box .close-button {
+    padding: 8px 18px;
+    font-size: 0.9em;
+    border-radius: 8px;
+    background: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.meta-box .close-button:hover {
+    background: #59009A;
+    transform: scale(1.05);
+}
