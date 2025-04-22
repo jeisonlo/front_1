@@ -339,7 +339,7 @@
         <a href="/alimentacion/Inicio/index.html"><div class="modulo">Alimentación</div></a>
         <a href="/musicoterapia/Vistas1.1/PRINCIPAL_GENEROS/principal_generos.html"><div class="modulo">Musicoterapia</div></a>
         <a href="{{ url('/einicio') }}"><div class="modulo">Ejercicios</div></a>
-        <a href="/atencion-profesional/USUARIO/Home_Usuario/HomeUsuario.html"><div class="modulo">Atención Profesional</div></a>
+        <a href="{{ url('/usuario/home') }}"><div class="modulo">Atención Profesional</div></a>
     </div>
     <a href="#perfil" class="hamburger-item">Perfil</a>
 </div>
@@ -350,7 +350,7 @@
                <a href="/alimentacion/Inicio/index.html"><div class="module">Alimentación</div></a>
                 <a href="/musicoterapia/Vistas1.1/PRINCIPAL_GENEROS/principal_generos.html"><div class="module">Musicoterapia</div></a>
                 <a href="{{ url('/einicio') }}"><div class="module">Ejercicios</div></a>
-                <a href="/atencion-profesional/USUARIO/Home_Usuario/HomeUsuario.html"><div class="module">Atención Profesional</div></a>
+                <a href="{{ url('/usuario/home') }}"><div class="module">Atención Profesional</div></a>
             </div>
         </div>
     </header>
