@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("http://127.0.0.1:8000/api/InformacionFrutas")  // Asegúrate de que el backend está corriendo en este puerto
+    fetch("https://back1-production-67bf.up.railway.app/v1/InformacionFrutas")  // Asegúrate de que el backend está corriendo en este puerto
         .then(response => response.json())  // Convertimos la respuesta en JSON
         .then(data => {
             const cardContainer = document.getElementById("card-container");

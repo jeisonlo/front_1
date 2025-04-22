@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function cargarDatosIniciales() {
     try {
-        const response = await fetch('http://localhost:8000/api/progreso');
+        const response = await fetch('https://back1-production-67bf.up.railway.app/v1/progreso');
         const data = await response.json();
         
         actualizarFormulario(data);
@@ -121,7 +121,7 @@ async function configurarEventos() {
         };
 
         try {
-            const response = await fetch('http://localhost:8000/api/objetivos', {
+            const response = await fetch('https://back1-production-67bf.up.railway.app/v1/objetivos', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(objetivoData)

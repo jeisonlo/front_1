@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     let posts = [];
-    const API_URL = 'http://127.0.0.1:8000/api/foro';
+    const API_URL = 'https://back1-production-67bf.up.railway.app/v1/foro';
 
     // Cargar publicaciones iniciales
     const cargarPublicaciones = async () => {

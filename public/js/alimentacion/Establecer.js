@@ -29,7 +29,7 @@ async function generarMeta(e) {
 
     try {
         // Enviar a la API del backend
-        const response = await fetch("http://127.0.0.1:8000/api/test-bienestar", {
+        const response = await fetch("https://back1-production-67bf.up.railway.app/v1/test-bienestar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

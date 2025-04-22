@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("http://127.0.0.1:8000/api/inicio") // Llamamos a la API de Laravel
+    fetch("https://back1-production-67bf.up.railway.app/v1/inicio") // Llamamos a la API de Laravel
         .then(response => response.json()) // Convertimos la respuesta en JSON
         .then(data => {
             const container = document.getElementById("inicio-container");
