@@ -119,23 +119,12 @@ a {
     text-decoration: none;
 }
 
-/* Solución para eliminar el borde blanco */
-.container-picture {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: #f9e0f5f7;
-}
-
 .profile-pic {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border: none;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    cursor: pointer;
 }
-
 /* Menú del perfil */
 .profile-menu {
     display: none;
@@ -144,7 +133,6 @@ a {
     top: 70px;
     width: 150px;
     background-color: #f9e0f5f7;
-    border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -281,6 +269,8 @@ a {
         display: none;
     }
 }
+
+
 </style>
 
     <header class="main-header">
