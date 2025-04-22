@@ -484,7 +484,36 @@ Route::get('/seguimiento', function () {
 
 
 //////////////////
+Route::get('/avisolegal', function () {
+    return view('mapadesuenos.links.avisolegal');
+});
+
+Route::get('/beneficiosdetranquilidad', function () {
+    return view('mapadesuenos.links.beneficiosdetranquilidad');
+});
+
+Route::get('/consejodebienestar', function () {
+    return view('mapadesuenos.links.consejodebienestar');
+});
+Route::get('/contacto', function () {
+    return view('mapadesuenos.links.contacto');
+});
+Route::get('/guiadeuso', function () {
+    return view('mapadesuenos.links.guiadeuso');
+});
+
+Route::get('/politicadeprivacidad', function () {
+    return view('mapadesuenos.links.politicadeprivacidad');
+});
 
 Route::get('/quienessomos', function () {
     return view('mapadesuenos.links.quienessomos');
 });
+
+Route::get('/sugerencias', function () {
+    return view('mapadesuenos.links.sugerencias');
+});
+Route::get('/terminosycondiciones', function () {
+    return view('mapadesuenos.links.terminosycondiciones');
+});
+///////////////////////////

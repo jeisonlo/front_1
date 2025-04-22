@@ -23,8 +23,8 @@
         <h4>Acerca de Tranquilidad</h4>
         <ul>
           <li><a href="{{ url('/quienessomos') }}">Acerca de</a></li>
-          <li><a href="/mapadesuenos/links/beneficiosdetranquilidad.html">Beneficios de la Tranquilidad</a></li>
-            <li><a href="/mapadesuenos/links/consejodebienestar.html">Consejos de Bienestar</a></li>
+          <li><a href="{{ url('/beneficiosdetranquilidad') }}">Beneficios de la Tranquilidad</a></li>
+            <li><a href="{{ url('/consejodebienestar') }}">Consejos de Bienestar</a></li>
         </ul>
     </div>
     
@@ -34,18 +34,18 @@
       <div class="footer-column">
         <h4>Ayuda y Soporte</h4>
         <ul>
-          <li><a href="/mapadesuenos/links/contacto.html">Contacto</a></li>
-          <li><a href="/mapadesuenos/links/sugerencias.html">Sugerencias</a></li>
-          <li><a href="/mapadesuenos/links/guiadeuso.html">Guía de uso</a></li>
+          <li><a href="{{ url('/contacto') }}">Contacto</a></li>
+          <li><a href="{{ url('/sugerencias') }}">Sugerencias</a></li>
+          <li><a href="{{ url('/guiadeuso') }}">Guía de uso</a></li>
         </ul>
       </div>
       
       <div class="footer-column">
         <h4>Información Legal</h4>
         <ul>
-          <li><a href="/mapadesuenos/links/terminosycondiciones.html">Términos y condiciones</a></li>
-          <li><a href="/mapadesuenos/links/politica de privacidad .html">Política de privacidad</a></li>
-          <li><a href="/mapadesuenos/links/avisolegal.html">Aviso legal</a></li>
+          <li><a href="{{ url('/terminosycondiciones') }}">Términos y condiciones</a></li>
+          <li><a href="{{ url('/politicadeprivacidad') }}">Política de privacidad</a></li>
+          <li><a href="{{ url('/avisolegal') }}">Aviso legal</a></li>
         </ul>
       </div>
       
