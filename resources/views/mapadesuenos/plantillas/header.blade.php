@@ -9,290 +9,274 @@
 </head>
 <body>
 <style>
-        /* General */
-    * {
-        box-sizing: border-box;
-        font-family: 'Roboto', sans-serif;
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Header */
+header {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f9e0f5f7;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+header.hidden {
+    transform: translateY(-100%);
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    width: 210px;
+    height: 110px;
+    border-radius: 50px;
+}
+
+.app-title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 3px;
+    color: #59009A;
+    text-decoration: none;
+}
+
+/* Navegación */
+.nav-links {
+    display: flex;
+    gap: 90px;
+    justify-content: center;
+    flex-grow: 1;
+    margin-left: 100px;
+}
+
+.nav-right {
+    display: flex;
+    gap: 40px;
+    margin-right: 40px;
+    color: #000000c2;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #59009A;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.special-item {
+    color: #494949;
+    transition: color 0.3s ease;
+    font-size: 13px;
+}
+
+.special-item:hover {
+    color: #59009A;
+}
+
+.nav-item:hover {
+    color: #5a009ac2;
+}
+
+/* Perfil */
+.profile-container {
+    position: relative;
+}
+
+.profile-box {
+    background-color: #f9e0f5f7;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.09);
+    display: flex;
+    align-items: center;
+}
+
+.profile-name {
+    margin-bottom: 5px;
+    font-size: 13px;
+    margin-right: 30px;
+    color: #5a009ac2;
+}
+
+a {
+    text-decoration: none;
+}
+
+.profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #f9e0f5f7;
+    object-fit: cover;
+    box-shadow: none; /* Remove any potential box shadow */
+    padding: 0; /* Remove any padding */
+    margin: 0; /* Ensure no margin is causing the issue */
+}
+
+/* Menú del perfil */
+.profile-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 70px;
+    width: 150px;
+    background-color: #f9e0f5f7;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.profile-menu a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: #59009A;
+    transition: color 0.3s ease;
+}
+
+.profile-menu a:hover {
+    color: #5a009ac2;
+}
+
+/* Módulos */
+.modules-overlay {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    background-color: #f9e0f5f7;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.modulo {
+    background-color: #f9e0f5f7;
+    padding: 20px;
+    text-align: left;
+    margin-left: 20px;
+    border-radius: 6px;
+    color: #5a009ac2;
+    font-size: 14px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.modulo:hover {
+    background-color: #f9e0f5f7;
+    transform: scale(1.05);
+}
+
+.module {
+    background-color: #f9e0f5f7;
+    padding: 20px;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #59009A;
+    font-size: 14px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.module:hover {
+    background-color: #f9e0f5f7;
+    transform: scale(1.05);
+}
+
+/* Menú hamburguesa */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: #59009A;
+    cursor: pointer;
+}
+
+.hamburger-menu {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    background-color: #f9e0f5f7;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hamburger-item {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #59009A;
+    transition: color 0.3s ease;
+}
+
+.hamburger-item:hover {
+    color: #5a009ac2;
+}
+
+/* Responsividad */
+@media (max-width: 1100px) {
+    .nav-links {
+        display: none;
     }
 
-
-    /* Header */
-    header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        background-color: #f9e0f5f7;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        width: calc(100% - 15px); /* Resta un poco para evitar que cubra la barra */
-        transition: transform 0.3s ease; /* Transición suave */
+    .hamburger {
+        display: block;
     }
 
-    header.hidden {
-        transform: translateY(-100%); /* Mueve el header hacia arriba fuera de la vista */
+    .hamburger-menu {
+        display: none;
     }
-    main {
-        margin-top: 120px; /* Ajusta la altura según el header */
-        padding: 20px;
+
+    .hamburger-menu.active {
+        display: block;
     }
-    
-    .logo-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+
+    .profile-container {
+        display: none;
     }
-    
-    .logo {
-        width: 210px;
-        height: 110px;
-        border-radius: 50px;
+
+    .nav-right {
+        display: none;
     }
 
     .app-title {
-        font-size: 25px;
-        font-weight: bold;
-        margin-top: 3px;
-        color: #59009A;
-        text-decoration: none; /* Elimina el subrayado */
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    /* Ajuste de navegación */
-    .nav-links {
-        display: flex;
-        gap: 90px;
-        justify-content: center; /* Alinea todo hacia la izquierda */
-        flex-grow: 1; /* Permite que el menú ocupe el espacio disponible */
-        margin-left: 100px;
-        
-    }
-    /* Sección derecha */
-    .nav-right {
-        display: flex; /* Usa flexbox para los elementos a la derecha */
-        gap: 40px; /* Espacio entre los elementos a la derecha */
-        margin-right: 40px;
-        color: #000000c2;
-        
-    }
-
-    .nav-item {
-        text-decoration: none;
-        color: #59009A;
-        font-size: 17px;
-        font-weight: 500;
-        cursor: pointer;
-        position: relative;
-        transition: color 0.3s ease; /* Transición de color */
-        font-weight: bold; 
-    }
-    .special-item {
-        color: #494949; /* Cambia a tu color deseado */
-        transition: color 0.3s ease; /* Añade transición suave al color */
-        font-size:13px;
-    }
-
-    .special-item:hover {
-        color: #59009A; /* Cambia a otro color al pasar el mouse */
-    }
-    .nav-item:hover {
-        color: #5a009ac2; /* Cambia a azul cuando se pasa el mouse */
-    }
-
-    /* Estilos para el contenedor del perfil */
-    .profile-container {
-        position: relative;
-    }
-
-    .profile-box {
-        background-color: #fddaf8f0;
-        border-radius: 10px; /* Bordes redondeados */
-        padding: 10px; /* Espaciado interno */
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.09); /* Sombra para el efecto de cajita */
-        display: flex; /* Usar flexbox para alinear los elementos dentro */
-        align-items: center; /* Alinea los elementos en la parte superior */
-    }
-    .profile-container .profile-box {
-        background-color: #fddaf8f0;
-    }
-    /* Ajusta la posición de Jhon Sebastian */
-    .profile-name {
-        margin-bottom: 5px; /* Espacio entre el nombre y la imagen */
-        font-size: 13px;
-        margin-right: 30px;
-        color: #5a009ac2;
-    }
-
-    a{
-        text-decoration: none;
-    }
-
-    /* Estilos para la imagen del perfil */
-    .container-picture{
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        width: 45px; /* Ajusta según el tamaño deseado */
-        height: 45px; /* Ajusta según el tamaño deseado */
-        border-radius: 50%; /* Hacer la imagen redonda */
-        cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
-        align-items: center;
-    }
-
-    .profile-pic {
-        width: 75px; /* Ajusta según el tamaño deseado */
-        height: 75px; /* Ajusta según el tamaño deseado */
-        border-radius: 50%; /* Hacer la imagen redonda */
-        cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
-    }
-
-    /* Menú de perfil */
-    .profile-menu {
-        display: none; /* Inicialmente oculto */
-        position: absolute; /* Para que se posicione sobre la cajita */
-        right: 0; /* Alinea a la derecha */
-        top: 70px; /* Ajusta la posición */
-        width: 150px; /* Ancho del menú */
-        background-color: #f9e0f5f7;
-        border: 1px solid #ddd; /* Borde del menú */
-        border-radius: 8px; /* Bordes redondeados del menú */
-        padding: 10px; /* Espaciado interno */
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para el menú */
-        z-index: 1000; /* Para que se muestre encima de otros elementos */
-    }
-    
-    .profile-menu a {
-        display: block;
-        padding: 8px;
-        text-decoration: none;
-        color: #59009A;
-        transition: color 0.3s ease; /* Transición en los links */
-    }
-    
-    .profile-menu a:hover {
-        color: #5a009ac2;
-    }
-
-    /* Pestaña de módulos */
-    .modules-overlay {
-        display: none;
-        position: absolute;
-        top: 100px;
-        left: 0;
-        width: 100%;
-        background-color: #f9e0f5f7;
-        padding: 20px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        z-index: 999;
-    }
-    
     .module-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+        display: none;
     }
-    .modulo {
-        background-color: #f9e0f5f7;
-        padding: 20px;
-        text-align:left;
-        margin-left: 20px;
-        border-radius: 6px;
-        color: #5a009ac2;
-        font-size: 14px;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-    .modulo:hover {
-        background-color: #f9e0f5f7;
-        transform: scale(1.05); /* Efecto de zoom */
-    }
-    .module {
-        background-color: #f9e0f5f7;
-        padding: 20px;
-        text-align: center;
-        border-radius: 6px;
-        font-weight: bold;
-        color: #59009A;
-        font-size: 14px;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-    
-    .module:hover {
-        background-color: #f9e0f5f7;
-        transform: scale(1.05); /* Efecto de zoom */
-    }
+}
 
-
-    /* Estilos generales del menú hamburguesa */
-    .hamburger {
-        display: none; /* Oculto por defecto */
-        background: none;
-        border: none;
-        font-size: 30px; /* Tamaño del icono */
-        color: #59009A;
-        cursor: pointer;
-    }
-
-    /* Menú hamburguesa */
-    .hamburger-menu {
-        display: none; /* Oculto por defecto */
-        position: absolute;
-        top: 100px; /* Alinea debajo del header */
-        left: 0;
-        width: 100%;
-        background-color: #f9e0f5f7;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .hamburger-item {
-        display: block;
-        padding: 10px 20px;
-        text-decoration: none;
-        color: #59009A;
-        transition: color 0.3s ease;
-    }
-
-    .hamburger-item:hover {
-        color: #5a009ac2; /* Cambia el color al pasar el mouse */
-    }
-
-    /* Media Queries para Responsividad */
-    @media (max-width: 1100px) {
-        .nav-links {
-            display: none; /* Oculta el menú en pantallas pequeñas */
-        }
-
-        .hamburger {
-            display: block; /* Muestra el botón hamburguesa */
-        }
-
-        .hamburger-menu {
-            display: none; /* Oculto por defecto */
-        }
-
-        .hamburger-menu.active {
-            display: block; /* Muestra el menú cuando está activo */
-        }
-        
-
-        .profile-container {
-            display: none; /* Oculta el perfil en pantallas pequeñas */
-        }
-        .nav-right{
-            display: none;
-        }
-
-        /* Reajusta el título */
-        .app-title {
-            margin-left: auto; /* Alinea el título a la izquierda */
-            margin-right: auto; /* Alinea el título a la derecha */
-        }
-        .module-grid{
-            display: none;
-        }
-    
-    }
 
 </style>
 
