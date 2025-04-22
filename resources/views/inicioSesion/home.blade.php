@@ -111,6 +111,9 @@
         #scrollToTop.show {
             opacity: 1;
         }
+        a{
+            color: black
+        }
     </style>
 </head>
 
