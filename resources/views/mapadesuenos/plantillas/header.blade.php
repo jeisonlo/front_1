@@ -121,7 +121,8 @@ header.hidden {
     margin-bottom: 5px; /* Espacio entre el nombre y la imagen */
     font-size: 13px;
     margin-right: 30px;
-    color: #5a009ac2;
+    background-color: #f9e0f5f7
+    
 }
 
 a{
@@ -155,7 +156,7 @@ a{
     display: block;
     padding: 8px;
     text-decoration: none;
-    color: #59009A;
+    background-color: #f9e0f5f7
     transition: color 0.3s ease; /* Transición en los links */
 }
   
