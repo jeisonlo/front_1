@@ -182,6 +182,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
+                            <a href="{{ url('/mapadesuenos/iniciomapa') }}">
                             <div class="card text-center" onclick="window.location.href= {{ url('/mapadesuenos/iniciomapa') }}">
                                 <div class="card-body">
                                     <h5 class="card-title">Mapa de Sueños</h5>
@@ -189,6 +190,7 @@
                                     <p class="card-text">Visualiza tus metas y sueños.</p>
                                 </div>
                             </div>
+                        </a>
                         </div>
                         <div class="col-md-4">
                             <div class="card text-center" onclick="window.location.href='/musicoterapia/Vistas1.1/bienvenido_a_musicoterapia.html';">
@@ -221,6 +223,7 @@
                             </div>
                             <!-- Módulo de Ejercicios -->
                             <div class="col-md-6">
+                                <a href="{{ url('/einicio') }}">
                                 <div class="card text-center" onclick="window.location.href={{ url('/einicio') }}">
                                     <div class="card-body">
                                         <h5 class="card-title">Ejercicios</h5>
@@ -228,6 +231,7 @@
                                         <p class="card-text">Rutinas de ejercicio recomendadas.</p>
                                     </div>
                                 </div>
+                            </a>
                             </div>
                         </div>
                     </div>
