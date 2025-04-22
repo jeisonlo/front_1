@@ -41,9 +41,9 @@ Route::get('/', function () {
 Route::get('mapadesuenos/canvas', function () {
     return view('mapadesuenos/canvas');  // Solo una vista para todos los libros
 })->name('lienzo');
-Route::get('mapadesuenos/seguimiento', function () {
-    return view('mapadesuenos/seguimiento'); // Sin la extensión .blade.php
-})->name('seguimiento');
+Route::get('mapadesuenos/seguimiento1', function () {
+    return view('mapadesuenos/seguimiento1'); // Sin la extensión .blade.php
+})->name('seguimiento1');
 
 
 //Rutas de libros

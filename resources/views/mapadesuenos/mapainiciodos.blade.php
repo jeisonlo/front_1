@@ -33,7 +33,7 @@
             <div class="card-content">
                 <h3 class="card-title">Seguimiento</h3>
                 <p class="card-description">En esta sección, podrás asignarte tareas con fechas límite para ayudarte a alcanzar tus sueños y objetivos.</p>
-                <a href="{{ route('seguimiento') }}" class="card-button">Explorar</a>
+                <a href="{{ route('seguimiento1') }}" class="card-button">Explorar</a>
             </div>
         </div>
     
