@@ -9,7 +9,7 @@
 </head>
 <body>
 <style>
-/* General */
+ /* General */
 * {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
@@ -121,8 +121,7 @@ header.hidden {
     margin-bottom: 5px; /* Espacio entre el nombre y la imagen */
     font-size: 13px;
     margin-right: 30px;
-    background-color: #f9e0f5f7
-    
+    color: #5a009ac2;
 }
 
 a{
@@ -151,12 +150,14 @@ a{
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para el menú */
     z-index: 1000; /* Para que se muestre encima de otros elementos */
 }
-  
+.profile-container .profile-box {
+        background-color: #fddaf8f0;
+    }
 .profile-menu a {
     display: block;
     padding: 8px;
     text-decoration: none;
-    background-color: #f9e0f5f7
+    color: #59009A;
     transition: color 0.3s ease; /* Transición en los links */
 }
   
