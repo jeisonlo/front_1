@@ -486,5 +486,5 @@ Route::get('/seguimiento', function () {
 //////////////////
 
 Route::get('/quienessomos', function () {
-    return view('quienessomos');
+    return view('mapadesuenos.links.quienessomos');
 });

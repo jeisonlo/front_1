@@ -22,7 +22,7 @@
       <div class="footer-column">
         <h4>Acerca de Tranquilidad</h4>
         <ul>
-          <li><a href="/mapadesuenos/links/quienessomos.html">Acerca de</a></li>
+          <li><a href="{{ url('/quienessomos') }}">Acerca de</a></li>
           <li><a href="/mapadesuenos/links/beneficiosdetranquilidad.html">Beneficios de la Tranquilidad</a></li>
             <li><a href="/mapadesuenos/links/consejodebienestar.html">Consejos de Bienestar</a></li>
         </ul>
