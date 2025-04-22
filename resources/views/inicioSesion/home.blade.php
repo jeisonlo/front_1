@@ -182,7 +182,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="card text-center" onclick="window.location.href='/mapa-de-suenos/Inicio/Inicio.html';">
+                            <div class="card text-center" onclick="window.location.href= {{ url('/mapadesuenos/iniciomapa') }}">
                                 <div class="card-body">
                                     <h5 class="card-title">Mapa de Sueños</h5>
                                     <img src="{{ asset('css/inicioSesion/imagenes/imagen2.jpg') }}" alt="">
@@ -221,7 +221,7 @@
                             </div>
                             <!-- Módulo de Ejercicios -->
                             <div class="col-md-6">
-                                <div class="card text-center" onclick="window.location.href='/rutinas-de-ejercicios/inicio/index.html';">
+                                <div class="card text-center" onclick="window.location.href={{ url('/einicio') }}">
                                     <div class="card-body">
                                         <h5 class="card-title">Ejercicios</h5>
                                         <img src="{{ asset('css/inicioSesion/imagenes/imagen5.jpg') }}" alt="Ejercicios" class="img-fluid">
