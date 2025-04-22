@@ -54,7 +54,7 @@ header.hidden {
     text-decoration: none;
 }
 
-/* Ajuste de navegación */
+/* Navegación */
 .nav-links {
     display: flex;
     gap: 90px;
@@ -63,7 +63,6 @@ header.hidden {
     margin-left: 100px;
 }
 
-/* Sección derecha */
 .nav-right {
     display: flex;
     gap: 40px;
@@ -95,22 +94,18 @@ header.hidden {
     color: #5a009ac2;
 }
 
-/* Estilos para el contenedor del perfil */
+/* Perfil */
 .profile-container {
     position: relative;
 }
 
 .profile-box {
-    background-color: #fddaf8f0;
+    background-color: #f9e0f5f7;
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.09);
     display: flex;
     align-items: center;
-}
-
-.profile-container .profile-box {
-    background-color: #fddaf8f0;
 }
 
 .profile-name {
@@ -124,16 +119,15 @@ a {
     text-decoration: none;
 }
 
-/* Estilos para la imagen del perfil */
 .profile-pic {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     cursor: pointer;
-    background-color: #f9e0f5f7; /* Color de fondo igual al header */
+    background-color: #f9e0f5f7;
 }
 
-/* Menú de perfil */
+/* Menú del perfil */
 .profile-menu {
     display: none;
     position: absolute;
@@ -160,7 +154,7 @@ a {
     color: #5a009ac2;
 }
 
-/* Pestaña de módulos */
+/* Módulos */
 .modules-overlay {
     display: none;
     position: absolute;
@@ -211,7 +205,7 @@ a {
     transform: scale(1.05);
 }
 
-/* Estilos generales del menú hamburguesa */
+/* Menú hamburguesa */
 .hamburger {
     display: none;
     background: none;
@@ -221,7 +215,6 @@ a {
     cursor: pointer;
 }
 
-/* Menú hamburguesa */
 .hamburger-menu {
     display: none;
     position: absolute;
@@ -244,7 +237,7 @@ a {
     color: #5a009ac2;
 }
 
-/* Media Queries para Responsividad */
+/* Responsividad */
 @media (max-width: 1100px) {
     .nav-links {
         display: none;
