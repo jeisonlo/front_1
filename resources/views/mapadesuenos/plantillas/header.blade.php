@@ -119,17 +119,21 @@ a {
     text-decoration: none;
 }
 
-.profile-pic {
+/* Solución para eliminar el borde blanco */
+.container-picture {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    cursor: pointer;
+    overflow: hidden;
     background-color: #f9e0f5f7;
-    border: 2px solid #f9e0f5f7;
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    box-shadow: none; /* Remove any potential box shadow */
-    padding: 0; /* Remove any padding */
-    margin: 0; /* Ensure no margin is causing the issue */
+    display: block;
+    border: none;
 }
 
 /* Menú del perfil */
@@ -277,8 +281,6 @@ a {
         display: none;
     }
 }
-
-
 </style>
 
     <header class="main-header">
