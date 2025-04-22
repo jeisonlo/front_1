@@ -298,12 +298,12 @@
 
     <header class="main-header">
         <div class="logo-container">
-            <a href="{{ url('/home') }}"><img href="/inicio-de-sesion/Modulo-iniciar-sesion/home/home.html" src="{{ asset('css/inicioSesion/img/logo.png') }}"alt="Logo" class="logo"></a>
+            <a href="{{ url('/inicioSesion/home') }}"><img href="{{ url('/inicioSesion/home') }}" src="{{ asset('css/inicioSesion/img/logo.png') }}"alt="Logo" class="logo"></a>
            
         </div>
         <button2 class="hamburger" onclick="toggleHamburgerMenu()">☰</button2>
         <nav class="nav-links">
-            <a href="/inicio-de-sesion/Modulo-iniciar-sesion/home/home.html" class="nav-item">Inicio</a>
+            <a href="{{ url('/inicioSesion/home') }}" class="nav-item">Inicio</a>
             <div class="nav-item modules-item" onclick="toggleModules()">Módulos</div>
             <a href="/mapa-de-suenos/todohh/inicio/link/quienessomos.html" class="nav-item  ">Acerca de </a>
             <a href="/mapa-de-suenos/todohh/inicio/link/contacto.html" class="nav-item ">Contacto</a>
@@ -319,11 +319,11 @@
                 <!-- aqui debe estar el nombre del usuario -->
                 <a id="profile-name" href="#nombre" class="nav-item special-item profile-name">Invitado</a>
                 <div class="container-picture">
-                <img src="https://res.cloudinary.com/dlmbupndo/image/upload/v1745249136/kq9tw0o9pyc58l9ngaiv.jpg" alt="Foto de perfil" class="profile-pic" onclick="toggleProfileMenu()">
+                <img id="profile-image" src="https://res.cloudinary.com/dlmbupndo/image/upload/v1745249136/kq9tw0o9pyc58l9ngaiv.jpg" alt="Foto de perfil" class="profile-pic" onclick="toggleProfileMenu()">
                </div>
                 <div id="profile-menu" class="profile-menu">
-                    <a href="{{ url('/usuario') }}">Perfil</a>
-                    <a href="{{ url('/confi') }}">Configuracion</a> 
+                    <a href="{{ url('/perfil') }}">Perfil</a>
+                    
                      <!-- dale funcionalidad a cerrar sesion  -->
                      <a href="#" id="boton-sesion">Cerrar sesión</a>
                 </div>
@@ -391,12 +391,21 @@
         document.addEventListener('DOMContentLoaded', () => {
           const userData = localStorage.getItem('userData');
           const profileName = document.getElementById('profile-name');
+          const profileImage = document.getElementById('profile-image');
           const botonSesion = document.getElementById('boton-sesion'); // Usa este ID en el HTML
       
           if (userData && profileName && botonSesion) {
             try {
               const usuario = JSON.parse(userData);
               profileName.textContent = usuario.nombre || 'Invitado';
+              
+              // Actualizar la foto de perfil si existe
+              if (usuario.foto) {
+                profileImage.src = usuario.foto;
+              } else {
+                // Imagen por defecto si no hay foto
+                profileImage.src = "https://res.cloudinary.com/dlmbupndo/image/upload/v1745249136/kq9tw0o9pyc58l9ngaiv.jpg";
+              }
       
               // Mostrar "Cerrar sesión" si hay datos de usuario
               botonSesion.textContent = 'Cerrar sesión';
@@ -416,10 +425,11 @@
       
           function mostrarIniciarSesion() {
             const profileName = document.getElementById('profile-name');
+            const profileImage = document.getElementById('profile-image');
             const botonSesion = document.getElementById('boton-sesion');
-            // <- este es el ID correcto
             
             if (profileName) profileName.textContent = 'Invitado';
+            if (profileImage) profileImage.src = "https://res.cloudinary.com/dlmbupndo/image/upload/v1745249136/kq9tw0o9pyc58l9ngaiv.jpg";
             if (botonSesion) {
               botonSesion.textContent = 'Iniciar sesión';
               botonSesion.onclick = function (e) {

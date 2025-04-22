@@ -298,12 +298,12 @@
 
     <header class="main-header">
         <div class="logo-container">
-            <a href="{{ url('/home') }}"><img href="/inicio-de-sesion/Modulo-iniciar-sesion/home/home.html" src="{{ asset('css/inicioSesion/img/logo.png') }}"alt="Logo" class="logo"></a>
+            <a href="{{ url('/inicioSesion/home') }}"><img href="{{ url('/inicioSesion/home') }}" src="{{ asset('css/inicioSesion/img/logo.png') }}"alt="Logo" class="logo"></a>
            
         </div>
         <button2 class="hamburger" onclick="toggleHamburgerMenu()">☰</button2>
         <nav class="nav-links">
-            <a href="/inicio-de-sesion/Modulo-iniciar-sesion/home/home.html" class="nav-item">Inicio</a>
+            <a href="{{ url('/inicioSesion/home') }}" class="nav-item">Inicio</a>
             <div class="nav-item modules-item" onclick="toggleModules()">Módulos</div>
             <a href="/mapa-de-suenos/todohh/inicio/link/quienessomos.html" class="nav-item  ">Acerca de </a>
             <a href="/mapa-de-suenos/todohh/inicio/link/contacto.html" class="nav-item ">Contacto</a>
@@ -323,7 +323,7 @@
                </div>
                 <div id="profile-menu" class="profile-menu">
                     <a href="{{ url('/perfil') }}">Perfil</a>
-                    <a href="{{ url('/confi') }}">Configuracion</a> 
+                    
                      <!-- dale funcionalidad a cerrar sesion  -->
                      <a href="#" id="boton-sesion">Cerrar sesión</a>
                 </div>

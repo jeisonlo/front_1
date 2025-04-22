@@ -14,11 +14,28 @@
             background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
         }
         
+        .marca-agua::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("{{ asset('css/inicioSesion/imagenes/fondoooo.webp') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.5;
+            z-index: -3;
+        }
+        
+        
         .profile-card {
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px -10px rgba(126, 34, 206, 0.2);
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
+            margin-top: 130px;
         }
         
         .profile-card:hover {
@@ -104,6 +121,8 @@
     </style>
 </head>
 <body class="min-h-screen">
+    <div class="marca-agua">
+    @include('inicioSesion.layouts.header')
     <div class="container mx-auto py-8 px-4">
         <!-- Contenedor Principal -->
         <div id="profile-container" class="max-w-4xl mx-auto profile-card rounded-xl overflow-hidden p-8 fade-in">
@@ -206,7 +225,7 @@
             </div>
         </div>
     </div>
-
+</div>
     <!-- Scripts -->
     <script>
         // Verificar autenticación al cargar
@@ -514,5 +533,6 @@
             }
         }
     </script>
+    @include('inicioSesion.layouts.footer')
 </body>
 </html>
