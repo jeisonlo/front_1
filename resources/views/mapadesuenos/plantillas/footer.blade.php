@@ -22,9 +22,9 @@
       <div class="footer-column">
         <h4>Acerca de Tranquilidad</h4>
         <ul>
-            <li><a href="/mapa-de-suenos/todohh/inicio/link/quienessomos.html">Acerca de</a></li>
-            <li><a href="/mapa-de-suenos/todohh/inicio/link/beneficiosdetranquilidad.html">Beneficios de la Tranquilidad</a></li>
-            <li><a href="/mapa-de-suenos/todohh/inicio/link/consejodebienestar.html">Consejos de Bienestar</a></li>
+          <li><a href="/mapadesuenos/links/quienessomos.html">Acerca de</a></li>
+          <li><a href="/mapadesuenos/links/beneficiosdetranquilidad.html">Beneficios de la Tranquilidad</a></li>
+            <li><a href="/mapadesuenos/links/consejodebienestar.html">Consejos de Bienestar</a></li>
         </ul>
     </div>
     
@@ -34,18 +34,18 @@
       <div class="footer-column">
         <h4>Ayuda y Soporte</h4>
         <ul>
-          <li><a href="/mapa-de-suenos/todohh/inicio/link/contacto.html">Contacto</a></li>
-          <li><a href="/mapa-de-suenos/todohh/inicio/link/sugerencias.html">Sugerencias</a></li>
-          <li><a href="/mapa-de-suenos/todohh/inicio/link/guiadeuso.html">Guía de uso</a></li>
+          <li><a href="/mapadesuenos/links/contacto.html">Contacto</a></li>
+          <li><a href="/mapadesuenos/links/sugerencias.html">Sugerencias</a></li>
+          <li><a href="/mapadesuenos/links/guiadeuso.html">Guía de uso</a></li>
         </ul>
       </div>
       
       <div class="footer-column">
         <h4>Información Legal</h4>
         <ul>
-          <li><a href="/mapa-de-suenos/todohh/inicio/link/terminosycondiciones.html">Términos y condiciones</a></li>
-          <li><a href="/mapa-de-suenos/todohh/inicio/link/politica de privacidad .html">Política de privacidad</a></li>
-          <li><a href="/mapa-de-suenos/todohh/inicio/link/avisolegal.html">Aviso legal</a></li>
+          <li><a href="/mapadesuenos/links/terminosycondiciones.html">Términos y condiciones</a></li>
+          <li><a href="/mapadesuenos/links/politica de privacidad .html">Política de privacidad</a></li>
+          <li><a href="/mapadesuenos/links/avisolegal.html">Aviso legal</a></li>
         </ul>
       </div>
       
