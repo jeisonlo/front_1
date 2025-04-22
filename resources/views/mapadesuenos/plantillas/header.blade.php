@@ -9,9 +9,7 @@
 </head>
 <body>
 <style>
- /* General */
-     /* General */
-     * {
+  * {
         box-sizing: border-box;
         font-family: 'Roboto', sans-serif;
     }
