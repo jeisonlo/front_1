@@ -150,9 +150,10 @@ Route::get('/login', function () {
     return view('inicioSesion.sesion');
 });
 
-Route::get('/usuario', function () {
+Route::get('/perfil', function () {
     return view('inicioSesion.usuario');
-});
+})->name('profile');
+
 Route::get('/confi', function () {
     return view('inicioSesion.configuraciones');
 });

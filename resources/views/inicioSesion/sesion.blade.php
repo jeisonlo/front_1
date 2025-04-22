@@ -322,78 +322,110 @@
         </div>
     </div>
 
-
     <script>
-         const homeUrl = "{{ url('/inicioSesion/home') }}";
-      document.getElementById('loginForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    // Limpiar mensajes de error
-    document.getElementById('email-error').textContent = '';
-    document.getElementById('password-error').textContent = '';
-    document.getElementById('mensaje-sistema').innerHTML = '';
-    
-    // Mostrar estado de carga
-    const btnText = document.getElementById('btn-text');
-    const btnLoading = document.getElementById('btn-loading');
-    const boton = this.querySelector('button[type="submit"]');
-    
-    btnText.style.display = 'none';
-    btnLoading.style.display = 'inline';
-    boton.disabled = true;
-    
-    try {
-        const formData = {
-            email: this.email.value.trim(),
-            password: this.password.value
-        };
-        
-        const response = await axios.post('https://back1-production-67bf.up.railway.app/v1/login', formData);
-        
-        console.log('Respuesta completa:', response.data);
-        
-        if (response.data.message === "Usuario autenticado") {
-            // Guardar datos en localStorage
-            localStorage.setItem('authToken', response.data.token);
-            localStorage.setItem('userData', JSON.stringify({
-                id: response.data.user.id,
-                nombre: response.data.user.nombre,
-                tipo: response.data.tipo
-            }));
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const homeUrl = "{{ url('/inicioSesion/home') }}";
             
-            // Redirigir a la vista home
-            window.location.href =homeUrl ;
-        } else {
-            throw new Error(response.data.message || 'Error inesperado');
-        }
-    } catch (error) {
-        console.error('Error en login:', error);
-        
-        let errorMessage = 'Error al iniciar sesión';
-        if (error.response) {
-            if (error.response.status === 401) {
-                errorMessage = 'Credenciales incorrectas';
-            } else if (error.response.data?.errors) {
-                if (error.response.data.errors.email) {
-                    document.getElementById('email-error').textContent = error.response.data.errors.email[0];
-                }
-                if (error.response.data.errors.password) {
-                    document.getElementById('password-error').textContent = error.response.data.errors.password[0];
-                }
-                errorMessage = 'Por favor corrige los errores';
-            } else if (error.response.data?.message) {
-                errorMessage = error.response.data.message;
+            // Verificar si ya está autenticado
+            if (localStorage.getItem('authToken')) {
+                window.location.href = homeUrl;
             }
-        }
-        
-        document.getElementById('mensaje-sistema').innerHTML = 
-            `<p style="color: var(--color-error);">${errorMessage}</p>`;
-    } finally {
-        btnText.style.display = 'inline';
-        btnLoading.style.display = 'none';
-        boton.disabled = false;
-    }
-});
+            
+            loginForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Limpiar mensajes de error
+                document.getElementById('email-error').textContent = '';
+                document.getElementById('password-error').textContent = '';
+                document.getElementById('mensaje-sistema').innerHTML = '';
+                
+                // Mostrar estado de carga
+                const btnText = document.getElementById('btn-text');
+                const btnLoading = document.getElementById('btn-loading');
+                const boton = this.querySelector('button[type="submit"]');
+                
+                btnText.style.display = 'none';
+                btnLoading.style.display = 'inline';
+                boton.disabled = true;
+                
+                try {
+                    const formData = {
+                        email: this.email.value.trim(),
+                        password: this.password.value
+                    };
+                    
+                    // Validación básica del email
+                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+                        throw { response: { data: { errors: { email: ['Ingresa un correo electrónico válido'] } } } };
+                    }
+                    
+                    // Validación básica de la contraseña
+                    if (formData.password.length < 6) {
+                        throw { response: { data: { errors: { password: ['La contraseña debe tener al menos 6 caracteres'] } } } };
+                    }
+                    
+                    const response = await axios.post('https://back1-production-67bf.up.railway.app/v1/login', formData);
+                    
+                    if (response.data.message === "Usuario autenticado" || response.data.message === "Profesional autenticado") {
+                        // Guardar datos en localStorage
+                        localStorage.setItem('authToken', response.data.token);
+                        localStorage.setItem('userData', JSON.stringify({
+                            id: response.data.user.id,
+                            nombre: response.data.user.nombre,
+                            email: response.data.user.email,
+                            tipo: response.data.tipo,
+                            foto_url: response.data.user.foto_url || null
+                        }));
+                        
+                        // Mostrar mensaje de éxito
+                        document.getElementById('mensaje-sistema').innerHTML = 
+                            `<p style="color: var(--color-accent);">¡Autenticación exitosa! Redirigiendo...</p>`;
+                        
+                        // Redirigir después de 1 segundo
+                        setTimeout(() => {
+                            window.location.href = homeUrl;
+                        }, 1000);
+                    } else {
+                        throw new Error('Respuesta inesperada del servidor');
+                    }
+                } catch (error) {
+                    console.error('Error en login:', error);
+                    
+                    let errorMessage = 'Error al iniciar sesión';
+                    if (error.response) {
+                        if (error.response.status === 401) {
+                            errorMessage = 'Credenciales incorrectas';
+                        } else if (error.response.data?.errors) {
+                            if (error.response.data.errors.email) {
+                                document.getElementById('email-error').textContent = error.response.data.errors.email[0];
+                            }
+                            if (error.response.data.errors.password) {
+                                document.getElementById('password-error').textContent = error.response.data.errors.password[0];
+                            }
+                            errorMessage = 'Por favor corrige los errores';
+                        } else if (error.response.data?.message) {
+                            errorMessage = error.response.data.message;
+                        }
+                    }
+                    
+                    document.getElementById('mensaje-sistema').innerHTML = 
+                        `<p style="color: var(--color-error);">${errorMessage}</p>`;
+                } finally {
+                    btnText.style.display = 'inline';
+                    btnLoading.style.display = 'none';
+                    boton.disabled = false;
+                }
+            });
+            
+            // Mejorar UX: Permitir submit con Enter
+            loginForm.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    this.dispatchEvent(new Event('submit'));
+                }
+            });
+        });
     </script>
 </body>
 </html>

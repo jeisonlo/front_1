@@ -319,10 +319,10 @@
                 <!-- aqui debe estar el nombre del usuario -->
                 <a id="profile-name" href="#nombre" class="nav-item special-item profile-name">Invitado</a>
                 <div class="container-picture">
-                <img src="https://res.cloudinary.com/dlmbupndo/image/upload/v1745249136/kq9tw0o9pyc58l9ngaiv.jpg" alt="Foto de perfil" class="profile-pic" onclick="toggleProfileMenu()">
+                <img id="profile-image" src="https://res.cloudinary.com/dlmbupndo/image/upload/v1745249136/kq9tw0o9pyc58l9ngaiv.jpg" alt="Foto de perfil" class="profile-pic" onclick="toggleProfileMenu()">
                </div>
                 <div id="profile-menu" class="profile-menu">
-                    <a href="{{ url('/usuario') }}">Perfil</a>
+                    <a href="{{ url('/perfil') }}">Perfil</a>
                     <a href="{{ url('/confi') }}">Configuracion</a> 
                      <!-- dale funcionalidad a cerrar sesion  -->
                      <a href="#" id="boton-sesion">Cerrar sesión</a>
@@ -391,12 +391,21 @@
         document.addEventListener('DOMContentLoaded', () => {
           const userData = localStorage.getItem('userData');
           const profileName = document.getElementById('profile-name');
+          const profileImage = document.getElementById('profile-image');
           const botonSesion = document.getElementById('boton-sesion'); // Usa este ID en el HTML
       
           if (userData && profileName && botonSesion) {
             try {
               const usuario = JSON.parse(userData);
               profileName.textContent = usuario.nombre || 'Invitado';
+              
+              // Actualizar la foto de perfil si existe
+              if (usuario.foto) {
+                profileImage.src = usuario.foto;
+              } else {
+                // Imagen por defecto si no hay foto
+                profileImage.src = "https://res.cloudinary.com/dlmbupndo/image/upload/v1745249136/kq9tw0o9pyc58l9ngaiv.jpg";
+              }
       
               // Mostrar "Cerrar sesión" si hay datos de usuario
               botonSesion.textContent = 'Cerrar sesión';
@@ -416,10 +425,11 @@
       
           function mostrarIniciarSesion() {
             const profileName = document.getElementById('profile-name');
+            const profileImage = document.getElementById('profile-image');
             const botonSesion = document.getElementById('boton-sesion');
-            // <- este es el ID correcto
             
             if (profileName) profileName.textContent = 'Invitado';
+            if (profileImage) profileImage.src = "https://res.cloudinary.com/dlmbupndo/image/upload/v1745249136/kq9tw0o9pyc58l9ngaiv.jpg";
             if (botonSesion) {
               botonSesion.textContent = 'Iniciar sesión';
               botonSesion.onclick = function (e) {
