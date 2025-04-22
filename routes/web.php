@@ -1,18 +1,32 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('/test-bienestar', [TestController::class, 'showForm'])->name('test.show');
+Route::post('/test-bienestar', [TestController::class, 'store'])->name('test.store');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/inicio-alimentacion', function () {
+    return view('alimentacion.inicioAlimentacion');
 });
+
+Route::get('/Establecer', function () {
+    return view('alimentacion.Establecer');
+})->name('establecer');
+
+Route::get('/inicioAlimentacion', function () {
+    return view('alimentacion.inicioAlimentacion');
+})->name('inicio');
+
+Route::get('/foro', function () {
+    return view('alimentacion.foro');
+})->name('foro');
+
+Route::get('/frutas', function () {
+    return view('alimentacion.frutas');
+})->name('frutas');
+
+Route::get('/seguimiento', function () {
+    return view('alimentacion.Seguimiento');
+})->name('seguimiento');

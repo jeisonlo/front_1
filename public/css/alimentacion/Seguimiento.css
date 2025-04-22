@@ -1,0 +1,188 @@
+       :root { 
+            --bg-color: #f0f0f0;
+            --text-color: #333;
+            --card-bg: white;
+            --btn-bg:#59009A;
+        }
+        body.dark-mode {
+            --bg-color: #1e1e1e;
+            --text-color: #f0f0f0;
+            --card-bg: #2c2c2c;
+            --btn-bg: #5aa5a0;
+        }
+        body {
+            background-image: url('https://images.unsplash.com/photo-1474540412665-1cdae210ae6b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9uZG8lMjB0cmFucXVpbG98ZW58MHx8MHx8fDA%3D'); /* Ruta del archivo GIF */
+            background-size: cover; /* Ajusta el tamaño para cubrir toda la pantalla */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* No repetir el GIF */
+
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            
+        }
+
+
+        .container {
+            display: flex;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            width: 90%;
+            text-align: center;
+            margin-top: 33%;
+            background-color: rgba(245, 245, 245, 0.8); /* Blanco humo con transparencia */
+            margin-bottom: 30px;
+        }
+        
+        
+
+        h1 {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #59009A, #e74c3c);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        
+        h2,h3 {
+            color: #555;
+        }
+
+
+        /* Panel izquierdo (objetivos y datos) */
+        .left-panel {
+            flex: 1;
+            padding: 20px;
+            border-right: 2px solid #ddd; /* Línea divisoria entre secciones */
+        }
+
+        /* Panel derecho (gráficos y progreso) */
+        .right-panel {
+            flex: 1;
+            padding: 20px;
+        }
+
+
+        /* Campos de entrada y áreas de texto */
+        textarea, input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+
+
+        .charts-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .chart-box {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            height: 300px;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .button {
+            padding: 10px 20px;
+            border: none;
+            background: var(--btn-bg);
+            color: white;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 5px;
+        }
+        .button:hover {
+            background: #be5cb6;
+        }
+        .meta-input {
+            margin-top: 20px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            width: 80px;
+        }
+
+
+        /* Notificaciones */
+    .notificacion {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 25px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 500;
+        z-index: 1000;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .notificacion.success {
+        background: #4CAF50;
+    }
+
+    .notificacion.error {
+        background: #f44336;
+    }
+
+    /* Historial */
+    #historial li {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+        padding: 12px;
+        margin-bottom: 10px;
+        background: #f8f8f8;
+        border-radius: 8px;
+    }
+
+    #historial .fecha {
+        color: #666;
+        font-size: 0.9em;
+    }
+
+    #historial .peso {
+        color: #6d0eb1;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    #historial .meta {
+        color: #666;
+        text-align: right;
+    }
+
+    /* Gráficas */
+    .chart-box {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
