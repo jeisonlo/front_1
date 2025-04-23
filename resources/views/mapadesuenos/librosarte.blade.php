@@ -19,7 +19,7 @@
         <h2 class="heart" style="cursor: pointer;">🤍</h2>
     </section>
     <section class="dream-map">
-        <a href="/mapadesuenos/libro1?id=2">
+        <a href="/mapadesuenos/libro1?id=0">
             <img src="https://res.cloudinary.com/detivdncz/image/upload/v1740456902/El_arte_de_vivir_Manual_de_vida-Epicteto-md_gvniw2.jpg" alt="The Psychology of Money">
         </a>
         <h2>El arte de vivir</h2>
