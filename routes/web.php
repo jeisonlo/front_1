@@ -560,6 +560,8 @@ Route::prefix('usuario')->group(function () {
         return view('atencion-profesional.USUARIO.HistorialCitas_Usuario.index');   
     })->name('historial.citas.usuario');
 });
+
+
 // Rutas para PROFESIONAL
 Route::prefix('profesional')->group(function () {
     // archivos

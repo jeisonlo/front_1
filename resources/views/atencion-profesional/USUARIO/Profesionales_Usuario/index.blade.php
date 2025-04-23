@@ -33,7 +33,7 @@
                     </p>
 
                 </div class="profile-link">
-                <a href="{{ route('https://front1-production.up.railway.app/perfil') }}"><img
+                <a href="{{ route('perfil.profesional.usuario') }}"><img
                         class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
 
                 <!-- Botón de Calificar -->
@@ -51,7 +51,7 @@
                         constructivas.</p>
 
                 </div>
-                <a href="{{ route('https://front1-production.up.railway.app/perfil') }}"><img
+                <a href="{{ route('perfil.profesional.usuario') }}"><img
                         class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
                 <!-- Botón de Calificar -->
                 <button class="calificar-button" onclick="abrirModalCalificacion('Diego Armando Maradona', '../Imagenes/FotoUsuario.png')">
@@ -69,7 +69,7 @@
                     </p>
 
                 </div>
-                <a href="{{ route('https://front1-production.up.railway.app/perfil') }}"><img
+                <a href="{{ route('perfil.profesional.usuario') }}"><img
                         class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
                 <!-- Botón de Calificar -->
                 <button class="calificar-button" onclick="abrirModalCalificacion('Diego Armando Maradona', '../Imagenes/FotoUsuario.png')">
@@ -87,7 +87,7 @@
                     </p>
 
                 </div>
-                <a href="{{ route('https://front1-production.up.railway.app/perfil') }}"><img
+                <a href="{{ route('perfil.profesional.usuario') }}"><img
                         class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
                 <!-- Botón de Calificar -->
                 <button class="calificar-button" onclick="abrirModalCalificacion('Diego Armando Maradona', '../Imagenes/FotoUsuario.png')">
@@ -105,7 +105,7 @@
                     </p>
 
                 </div>
-                <a href="{{ route('https://front1-production.up.railway.app/perfil') }}"><img
+                <a href="{{ route('perfil.profesional.usuario') }}"><img
                         class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
                 <!-- Botón de Calificar -->
                 <button class="calificar-button" onclick="abrirModalCalificacion('Diego Armando Maradona', '../Imagenes/FotoUsuario.png')">
@@ -122,7 +122,7 @@
                         individuos que enfrentan desafíos relacionados con su bienestar emocional, mental y conductual.
                     </p>
                 </div>
-                <a href="{{ route('https://front1-production.up.railway.app/perfil') }}"><img
+                <a href="{{ route('perfil.profesional.usuario') }}"><img
                         class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
                 <!-- Botón de Calificar -->
                 <button class="calificar-button" onclick="abrirModalCalificacion('Diego Armando Maradona', '../Imagenes/FotoUsuario.png')">
