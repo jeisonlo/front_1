@@ -1,5 +1,5 @@
 // Configuración base
-const API_BASE_URL = 'http://localhost:8000/v1';
+const API_BASE_URL = 'https://back1-production-67bf.up.railway.app/v1';
 
 class API {
     constructor() {

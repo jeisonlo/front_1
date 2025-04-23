@@ -9,7 +9,7 @@ function fetchAllPlaylists() {
         return;
     }
 
-    fetch('http://127.0.0.1:8000/v1/playlists', {
+    fetch('https://back1-production-67bf.up.railway.app/v1/playlists', {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

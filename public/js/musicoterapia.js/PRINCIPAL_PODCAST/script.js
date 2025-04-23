@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   async function fetchPodcastsByCategory(category) {
     try {
-      const url = `http://127.0.0.1:8000/v1/podcasts?filter[category]=${encodeURIComponent(category)}`;
+      const url = `https://back1-production-67bf.up.railway.app/v1/podcasts?filter[category]=${encodeURIComponent(category)}`;
       const response = await fetch(url, {
         method: 'GET',
         headers: {

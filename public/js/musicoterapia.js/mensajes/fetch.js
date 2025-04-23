@@ -11,7 +11,7 @@ function forgotPassword(event) {
     }
 
     // Realizar la solicitud fetch
-    fetch("http://127.0.0.1:8000/v1/forgot-password", {
+    fetch("https://back1-production-67bf.up.railway.app/v1/forgot-password", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

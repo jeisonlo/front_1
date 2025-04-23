@@ -18,7 +18,7 @@
 
     document.addEventListener('DOMContentLoaded', function () {
       const genreId = getQueryParam('albumId');  // Obtener el ID del album de la URL
-      const apiUrl = `http://tranquilidad.test/v1/albums/${albumId}?included=audios.genre`;
+      const apiUrl = `https://back1-production-67bf.up.railway.app/v1/albums/${albumId}?included=audios.genre`;
 
       // Variables para el reproductor
       const playPauseBtn = document.getElementById('play-pause-btn');

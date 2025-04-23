@@ -31,7 +31,7 @@ function formatDuration(seconds) {
 
 // Función para obtener todos los audios desde el backend
 function fetchAllAudios() {
-  fetch('http://127.0.0.1:8000/v1/audios', {
+  fetch('https://back1-production-67bf.up.railway.app/v1/audios', {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -61,7 +61,7 @@ function fetchAllAudios() {
 
 // Función para buscar audios por nombre
 function searchAudios(searchTerm) {
-  fetch(`http://127.0.0.1:8000/v1/audios?title=${encodeURIComponent(searchTerm)}`, {
+  fetch(`https://back1-production-67bf.up.railway.app/v1/audios?title=${encodeURIComponent(searchTerm)}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

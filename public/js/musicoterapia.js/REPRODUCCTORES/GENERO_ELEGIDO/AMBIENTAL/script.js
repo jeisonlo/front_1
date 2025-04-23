@@ -31,7 +31,7 @@ function fetchAudiosByGenre() {
     return;
   }
 
-  fetch(`http://127.0.0.1:8000/v1/audios?genre_id=${genreId}`, {
+  fetch(`https://back1-production-67bf.up.railway.app/v1/audios?genre_id=${genreId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -158,7 +158,7 @@ async function fetchAllPlaylists() {
   }
 
   try {
-    const response = await fetch('http://127.0.0.1:8000/v1/playlists', {
+    const response = await fetch('https://back1-production-67bf.up.railway.app/v1/playlists', {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -248,7 +248,7 @@ async function createNewPlaylist() {
   }
 
   try {
-    const response = await fetch('http://127.0.0.1:8000/v1/playlists', {
+    const response = await fetch('https://back1-production-67bf.up.railway.app/v1/playlists', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

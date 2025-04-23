@@ -32,9 +32,7 @@ use App\Http\Controllers\UsuarioController;
 // Ruta de bienvenida
 
 
-Route::get('/', function () {
-    return view('musicoterapia.principal_generos.principal_generos');
-});
+
 
 // // RUTAS INICIO
 Route::get('/login', function () {

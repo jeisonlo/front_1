@@ -29,7 +29,7 @@ function fetchAudiosByAlbum() {
     return;
   }
 
-  fetch(`http://127.0.0.1:8000/v1/audios?album_id=${albumId}`, {
+  fetch(`https://back1-production-67bf.up.railway.app/v1/audios?album_id=${albumId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

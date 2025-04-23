@@ -31,7 +31,7 @@ function fetchAudiosByGenre() {
     return;
   }
 
-  fetch(`http://127.0.0.1:8000/v1/audios?genre_id=${genreId}`, {
+  fetch(`https://back1-production-67bf.up.railway.app/v1/audios?genre_id=${genreId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
