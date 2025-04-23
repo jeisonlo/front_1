@@ -11,9 +11,13 @@ body {
   background-attachment: fixed; /* Hace que la imagen sea fija al hacer scroll */
   background-color: rgba(255, 255, 255, 0.8); /* Color de fondo blanco con transparencia */
   background-blend-mode: overlay; /* Mezcla el color con la imagen */
-  padding-top: 100px;
+  
+  position: relative;
 }
-
+main{
+  margin-top: 6rem; /* Espacio para el header */
+            margin-bottom: 4rem; /* Espacio para el footer */
+}
 .container {
   max-width: 600px;
   margin: 50px auto;

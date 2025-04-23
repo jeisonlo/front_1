@@ -17,7 +17,7 @@
     <!-- Lugar donde se cargará el header -->
     <div id="header-container"></div>
     @include('atencion-profesional.USUARIO.Header.header')
-    
+    <main>
     <div class="container">
         <h2>Cita Actualizada</h2>
         <form id="actualizarCitaForm">
@@ -70,7 +70,7 @@
         </div>
     </div>
 
-
+    </main>
     
     <!-- Lugar donde se cargará el footer -->
     <div id="footer-container"></div>

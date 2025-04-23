@@ -15,7 +15,7 @@
 <body>
   <!-- Lugar donde se cargará el header -->
   <div id="header-container"></div>
-  
+  <main>
   <div class="container">
     <h2>Agenda tu Cita</h2>
     <form id="citaForm">
@@ -71,7 +71,7 @@
         <button id="btnAceptar">Aceptar</button>
     </div>
 </div>
-
+</main>
   
 
   <!-- Lugar donde se cargará el footer -->
