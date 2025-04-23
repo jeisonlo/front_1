@@ -961,9 +961,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                    <h3>${item.title}</h3>
                                    <p>Creado: ${new Date(item.created_at).toLocaleDateString()}</p>
                                    <div class="canvas-item-actions">
-                                      <button onclick="loadCanvas(${item.id})" style="background: linear-gradient(45deg, #BA68C8, #9575CD); color: white; box-shadow: 0 4px 12px rgba(186, 104, 200, 0.2);">Editar</button>
-                                      <button onclick="deleteCanvas(${item.id})" style="background: linear-gradient(45deg, #BA68C8, #9575CD); color: white; box-shadow: 0 4px 12px rgba(186, 104, 200, 0.2);">Eliminar</button>
-
+                                       <button onclick="loadCanvas(${item.id})">Editar</button>
+                                       <button onclick="deleteCanvas(${item.id})">Eliminar</button>
                                    </div>
                                </div>
                            `;

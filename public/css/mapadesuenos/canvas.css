@@ -618,15 +618,6 @@ main{
     transition: background-color 0.2s;
 }
 
-.canvas-item-actions button:first-child {
-    background-color: #4caf50;
-    color: white;
-}
-
-.canvas-item-actions button:last-child {
-    background-color: #f44336;
-    color: white;
-}
 
 .canvas-item-actions button:hover {
     opacity: 0.8;
@@ -636,8 +627,9 @@ main{
     display: block;
     margin: 0 auto;
     padding: 8px 16px;
-    background-color: #333;
+    background: linear-gradient(45deg, #BA68C8, #9575CD);
     color: white;
+    box-shadow: 0 4px 12px rgba(186, 104, 200, 0.2);
     border: none;
     border-radius: 4px;
     cursor: pointer;
