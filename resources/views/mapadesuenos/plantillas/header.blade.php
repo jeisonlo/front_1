@@ -296,7 +296,7 @@ a {
             <a href="{{ url('/inicioSesion/home') }}" class="nav-item">Inicio</a>
             <div class="nav-item modules-item" onclick="toggleModules()">Módulos</div>
             <a href="{{ url('/quienessomos') }}" class="nav-item  ">Acerca de </a>
-            <a href="{{ url('/contacto') }}}" class="nav-item ">Contacto</a>
+            <a href="{{ url('/contacto') }}" class="nav-item ">Contacto</a>
             <div id="modules-indicator" class="modules-indicator"></div>
             
         </nav>
