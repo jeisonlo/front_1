@@ -74,10 +74,7 @@
 </header>
 <body>
 
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Buscar frutas..." onkeyup="filterFruits()">
-        <button onclick="filterFruits()"><i class="fas fa-search"></i></button>
-    </div>
+   
 
     <main>
         <div class="caja">
