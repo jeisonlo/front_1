@@ -383,7 +383,7 @@ Route::get('/einicio', function () {
 Route::get('/ejercicios', function () {
     return view('rutinasEjercicios.ejercicios'); // Asegúrate de que esta vista exista en resources/views/ejercicios/index.blade.php
 });
-Route::get('/detalles/{id}', function () {
+Route::get('/detalless/{id}', function () {
     return view('rutinasEjercicios.detalles');
 });
 Route::get('/reproductor', function () {
