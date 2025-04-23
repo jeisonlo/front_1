@@ -16,7 +16,7 @@
    @include('atencion-profesional.USUARIO.Header.header')
 
 
-  <br><br>
+  
   <main>
     <div class="main-container">
         <div class="card">

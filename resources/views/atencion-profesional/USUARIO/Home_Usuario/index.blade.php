@@ -14,6 +14,7 @@
   <header id="header-container"></header>
   @include('atencion-profesional.USUARIO.Header.header')
   <!-- Main Content -->
+  <main>
   <div class="stories-wrapper">
     <div class="story-container">
         <div class="story">
@@ -52,7 +53,7 @@
       <a href="{{ route('citas.usuario') }}"><div class="cuadro"><img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353853/Citas_rugpyb.jpg" alt="Citas"><h3>Citas</h3></div></a>
       <a href="{{ route('profesionales.usuario') }}"><div class="cuadro"><img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353904/Profesionales_ghqweq.jpg" alt="Profesionales"><h3>Profesionales</h3></div></a>
       <a href="{{ route('recursos.usuario') }}"><div class="cuadro"><img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353953/Recursos_xbryb2.jpg" alt="Recursos"><h3>Recursos</h3></div></a>
-      <a href="{{ route('notificaciones.usuario') }}"><div class="cuadro"><img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353854/Notificaciones_e6fios.jpg" alt="Notificaciones"><h3>Notificaciones</h3></div></a>
+
       <a href="{{ route('comprar.codigos.usuario') }}"><div class="cuadro"><img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353882/Pagos_gfjdbb.jpg" alt="Pagos"><h3>Paquetes</h3></div></a>
     </div>
 

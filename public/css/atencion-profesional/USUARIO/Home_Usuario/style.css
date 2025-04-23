@@ -25,7 +25,10 @@ body {
   margin-bottom: 200px;
   
 }
-
+main{
+  margin-top: 6rem; /* Espacio para el header */
+            margin-bottom: 4rem; /* Espacio para el footer */
+}
 
 .stories-wrapper {
   display: flex;
