@@ -416,41 +416,41 @@ button {
 
 
 
-.modal-body {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    max-width: 400px;
-}
+ .modal-body {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        max-width: 400px;
+    }
 
-input[type="text"], textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 14px;
-    box-sizing: border-box;
-}
+    input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
 
-textarea {
-    resize: vertical;
-    min-height: 80px;
-}
+    textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
 
-.button {
-    padding: 10px 20px;
-    border: none;
-    background: #a84ca0; /* o usa var(--btn-bg) si tienes una variable definida */
-    color: white;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s;
-    align-self: flex-start;
-}
+    .button {
+        padding: 10px 20px;
+        border: none;
+        background: #a84ca0; /* o usa var(--btn-bg) si tienes una variable definida */
+        color: white;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+        align-self: flex-start;
+    }
 
-.button:hover {
-    background: #be5cb6;
-}
+    .button:hover {
+        background: #be5cb6;
+    }
