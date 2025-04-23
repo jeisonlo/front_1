@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Renderizar publicaciones
     const renderizarPublicaciones = () => {
-        const container = document.querySelector('modal-body');
+        const container = document.querySelector('main.container');
         container.innerHTML = '';
 
         posts.forEach(post => {
