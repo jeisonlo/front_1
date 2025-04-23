@@ -114,6 +114,9 @@
         a{
             color: black
         }
+        div#tips-container {
+    margin-left: 100px;
+}
     </style>
 </head>
 
@@ -216,6 +219,7 @@
                         <div class="row mt-4">
                             <!-- Módulo de Alimentación -->
                             <div class="col-md-6">
+                                <a href="{{ url('/inicio-alimentacion') }}">
                                 <div class="card text-center" onclick="window.location.href='/alimentacion/Inicio/index.html';">
                                     <div class="card-body">
                                         <h5 class="card-title">Alimentación</h5>
@@ -223,6 +227,7 @@
                                         <p class="card-text">Consejos de alimentación saludable.</p>
                                     </div>
                                 </div>
+                            </a>
                             </div>
                             <!-- Módulo de Ejercicios -->
                             <div class="col-md-6">
