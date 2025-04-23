@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function cargarReseñas() {
-    fetch("https://back1-production-67bf.up.railway.app/v1/reviews") // Cambia esto por la URL de tu backend
+    fetch("http://backendtranquilidad.test/v1/reviews") // Cambia esto por la URL de tu backend
         .then(response => response.json())
         .then(data => mostrarReseñas(data))
         .catch(error => console.error("Error al obtener las reseñas:", error));
@@ -24,7 +24,7 @@ function mostrarReseñas(reseñas) {
 
         div.innerHTML = `
             <div class="comment">
-                <img class="imagen-usuario" src="../Imagenes/FotoUsuario.png" alt="Foto de perfil del usuario">
+                <img class="imagen-usuario" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png" alt="Foto de perfil del usuario">
                 <div class="comment-info">
                     <h3>${reseña.name}</h3>
                     <p class="stars" style="color: #6200ea;">${'★'.repeat(reseña.stars)}</p>

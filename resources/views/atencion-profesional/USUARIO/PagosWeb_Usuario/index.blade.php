@@ -39,9 +39,9 @@
                 <label for="remember-card"> Recordar tarjeta</label>
 
                 <div class="payment-icons">
-                    <img src="/atencion-profesional/USUARIO/PagosWeb_Usuario/Imagenes/visa.png" alt="Visa">
-                    <img src="/atencion-profesional/USUARIO/PagosWeb_Usuario/Imagenes/master.png" alt="Master Card">
-                    <img src="/atencion-profesional/USUARIO/PagosWeb_Usuario/Imagenes/american.png" alt="American Express">
+                    <img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745370492/visa_vhclde.png" alt="Visa">
+                    <img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745370461/master_ilnioy.png" alt="Master Card">
+                    <img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745370459/american_k8qmmw.png" alt="American Express">
                 </div>
             </div>
 

@@ -21,7 +21,7 @@ function realizarPago() {
       metodo_pago: 'Nequi' // Ajusta el método de pago según tu necesidad
   };
 
-  fetch('https://back1-production-67bf.up.railway.app/v1/payments', {
+  fetch('http://backendtranquilidad.test/v1/payments', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',

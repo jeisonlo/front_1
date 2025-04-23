@@ -53,31 +53,31 @@
         <div class="cards">
           <a href="{{ route('citas.profesional') }}">
                 <div class="cuadro">
-                    <img src="{{ asset('img/atencion-profesional/PROFESIONAL/Menu_Profesional/imagenes/Citas.jpg') }}" alt="Citas">
+                    <img src="{{ asset('https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353853/Citas_rugpyb.jpg') }}" alt="Citas">
                     <h3>Citas</h3>
                 </div>
             </a>
             <a href="{{ route('profesionales.profesional') }}">
                 <div class="cuadro">
-                    <img src="{{ asset('img/atencion-profesional/PROFESIONAL/Menu_Profesional/imagenes/Profesionales.jpg') }}" alt="Profesionales">
+                    <img src="{{ asset('https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353904/Profesionales_ghqweq.jpg') }}" alt="Profesionales">
                     <h3>Profesionales</h3>
                 </div>
             </a>
             <a href="{{ route('recursos.profesional') }}">
                 <div class="cuadro">
-                    <img src="{{ asset('img/atencion-profesional/PROFESIONAL/Menu_Profesional/imagenes/Recursos.jpg') }}" alt="Recursos">
+                    <img src="{{ asset('https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353953/Recursos_xbryb2.jpg') }}" alt="Recursos">
                     <h3>Recursos</h3>
                 </div>
             </a>
             <a href="{{ route('notificaciones.profesional') }}">
                 <div class="cuadro">
-                    <img src="{{ asset('img/atencion-profesional/PROFESIONAL/Menu_Profesional/imagenes/Notificaciones.jpg') }}" alt="Notificaciones">
+                    <img src="{{ asset('https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353854/Notificaciones_e6fios.jpg') }}" alt="Notificaciones">
                     <h3>Notificaciones</h3>
                 </div>
             </a>
             <a href="{{ route('historial.pagos.profesional') }}">
                 <div class="cuadro">
-                    <img src="{{ asset('img/atencion-profesional/PROFESIONAL/Menu_Profesional/imagenes/Pagos.jpg') }}" alt="Historial de pagos">
+                    <img src="{{ asset('https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353882/Pagos_gfjdbb.jpg') }}" alt="Historial de pagos">
                     <h3>Historial de pagos</h3>
                 </div>
             </a>

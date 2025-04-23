@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (reprogramar === "no" && citaCancelar && citaCancelar.id) {
                 // 🟢 Hacer la petición DELETE para eliminar la cita
-                fetch(`https://back1-production-67bf.up.railway.app/v1/appointments/${citaCancelar.id}`, {
+                fetch(`http://backendtranquilidad.test/v1/appointments/${citaCancelar.id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

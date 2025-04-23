@@ -19,7 +19,7 @@
   <main>
     <div class="main-container">
       <div class="card">
-          <img src="{{ asset('img/atencion-profesional/PROFESIONAL/Menu_Profesional/imagenes/Agendarcita.jpg') }}" alt="Imagen de la tarjeta">
+          <img src="{{ asset('https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353819/Agendarcita_efo1be.jpg') }}" alt="Imagen de la tarjeta">
           <div class="card-content">
               <h3 class="card-title">Buzon</h3>
               <p class="card-description">Visualiza y organiza tus peticiones de citas .</p>
@@ -28,7 +28,7 @@
       </div>
   
       <div class="card">
-        <img src="{{ asset('img/atencion-profesional/PROFESIONAL/Cita_Profesional/imagenes/Miscitas.jpg') }}" alt="imagen de la tarjeta">
+        <img src="{{ asset('https://res.cloudinary.com/dmisxvtp9/image/upload/v1745354333/Miscitas_pgz73o.jpg') }}" alt="imagen de la tarjeta">
           <div class="card-content">
               <h3 class="card-title">Mis Citas</h3>
               <p class="card-description">Encuentra tus citas aceptadas; ingresa, edita o cancela a tu gusto.</p>

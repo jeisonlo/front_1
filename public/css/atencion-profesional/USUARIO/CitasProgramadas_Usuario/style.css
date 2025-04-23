@@ -1,20 +1,18 @@
-
-
-citas programadas /* Contenido body */
+ /* Contenido body */
 body {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   margin: 0;
   padding-top: 200px;
   min-height: 100vh;
-  background-image: url('/atencion-profesional/USUARIO/Imagenes/mensajes.png');
+  background-image: url('https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353294/mensajes_hcvkra.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
   background-attachment: fixed;
   background-color: rgba(255, 255, 255, 0.7);
   background-blend-mode: overlay;
-  padding-top: 700px;
+  
 }
 
 h2 {
@@ -23,7 +21,7 @@ h2 {
   text-align: center;
   font-size: 28px;
   font-weight: bold;
-  padding-top: 150px;
+  padding-top: 50px;
 }
 
 .contenedor-citas {

@@ -24,7 +24,7 @@
         </div>
         <section class="profile-list">
             <div class="profile">
-                <img class="imagen-usuario" src="../Imagenes/FotoUsuario.png" alt="Foto de perfil del usuario">
+                <img class="imagen-usuario" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png" alt="Foto de perfil del usuario">
                 <div class="profile-info">
                     <h3>Diego Armando Maradona.</h3>
                     <p>Especialista en salud mental es un profesional altamente capacitado que trabaja en el campo de la
@@ -34,16 +34,16 @@
 
                 </div class="profile-link">
                 <a href="{{ route('perfil.profesional.usuario') }}"><img
-                        class="visitar-perfil" src="../Imagenes/VisitarPerfil.png" alt="Visitar Perfil"></a>
+                        class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
 
                 <!-- Botón de Calificar -->
-                <button class="calificar-button" onclick="abrirModalCalificacion('Diego Armando Maradona', '../Imagenes/FotoUsuario.png')">
+                <button class="calificar-button" onclick="abrirModalCalificacion('Diego Armando Maradona', 'res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png')">
                     Calificar
                 </button>
             </div>
 
             <div class="profile">
-                <img class="imagen-usuario" src="../Imagenes/FotoUsuario.png" alt="Foto de perfil del usuario">
+                <img class="imagen-usuario" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png" alt="Foto de perfil del usuario">
                 <div class="profile-info">
                     <h3>Juan Roman Riquelme.</h3>
                     <p>Especialista en corregir dinámicas familiares complejas y en facilitar un entorno seguro donde
@@ -52,7 +52,7 @@
 
                 </div>
                 <a href="{{ route('perfil.profesional.usuario') }}"><img
-                        class="visitar-perfil" src="../Imagenes/VisitarPerfil.png" alt="Visitar Perfil"></a>
+                        class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
                 <!-- Botón de Calificar -->
                 <button class="calificar-button" onclick="abrirModalCalificacion('Diego Armando Maradona', '../Imagenes/FotoUsuario.png')">
                     Calificar
@@ -60,7 +60,7 @@
             </div>
 
             <div class="profile">
-                <img class="imagen-usuario" src="../Imagenes/FotoUsuario.png" alt="Foto de perfil del usuario">
+                <img class="imagen-usuario" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png" alt="Foto de perfil del usuario">
                 <div class="profile-info">
                     <h3>Zinedine Zidane.</h3>
                     <p>Especialista en salud mental es un profesional altamente capacitado que trabaja en el campo de la
@@ -70,7 +70,7 @@
 
                 </div>
                 <a href="{{ route('perfil.profesional.usuario') }}"><img
-                        class="visitar-perfil" src="../Imagenes/VisitarPerfil.png" alt="Visitar Perfil"></a>
+                        class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
                 <!-- Botón de Calificar -->
                 <button class="calificar-button" onclick="abrirModalCalificacion('Diego Armando Maradona', '../Imagenes/FotoUsuario.png')">
                     Calificar
@@ -78,7 +78,7 @@
             </div>
 
             <div class="profile">
-                <img class="imagen-usuario" src="../Imagenes/FotoUsuario.png" alt="Foto de perfil del usuario">
+                <img class="imagen-usuario" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png" alt="Foto de perfil del usuario">
                 <div class="profile-info">
                     <h3>Zinedine Zidane.</h3>
                     <p>Especialista en salud mental es un profesional altamente capacitado que trabaja en el campo de la
@@ -88,7 +88,7 @@
 
                 </div>
                 <a href="{{ route('perfil.profesional.usuario') }}"><img
-                        class="visitar-perfil" src="../Imagenes/VisitarPerfil.png" alt="Visitar Perfil"></a>
+                        class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
                 <!-- Botón de Calificar -->
                 <button class="calificar-button" onclick="abrirModalCalificacion('Diego Armando Maradona', '../Imagenes/FotoUsuario.png')">
                     Calificar
@@ -96,7 +96,7 @@
             </div>
 
             <div class="profile">
-                <img class="imagen-usuario" src="../Imagenes/FotoUsuario.png" alt="Foto de perfil del usuario">
+                <img class="imagen-usuario" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png" alt="Foto de perfil del usuario">
                 <div class="profile-info">
                     <h3>Zinedine Zidane.</h3>
                     <p>Especialista en salud mental es un profesional altamente capacitado que trabaja en el campo de la
@@ -106,7 +106,7 @@
 
                 </div>
                 <a href="{{ route('perfil.profesional.usuario') }}"><img
-                        class="visitar-perfil" src="../Imagenes/VisitarPerfil.png" alt="Visitar Perfil"></a>
+                        class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
                 <!-- Botón de Calificar -->
                 <button class="calificar-button" onclick="abrirModalCalificacion('Diego Armando Maradona', '../Imagenes/FotoUsuario.png')">
                     Calificar
@@ -114,7 +114,7 @@
             </div>
 
             <div class="profile">
-                <img class="imagen-usuario" src="../Imagenes/FotoUsuario.png" alt="Foto de perfil del usuario">
+                <img class="imagen-usuario" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png" alt="Foto de perfil del usuario">
                 <div class="profile-info">
                     <h3>Zinedine Zidane.</h3>
                     <p>Especialista en salud mental es un profesional altamente capacitado que trabaja en el campo de la
@@ -123,7 +123,7 @@
                     </p>
                 </div>
                 <a href="{{ route('perfil.profesional.usuario') }}"><img
-                        class="visitar-perfil" src="../Imagenes/VisitarPerfil.png" alt="Visitar Perfil"></a>
+                        class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
                 <!-- Botón de Calificar -->
                 <button class="calificar-button" onclick="abrirModalCalificacion('Diego Armando Maradona', '../Imagenes/FotoUsuario.png')">
                     Calificar

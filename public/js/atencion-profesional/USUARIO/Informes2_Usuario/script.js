@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     if (window.location.pathname.includes("informes.html")) {
-        fetch("https://back1-production-67bf.up.railway.app/v1/reports", {
+        fetch("http://backendtranquilidad.test/v1/reports", {
             method: "GET",
             headers: {
                 "Accept": "application/json",

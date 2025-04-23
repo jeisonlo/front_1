@@ -18,7 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-image: url('/atencion-profesional/USUARIO/Imagenes/cancela.png');
+  background-image: url('https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353091/cancela_iwt5tr.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;

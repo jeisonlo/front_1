@@ -62,7 +62,7 @@ function guardarCalificacion() {
         comment: comentario
     };
 
-    fetch("https://back1-production-67bf.up.railway.app/v1/reviews", { // Cambia por la URL de tu backend
+    fetch("http://backendtranquilidad.test/v1/reviews", { // Cambia por la URL de tu backend
         method: "POST",
         headers: {
             "Content-Type": "application/json"

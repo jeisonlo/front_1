@@ -1,13 +1,14 @@
 
 
-/* Contenido Body*/
+
+/* Body */
 body {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   margin: 0;
   padding: 0;
   min-height: 100vh; /* Asegura que el fondo cubra toda la altura */
-  background-image: url('/atencion-profesional/PROFESIONAL/Imagenes/proff.png'); /* Cambia por la ruta de tu imagen */
+  background-image: url('https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353708/proff_gv64su.jpg'); /* Cambia por la ruta de tu imagen */
   background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
   background-position: center top; /* Centra la imagen y la desplaza hacia arriba */
@@ -17,7 +18,11 @@ body {
 }
 
 main {
-  padding-top: 160px;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 100px;
+  flex-grow: 1;
+  padding-top: 220px;
 }
 
 .search-container {
@@ -26,30 +31,30 @@ main {
   width: 100%;
   max-width: 100%; /* Ajuste para centrar la barra de búsqueda */
   margin: 0 auto;
-  padding: 0.625rem; /* 10px */
+  padding: 10px;
   box-sizing: border-box;
-  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* Sombra para la barra de búsqueda */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para la barra de búsqueda */
   background-color: #fff;
-  border-radius: 0.3125rem; /* 5px */
+  border-radius: 5px;
 }
 
 .search-bar {
   flex: 1;
-  padding: 0.625rem; /* 10px */
-  font-size: 1rem; /* 16px */
-  border: 0.125rem solid #59009A; /* 2px */
-  border-radius: 0.3125rem 0 0 0.3125rem; /* Bordes redondeados, solo para la izquierda */
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #59009A;
+  border-radius: 5px 0 0 5px;
   outline: none;
 }
 
 .search-button {
-  padding: 0.625rem 1.25rem; /* 10px 20px */
-  font-size: 1rem; /* 16px */
+  padding: 10px 20px;
+  font-size: 16px;
   background-color: #59009A;
   color: #fff;
-  border: 0.125rem solid #59009A; /* 2px */
+  border: 2px solid #59009A;
   border-left: none; /* Eliminar el borde izquierdo del botón */
-  border-radius: 0 0.3125rem 0.3125rem 0; /* Bordes redondeados, solo para la derecha */
+  border-radius: 0 5px 5px 0; /* Bordes redondeados, solo para la derecha */
   cursor: pointer;
   outline: none;
   transition: background-color 0.3s ease;
@@ -62,9 +67,8 @@ main {
 .profile-list {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem; /* 20px */
-  margin-top: 1.875rem; /* 30px */
-  margin-bottom: 120px;
+  gap: 20px;
+  margin-top: 30px;
 }
 
 .profile {
@@ -72,21 +76,21 @@ main {
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
-  border-radius: 0.625rem; /* 10px */
-  box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,0.2); /* Mejor sombra */
-  padding: 1.25rem; /* 20px */
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Mejor sombra */
+  padding: 20px; /* Más espacio interno */
   transition: transform 0.2s ease; /* Transición para el hover */
 }
 
 .profile:hover {
-  transform: translateY(-0.3125rem); /* Efecto de elevación en hover */
+  transform: translateY(-5px); /* Efecto de elevación en hover */
 }
 
 .profile img {
-  height: 5rem; /* 80px */
-  width: 5rem; /* 80px */
-  border-radius: 0.625rem; /* 10px */
-  margin-right: 1.25rem; /* 20px */
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
+  margin-right: 20px;
 }
 
 .profile-info {
@@ -94,14 +98,14 @@ main {
 }
 
 .profile-info h3 {
-  margin: 0 0 0.625rem 0; /* 10px */
-  font-size: 1.25rem; /* 20px */
-  color: #59009A;
+  margin: 0 0 10px 0;
+  font-size: 20px; /* Tamaño de fuente mayor */
+  color:  #59009A;
 }
 
 .profile-info p {
   margin: 0;
-  font-size: 1rem; /* 16px */
+  font-size: 16px; /* Tamaño de fuente mayor */
   color: #333;
 }
 
@@ -111,10 +115,10 @@ main {
 }
 
 .visitar-perfil {
-  width: 0.0625rem; /* 1px */
-  height: 0.0625rem; /* 1px */
+  width: 1px; /* Ancho reducido */
+  height: 1px; /* Alto reducido */
   cursor: pointer;
-  margin-left: 1.25rem; /* 20px */
+  margin-left: 20px; /* Espacio entre la descripción y el icono */
   transition: transform 0.3s ease; /* Transición para el hover */
 }
 
@@ -124,67 +128,120 @@ main {
 
 button {
   display: block;
-  padding: 0.625rem 1.875rem; /* 10px 30px */
+  padding: 10px 30px 10px 30px;
   background-color: #59009A;
   color: #fff;
   border: none;
-  border-radius: 1.875rem;} /* 30
-
-
- 
-
-/* Para tablets (máximo 768px) */
-@media (max-width: 768px) {
-  .search-container {
-    flex-direction: column;
-  }
-
-  .profile {
-    flex-direction: column;
-    text-align: center;
-    padding: 1rem;
-  }
-
-  .profile img {
-    margin-bottom: 1rem;
-  }
-
-  .visitar-perfil {
-    margin: 1rem 0 0 0;
-  }
+  border-radius: 30px;
+  cursor: pointer;
 }
 
-/* Para móviles (máximo 480px) */
-@media (max-width: 480px) {
-  .search-container {
-    padding: 0.5rem;
-  }
-
-  .search-bar {
-    padding: 0.5rem;
-    font-size: 0.875rem; /* 14px */
-  }
-
-  .search-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-  }
-
-  .profile-info h3 {
-    font-size: 1.125rem; /* 18px */
-  }
-
-  .profile-info p {
-    font-size: 0.875rem; /* 14px */
-  }
-
-  .profile img {
-    height: 4rem; /* 64px */
-    width: 4rem; /* 64px */
-  }
-
-  .profile-list {
-    gap: 1rem;
-  }
+button:hover {
+  background-color: #440173;
 }
 
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  width: 350px;
+  margin: 15% auto;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.close {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.imagen-modal {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.estrellas {
+  display: flex;
+  gap: 5px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.estrella {
+  color: gray; /* Color predeterminado */
+  transition: color 0.3s ease-in-out;
+}
+
+.estrella:hover,
+.estrella:hover ~ .estrella {
+  color: purple; /* Cuando el usuario pasa el mouse */
+}
+
+.estrellas span {
+  color: gray;
+}
+
+.boton-container {
+  display: flex;
+  justify-content: flex-end; /* Alinea los botones a la derecha */
+  gap: 10px; /* Espacio entre botones */
+  margin-top: 10px;
+}
+
+.boton-comentar, .boton-aceptar {
+  background-color: purple;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+.boton-comentar {
+  background: #440173;
+  color: white;
+}
+
+.boton-aceptar {
+  background: #440173;
+  color: white;
+}
+
+#comentario {
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+}
+
+.modal-body {
+  text-align: center;
+  position: relative;
+}

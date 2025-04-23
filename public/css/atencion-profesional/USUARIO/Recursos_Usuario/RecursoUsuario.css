@@ -17,7 +17,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   min-height: 100vh;
-  background-image: url('/atencion-profesional/USUARIO/Imagenes/apartado-cita.png');
+  background-image: url('https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353037/apartado-cita_ionlmf.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

@@ -24,30 +24,82 @@
         </div>
         <section class="profile-list">
             <div class="profile">
-                <img class="imagen-usuario" src="../Imagenes/FotoUsuario.png" alt="Foto de perfil del usuario">
+                <img class="imagen-usuario" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png" alt="Foto de perfil del usuario">
                 <div class="profile-info">
                     <h3>Diego Armando Maradona.</h3>
                     <p>Especialista en salud mental es un profesional altamente capacitado que trabaja en el campo de la
                         psicología y psiquiatría para proporcionar evaluaciones, diagnósticos, tratamientos y apoyo a
                         individuos que enfrentan desafíos relacionados con su bienestar emocional, mental y conductual.
                     </p>
+
                 </div class="profile-link">
-                <a href="{{ route('perfil.profesional') }}"><img class="visitar-perfil"
-                        src="../Imagenes/VisitarPerfil.png" alt="Visitar Perfil"></a>
+                <a href="{{ route('perfil.profesional.usuario') }}"><img
+                        class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
+
+               
             </div>
+
             <div class="profile">
-                <img class="imagen-usuario" src="../Imagenes/FotoUsuario.png" alt="Foto de perfil del usuario">
+                <img class="imagen-usuario" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png" alt="Foto de perfil del usuario">
                 <div class="profile-info">
                     <h3>Juan Roman Riquelme.</h3>
                     <p>Especialista en corregir dinámicas familiares complejas y en facilitar un entorno seguro donde
                         los miembros de la familia puedan expresar sus preocupaciones y trabajar juntos hacia soluciones
                         constructivas.</p>
+
                 </div>
-                <a href="{{ route('perfil.profesional') }}"><img class="visitar-perfil"
-                        src="../Imagenes/VisitarPerfil.png" alt="Visitar Perfil"></a>
+                <a href="{{ route('perfil.profesional.usuario') }}"><img
+                        class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
+               
             </div>
+
             <div class="profile">
-                <img class="imagen-usuario" src="../Imagenes/FotoUsuario.png" alt="Foto de perfil del usuario">
+                <img class="imagen-usuario" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png" alt="Foto de perfil del usuario">
+                <div class="profile-info">
+                    <h3>Zinedine Zidane.</h3>
+                    <p>Especialista en salud mental es un profesional altamente capacitado que trabaja en el campo de la
+                        psicología y psiquiatría para proporcionar evaluaciones, diagnósticos, tratamientos y apoyo a
+                        individuos que enfrentan desafíos relacionados con su bienestar emocional, mental y conductual.
+                    </p>
+
+                </div>
+                <a href="{{ route('perfil.profesional.usuario') }}"><img
+                        class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
+               
+            </div>
+
+            <div class="profile">
+                <img class="imagen-usuario" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png" alt="Foto de perfil del usuario">
+                <div class="profile-info">
+                    <h3>Zinedine Zidane.</h3>
+                    <p>Especialista en salud mental es un profesional altamente capacitado que trabaja en el campo de la
+                        psicología y psiquiatría para proporcionar evaluaciones, diagnósticos, tratamientos y apoyo a
+                        individuos que enfrentan desafíos relacionados con su bienestar emocional, mental y conductual.
+                    </p>
+
+                </div>
+                <a href="{{ route('perfil.profesional.usuario') }}"><img
+                        class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
+                
+            </div>
+
+            <div class="profile">
+                <img class="imagen-usuario" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png" alt="Foto de perfil del usuario">
+                <div class="profile-info">
+                    <h3>Zinedine Zidane.</h3>
+                    <p>Especialista en salud mental es un profesional altamente capacitado que trabaja en el campo de la
+                        psicología y psiquiatría para proporcionar evaluaciones, diagnósticos, tratamientos y apoyo a
+                        individuos que enfrentan desafíos relacionados con su bienestar emocional, mental y conductual.
+                    </p>
+
+                </div>
+                <a href="{{ route('perfil.profesional.usuario') }}"><img
+                        class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
+               
+            </div>
+
+            <div class="profile">
+                <img class="imagen-usuario" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353416/FotoUsuario_mhli8b.png" alt="Foto de perfil del usuario">
                 <div class="profile-info">
                     <h3>Zinedine Zidane.</h3>
                     <p>Especialista en salud mental es un profesional altamente capacitado que trabaja en el campo de la
@@ -55,44 +107,9 @@
                         individuos que enfrentan desafíos relacionados con su bienestar emocional, mental y conductual.
                     </p>
                 </div>
-                <a href="{{ route('perfil.profesional') }}"><img class="visitar-perfil"
-                        src="../Imagenes/VisitarPerfil.png" alt="Visitar Perfil"></a>
-            </div>
-            <div class="profile">
-                <img class="imagen-usuario" src="../Imagenes/FotoUsuario.png" alt="Foto de perfil del usuario">
-                <div class="profile-info">
-                    <h3>Zinedine Zidane.</h3>
-                    <p>Especialista en salud mental es un profesional altamente capacitado que trabaja en el campo de la
-                        psicología y psiquiatría para proporcionar evaluaciones, diagnósticos, tratamientos y apoyo a
-                        individuos que enfrentan desafíos relacionados con su bienestar emocional, mental y conductual.
-                    </p>
-                </div>
-                <a href="{{ route('perfil.profesional') }}"><img class="visitar-perfil"
-                        src="../Imagenes/VisitarPerfil.png" alt="Visitar Perfil"></a>
-            </div>
-            <div class="profile">
-                <img class="imagen-usuario" src="../Imagenes/FotoUsuario.png" alt="Foto de perfil del usuario">
-                <div class="profile-info">
-                    <h3>Zinedine Zidane.</h3>
-                    <p>Especialista en salud mental es un profesional altamente capacitado que trabaja en el campo de la
-                        psicología y psiquiatría para proporcionar evaluaciones, diagnósticos, tratamientos y apoyo a
-                        individuos que enfrentan desafíos relacionados con su bienestar emocional, mental y conductual.
-                    </p>
-                </div>
-                <a href="{{ route('perfil.profesional') }}"><img class="visitar-perfil"
-                        src="../Imagenes/VisitarPerfil.png" alt="Visitar Perfil"></a>
-            </div>
-            <div class="profile">
-                <img class="imagen-usuario" src="../Imagenes/FotoUsuario.png" alt="Foto de perfil del usuario">
-                <div class="profile-info">
-                    <h3>Zinedine Zidane.</h3>
-                    <p>Especialista en salud mental es un profesional altamente capacitado que trabaja en el campo de la
-                        psicología y psiquiatría para proporcionar evaluaciones, diagnósticos, tratamientos y apoyo a
-                        individuos que enfrentan desafíos relacionados con su bienestar emocional, mental y conductual.
-                    </p>
-                </div>
-                <a href="{{ route('perfil.profesional') }}"><img class="visitar-perfil"
-                        src="../Imagenes/VisitarPerfil.png" alt="Visitar Perfil"></a>
+                <a href="{{ route('perfil.profesional.usuario') }}"><img
+                        class="visitar-perfil" src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353395/VisitarPerfil_xuzdmd.png" alt="Visitar Perfil"></a>
+                
             </div>
         </section>
     </main>

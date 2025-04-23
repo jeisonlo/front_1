@@ -20,7 +20,7 @@
   <main>
     <div class="main-container">
         <div class="card">
-            <img src="/atencion-profesional/PROFESIONAL/Menu_Profesional/imagenes/Agendarcita.jpg" alt="Agendar Cita">
+            <img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353819/Agendarcita_efo1be.jpg" alt="Agendar Cita">
             <h3>Agendar Cita</h3>
             <p class="card-description">Da el primer paso hacia tu objetivo, agenda tu cita hoy.</p>
             <div class="card-button-container">
@@ -29,7 +29,7 @@
         </div>
 
         <div class="card">
-            <img src="/atencion-profesional/PROFESIONAL/Cita_Profesional/imagenes/Miscitas.jpg" alt="Citas Programadas">
+            <img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745354333/Miscitas_pgz73o.jpg" alt="Citas Programadas">
             <h3>Citas Programadas</h3>
             <p class="card-description">Revisa y gestiona tus citas fácilmente en un solo lugar.</p>
             <div class="card-button-container">
