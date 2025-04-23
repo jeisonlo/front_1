@@ -17,11 +17,7 @@ body {
   background-blend-mode: overlay; /* Mezcla el color con la imagen */
 }
 
-main {
-  padding: 1.25rem; /* 20px */
-  margin-top: 50px; /* 120px */
-  
-}
+
 
 .comments-section {
   display: flex;
@@ -30,7 +26,7 @@ main {
   max-width: 75rem; /* 1200px */
   margin: 0 auto;
   margin-bottom: 100px;
-  padding-top: 70px;
+  padding-top: 40px;
 }
 
 .comment-card {
