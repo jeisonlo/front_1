@@ -295,8 +295,8 @@ a {
         <nav class="nav-links">
             <a href="{{ url('/inicioSesion/home') }}" class="nav-item">Inicio</a>
             <div class="nav-item modules-item" onclick="toggleModules()">Módulos</div>
-            <a href="/mapa-de-suenos/todohh/inicio/link/quienessomos.html" class="nav-item  ">Acerca de </a>
-            <a href="/mapa-de-suenos/todohh/inicio/link/contacto.html" class="nav-item ">Contacto</a>
+            <a href="{{ url('/quienessomos') }}" class="nav-item  ">Acerca de </a>
+            <a href="{{ url('/contacto') }}}" class="nav-item ">Contacto</a>
             <div id="modules-indicator" class="modules-indicator"></div>
             
         </nav>
@@ -337,7 +337,7 @@ a {
         <div id="modules-overlay" class="modules-overlay">
             <div class="module-grid">
                <a href="{{ url('/mapadesuenos/iniciomapa') }}"> <div class="module">Mapa de sueños</div></a>
-               <a href="{{ url('/inicio-alimentacion') }}"><div class="module">Alimentación</div></a>
+               <a href="{{ url('/alimentacion/Establecer') }}"><div class="module">Alimentación</div></a>
                 <a href="/musicoterapia/Vistas1.1/PRINCIPAL_GENEROS/principal_generos.html"><div class="module">Musicoterapia</div></a>
                 <a href="{{ url('/einicio') }}"><div class="module">Ejercicios</div></a>
                 <a href="{{ url('/usuario/home') }}"><div class="module">Atención Profesional</div></a>

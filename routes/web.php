@@ -47,6 +47,7 @@ Route::get('mapadesuenos/seguimiento1', function () {
 })->name('seguimiento1');
 
 
+
 //Rutas de libros
 Route::get('mapadesuenos/libro1', function () {
     return view('mapadesuenos/libro1');  // Solo una vista para todos los libros
@@ -85,11 +86,15 @@ Route::get('mapadesuenos/librosarte', function () {
     return view('mapadesuenos/librosarte');  // Solo una vista para todos los libros
 })->name('arte');
 
+Route::get('mapadesuenos/librosmeditacion', function () {
+    return view('mapadesuenos/librosmeditacion');  // Solo una vista para todos los libros
+})->name('meditacion');
 
 
 Route::get('mapadesuenos/arte', function () {
     return view('arte');  // Solo una vista para todos los libros
 });
+
 Route::get('mapadesuenos/favoritos', function () {
     return view('mapadesuenos/favoritos');  // Solo una vista para todos los libros
 })->name('favoritos');

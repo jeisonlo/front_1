@@ -178,7 +178,7 @@ h1 {
       <div class="card-content">
         <h3 class="card-title">Meditacion</h3>
         <p class="card-description">Encuentra calma y claridad con libros sobre técnicas, prácticas y beneficios de la meditación. Ideal para tu bienestar mental y espiritual.</p>
-        <a href="/mapa-de-suenos/Todosloslibros/TodoslibrosMeditacion.html" class="card-button">Explorar</a>
+        <a href="{{ route('meditacion') }}" class="card-button">Explorar</a>
       </div>
     </div>
 
