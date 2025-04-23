@@ -542,7 +542,7 @@ Route::prefix('usuario')->group(function () {
     //Profesionales
     Route::get('/profesionaless', function () {
         return view('atencion-profesional.USUARIO.Profesionales_Usuario.index');
-    })->name('profesionales.usuarioo');
+    })->name('kl');
 
    //Recursos
     Route::get('/recursos', function () {

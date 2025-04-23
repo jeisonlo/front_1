@@ -51,7 +51,7 @@
 
     <div class="cards">
       <a href="{{ route('citas.usuario') }}"><div class="cuadro"><img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353853/Citas_rugpyb.jpg" alt="Citas"><h3>Citas</h3></div></a>
-      <a href="{{ route('profesionales.usuarioo') }}"><div class="cuadro"><img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353904/Profesionales_ghqweq.jpg" alt="Profesionales"><h3>Profesionales</h3></div></a>
+      <a href="{{ route('kl') }}"><div class="cuadro"><img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353904/Profesionales_ghqweq.jpg" alt="Profesionales"><h3>Profesionales</h3></div></a>
       <a href="{{ route('recursos.usuario') }}"><div class="cuadro"><img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353953/Recursos_xbryb2.jpg" alt="Recursos"><h3>Recursos</h3></div></a>
 
       <a href="{{ route('comprar.codigos.usuario') }}"><div class="cuadro"><img src="https://res.cloudinary.com/dmisxvtp9/image/upload/v1745353882/Pagos_gfjdbb.jpg" alt="Pagos"><h3>Paquetes</h3></div></a>
