@@ -540,9 +540,9 @@ Route::prefix('usuario')->group(function () {
     })->name('escribir.reseña.usuario');
 
     //Profesionales
-    Route::get('/profesionaless', function () {
+    Route::get('/profesionales', function () {
         return view('atencion-profesional.USUARIO.Profesionales_Usuario.index');
-    })->name('kl');
+    })->name('perfil.profesional.usuario');
 
    //Recursos
     Route::get('/recursos', function () {
