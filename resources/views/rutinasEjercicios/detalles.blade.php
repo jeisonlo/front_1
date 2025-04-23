@@ -52,7 +52,7 @@
         // Obtener el ID del ejercicio desde la URL
         const exerciseId = window.location.pathname.split("/").pop(); 
 
-        axios.get(`${exerciseId}`)
+        axios.get(`https://back1-production-67bf.up.railway.app/v1/exercises/${exerciseId}`)
             .then(response => {
                 const exercise = response.data;
 
