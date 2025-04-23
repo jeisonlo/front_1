@@ -14,8 +14,3 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("Error al obtener los datos:", error));
 });
 
-// Función para el buscador
-function filterFruits() {
-    const searchTerm = document.getElementById('searchInput').value;
-    loadFruits(searchTerm);
-}

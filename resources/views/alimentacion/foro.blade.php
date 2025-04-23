@@ -94,13 +94,10 @@
                 <span class="close-modal">&times;</span>
             </div>
             <div class="modal-body">
-                <input type="text" id="nombreUsuario" placeholder="Tu nombre" required>
-                <textarea id="newPostContent" placeholder="Escribe tu publicación..."></textarea>
-            </div>
-            <div class="modal-footer">
-                <button id="publishPostBtn">Publicar</button>
-            </div>
-        </div>
+    <input type="text" id="nombreUsuario" placeholder="Tu nombre" required>
+    <textarea id="newPostContent" placeholder="Escribe tu publicación..."></textarea>
+    <button class="button">Publicar</button>
+</div>
     </div>
 
     <script src="{{ asset('js/foro.js') }}"></script>
