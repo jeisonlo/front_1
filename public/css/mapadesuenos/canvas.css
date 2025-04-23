@@ -618,6 +618,15 @@ main{
     transition: background-color 0.2s;
 }
 
+.canvas-item-actions button:first-child {
+    background-color: #4caf50;
+    color: white;
+}
+
+.canvas-item-actions button:last-child {
+    background-color: #f44336;
+    color: white;
+}
 
 .canvas-item-actions button:hover {
     opacity: 0.8;
