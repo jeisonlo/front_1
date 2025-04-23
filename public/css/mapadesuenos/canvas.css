@@ -619,13 +619,17 @@ main{
 }
 
 .canvas-item-actions button:first-child {
-    background-color: #4caf50;
+    background: linear-gradient(45deg, #BA68C8, #9575CD);
     color: white;
+    box-shadow: 0 4px 12px rgba(186, 104, 200, 0.2);
+
 }
 
 .canvas-item-actions button:last-child {
-    background-color: #f44336;
+    background: linear-gradient(45deg, #BA68C8, #9575CD);
     color: white;
+    box-shadow: 0 4px 12px rgba(186, 104, 200, 0.2);
+
 }
 
 .canvas-item-actions button:hover {
@@ -639,6 +643,7 @@ main{
     background: linear-gradient(45deg, #BA68C8, #9575CD);
     color: white;
     box-shadow: 0 4px 12px rgba(186, 104, 200, 0.2);
+
     border: none;
     border-radius: 4px;
     cursor: pointer;
