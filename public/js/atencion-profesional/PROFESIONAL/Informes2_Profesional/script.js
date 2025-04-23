@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('http://backendtranquilidad.test/v1/reports')
+    fetch('https://back1-production-67bf.up.railway.app/v1/reports')
         .then(response => response.json())
         .then(data => {
             const informesContainer = document.getElementById("informesContainer");
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function deleteReport(id) {
     if (confirm("¿Estás seguro de que deseas eliminar este informe?")) {
-        fetch(`http://backendtranquilidad.test/v1/reports/${id}`, {
+        fetch(`https://back1-production-67bf.up.railway.app/v1/reports/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

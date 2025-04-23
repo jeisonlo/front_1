@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Enviando datos actualizados:", citaActualizada);
             
             // Enviar la solicitud PUT al backend
-            fetch(`http://backendtranquilidad.test/v1/appointments/${citaEditar.id}`, {
+            fetch(`https://back1-production-67bf.up.railway.app/v1/appointments/${citaEditar.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

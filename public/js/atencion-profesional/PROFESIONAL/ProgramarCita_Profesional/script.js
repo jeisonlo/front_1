@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const buzonContainer = document.getElementById('buzonContainer');
-    const API_URL = "http://backendtranquilidad.test/v1/appointments"; // URL de tu API
+    const API_URL = "https://back1-production-67bf.up.railway.app/v1/appointments"; // URL de tu API
     const RUTAS = {
         miscitas: "/profesional/mis-citas", // Ruta relativa
     };

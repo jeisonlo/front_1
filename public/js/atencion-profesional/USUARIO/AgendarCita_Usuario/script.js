@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             // Enviar los datos a la API
-            fetch("http://backendtranquilidad.test/v1/appointments", {
+            fetch("https://back1-production-67bf.up.railway.app/v1/appointments", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (btnAceptar) {
         btnAceptar.addEventListener("click", function () {
             // Redirigir a la página de citas
-            window.location.href = "http://127.0.0.1:8000/usuario/citas-programadas";
+            window.location.href = "https://front1-production.up.railway.app/usuario/citas-programadas";
         });
     }
 });

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const staticElements = document.querySelectorAll('.form-input.static');
     const citaCancelar = JSON.parse(localStorage.getItem("citaCancelar"));
-    const API_URL = "http://backendtranquilidad.test/v1/appointments";
+    const API_URL = "https://back1-production-67bf.up.railway.app/v1/appointments";
 
     if (citaCancelar && staticElements.length === 4) {
         staticElements[0].textContent = citaCancelar.nombre || 'No disponible';

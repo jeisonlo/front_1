@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('http://backendtranquilidad.test/v1/documents')
+    fetch('https://back1-production-67bf.up.railway.app/v1/documents')
     .then(response => response.json())
     .then(data => {
         let html = '';
         data.data.forEach(doc => {
             let filePreview = '';
             if (doc.ruta_archivo.endsWith('.pdf')) {
-                filePreview = `<iframe class="preview" src="http://backendtranquilidad.test/storage/${doc.ruta_archivo}"></iframe>`;
+                filePreview = `<iframe class="preview" src="https://back1-production-67bf.up.railway.app/storage/${doc.ruta_archivo}"></iframe>`;
             } else if (doc.ruta_archivo.endsWith('.doc') || doc.ruta_archivo.endsWith('.docx')) {
                 filePreview = `<img class="preview" src="word-icon.png" alt="Vista previa de documento">`;
             }
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     ${filePreview}
                     <p class="card-description">${doc.descripcion}</p>
                     <div class="card-button-container">
-                        <a class="card-button" href="http://backendtranquilidad.test/storage/${doc.ruta_archivo}" target="_blank">Ver Documento</a>
+                        <a class="card-button" href="https://back1-production-67bf.up.railway.app/storage/${doc.ruta_archivo}" target="_blank">Ver Documento</a>
                         <button class="delete-button" onclick="deleteDocument(${doc.id})">Eliminar</button>
                     </div>
                 </div>
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function deleteDocument(id) {
     if (confirm('¿Estás seguro de que deseas eliminar este documento?')) {
-        fetch(`http://backendtranquilidad.test/v1/documents/${id}`, {
+        fetch(`https://back1-production-67bf.up.railway.app/v1/documents/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

@@ -3,7 +3,7 @@ document.getElementById('uploadForm').addEventListener('submit', function (e) {
 
     let formData = new FormData(this);
 
-    fetch('http://backendtranquilidad.test/v1/documents', {
+    fetch('https://back1-production-67bf.up.railway.app/v1/documents', {
         method: 'POST',
         body: formData
     })

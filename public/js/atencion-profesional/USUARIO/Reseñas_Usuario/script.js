@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function cargarReseñas() {
-    fetch("http://backendtranquilidad.test/v1/reviews") // Cambia esto por la URL de tu backend
+    fetch("https://back1-production-67bf.up.railway.app/v1/reviews") // Cambia esto por la URL de tu backend
         .then(response => response.json())
         .then(data => mostrarReseñas(data))
         .catch(error => console.error("Error al obtener las reseñas:", error));

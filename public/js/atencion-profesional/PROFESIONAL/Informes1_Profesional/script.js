@@ -4,7 +4,7 @@ document.getElementById('reportForm').addEventListener('submit', function(event)
     let formData = new FormData(this);
     let jsonData = Object.fromEntries(formData);
 
-    fetch('http://backendtranquilidad.test/v1/reports', {
+    fetch('https://back1-production-67bf.up.railway.app/v1/reports', {
         method: 'POST',
         body: JSON.stringify(jsonData),
         headers: { 'Content-Type': 'application/json' }

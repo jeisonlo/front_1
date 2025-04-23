@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const mensajeEmergente = document.getElementById("mensajeEmergente");
 
     // URL base de la API
-    const API_URL = "http://backendtranquilidad.test/v1/appointments";
+    const API_URL = "https://back1-production-67bf.up.railway.app/v1/appointments";
 
     // Obtener la cita a editar del localStorage
     let citaEditar = JSON.parse(localStorage.getItem("citaEditar"));

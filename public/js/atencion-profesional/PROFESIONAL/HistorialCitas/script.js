@@ -2,7 +2,7 @@
 async function fetchAppointmentsPsicologo() {
     try {
         // Hacer una solicitud a la API
-        const response = await fetch('http://backendtranquilidad.test/v1/appointments');
+        const response = await fetch('https://back1-production-67bf.up.railway.app/v1/appointments');
         if (!response.ok) {
             throw new Error('Error al obtener las citas');
         }

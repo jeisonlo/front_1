@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const modalDetalles = document.getElementById("modalDetalles");
     const btnAceptarIngresar = document.getElementById("btnAceptarIngresar");
 
-    const API_URL = "http://backendtranquilidad.test/v1/appointments";
+    const API_URL = "https://back1-production-67bf.up.railway.app/v1/appointments";
 
     // Definir las rutas como variables
     const RUTAS = {

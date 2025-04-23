@@ -1,7 +1,7 @@
 // Función para cargar los datos de los pagos
 async function cargarHistorialPagos() {
     try {
-        const response = await fetch('http://backendtranquilidad.test/v1/payments');
+        const response = await fetch('https://back1-production-67bf.up.railway.app/v1/payments');
         if (!response.ok) throw new Error('Error al obtener los pagos');
         
         const { data: pagos } = await response.json();
