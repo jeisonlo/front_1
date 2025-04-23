@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         consultaProfesional: "/profesional/consulta", // Ruta relativa para ingresar a la consulta
         editarCitaProfesional: "/profesional/cita-actualizada", // Ruta relativa para editar la cita
         cancelarCitaProfesional: "/profesional/cancelar-cita2", // Ruta relativa para cancelar la cita
+        googleMeet: "https://meet.google.com" // URL de Google Meet
     };
 
     // Código para depuración - TEMPORAL
@@ -118,9 +119,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log("Cita seleccionada:", cita);
 
         if (button.classList.contains("btn-ingresar")) {
-            // Redirigir a la vista de Ingresar
-            localStorage.setItem("citaActual", JSON.stringify(cita));
-            window.location.href = RUTAS.consultaProfesional;
+            // Redirigir a Google Meet en lugar de la vista de consulta
+            window.open(RUTAS.googleMeet, '_blank');
         } else if (button.classList.contains("btn-editar")) {
             // Redirigir a la vista de Editar
             localStorage.setItem("citaEditar", JSON.stringify(cita));
