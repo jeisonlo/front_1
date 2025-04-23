@@ -81,6 +81,7 @@ Route::get('mapadesuenos/mapainiciodos', function () {
     return view('mapadesuenos/mapainiciodos');  // Solo una vista para todos los libros
 })->name('maps');
 
+////////
 
 Route::get('mapadesuenos/librosarte', function () {
     return view('mapadesuenos/librosarte');  // Solo una vista para todos los libros
@@ -90,6 +91,19 @@ Route::get('mapadesuenos/librosmeditacion', function () {
     return view('mapadesuenos/librosmeditacion');  // Solo una vista para todos los libros
 })->name('meditacion');
 
+Route::get('mapadesuenos/librosnaturaleza', function () {
+    return view('mapadesuenos/librosnaturaleza');  // Solo una vista para todos los libros
+})->name('naturaleza');
+
+Route::get('mapadesuenos/librospoesia', function () {
+    return view('mapadesuenos/librospoesia');  // Solo una vista para todos los libros
+})->name('poesia');
+
+Route::get('mapadesuenos/librossuperacion', function () {
+    return view('mapadesuenos/librossuperacion');  // Solo una vista para todos los libros
+})->name('superacion');
+
+//////
 
 Route::get('mapadesuenos/arte', function () {
     return view('arte');  // Solo una vista para todos los libros

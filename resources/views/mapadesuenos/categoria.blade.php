@@ -188,7 +188,7 @@ h1 {
       <div class="card-content">
         <h3 class="card-title">Naturaleza</h3>
         <p class="card-description">Explora la belleza y diversidad de nuestro planeta con libros sobre fauna, flora, ecosistemas y conservación ambiental.</p>
-        <a href="/mapa-de-suenos/Todosloslibros/TodoslibrosNaturaleza.html" class="card-button">Explorar</a>
+        <a href="{{ route('naturaleza') }}" class="card-button">Explorar</a>
       </div>
     </div>
 
@@ -198,7 +198,7 @@ h1 {
       <div class="card-content">
         <h3 class="card-title">Poesia</h3>
         <p class="card-description">Sumérgete en la magia de las palabras con colecciones de poesía clásica y contemporánea, ideales para despertar emociones y reflexiones profundas.</p>
-        <a href="/mapa-de-suenos/Todosloslibros/TodoslibrosPoesia.html" class="card-button">Explorar</a>
+        <a href="{{ route('poesia') }}" class="card-button">Explorar</a>
       </div>
     </div>
 
@@ -208,7 +208,7 @@ h1 {
       <div class="card-content">
         <h3 class="card-title">Superacion</h3>
         <p class="card-description">Encuentra inspiración y herramientas para crecer personalmente con libros que transforman retos en oportunidades y motivan al cambio positivo.</p>
-        <a href="/mapa-de-suenos/Todosloslibros/TodoslibrosSuperacion.html" class="card-button">Explorar</a>
+        <a href="{{ route('superacion') }}" class="card-button">Explorar</a>
       </div>
     </div>
 
