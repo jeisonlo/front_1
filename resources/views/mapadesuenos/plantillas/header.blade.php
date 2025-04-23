@@ -326,7 +326,7 @@ a {
     <!-- Contenedor de módulos (oculto por defecto) -->
     <div id="modules-content" class="modules-content" style="display: none;">
         <a href="{{ url('/mapadesuenos/iniciomapa') }}"><div class="modulo">Mapa de sueños</div></a>
-        <a href="{{ url('/inicio-alimentacion') }}"><div class="modulo">Alimentación</div></a>
+        <a href="{{ url('/Establecer') }}"><div class="modulo">Alimentación</div></a>
         <a href="/musicoterapia/Vistas1.1/PRINCIPAL_GENEROS/principal_generos.html"><div class="modulo">Musicoterapia</div></a>
         <a href="{{ url('/einicio') }}"><div class="modulo">Ejercicios</div></a>
         <a href="{{ url('/usuario/home') }}"><div class="modulo">Atención Profesional</div></a>
@@ -337,7 +337,7 @@ a {
         <div id="modules-overlay" class="modules-overlay">
             <div class="module-grid">
                <a href="{{ url('/mapadesuenos/iniciomapa') }}"> <div class="module">Mapa de sueños</div></a>
-               <a href="{{ url('/alimentacion/Establecer') }}"><div class="module">Alimentación</div></a>
+               <a href="{{ url('/Establecer') }}"><div class="module">Alimentación</div></a>
                 <a href="/musicoterapia/Vistas1.1/PRINCIPAL_GENEROS/principal_generos.html"><div class="module">Musicoterapia</div></a>
                 <a href="{{ url('/einicio') }}"><div class="module">Ejercicios</div></a>
                 <a href="{{ url('/usuario/home') }}"><div class="module">Atención Profesional</div></a>
