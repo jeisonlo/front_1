@@ -105,7 +105,7 @@
         <section class="card" id="foro">
           <img src="alimentacion/Inclued/social_media.jpg" alt="Foro">
           <h2>Foro</h2>
-          <p>Recurso bienestar es una plataforma donde se almacenará y organizará información proveniente de
+          <p>Foro es una plataforma donde se almacenará y organizará información proveniente de
               diferentes usuarios. Estos recursos incluirán una amplia variedad de datos, estrategias, y experiencias
               compartidas por otros usuarios que también están en la búsqueda de mejorar su bienestar.</p>
       </section></a>
